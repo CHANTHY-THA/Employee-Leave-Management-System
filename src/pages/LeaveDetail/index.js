@@ -6,14 +6,11 @@ import App from "../../App";
 
 class LeaveDetail extends React.Component {
   render() {
-
     return (
-
-      
       <div className="leave-detail-page">
         <Header parentToChild={"Employee Leave Management System"}/>
         <div className="leave-detail-page-main">
-          <Menu/>
+          {/* <Menu/> */}
           <div className="leave-detail-container">
           <h3>Leave Details {App.LeaveDetail}</h3>
             <div className="leave-detail-content">
