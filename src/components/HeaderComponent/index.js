@@ -4,7 +4,7 @@ class Header extends React.Component {
   render() {
     let content = this.props.parentToChild;
     return (
-      <div class="header-container">
+      <div className="header-container">
         <h5>{content}</h5>
     </div>
     )

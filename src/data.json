@@ -1,100 +1,251 @@
 {
-    "Employees" : [
-        {"id" :1, "FirstName":"Linda", "LastName": "Soum", "PhoneNumber":"0987654321","Email": "linda@gmail.com", "ProfileImage":"r1.jpg", "Status" : "Active"},
-        {"id" :2, "FirstName":"Chanry", "LastName": "Chhoy", "PhoneNumber":"0987654321","Email": "linda@gmail.com", "ProfileImage":"r2.jpg", "Status" : "Active"},
-        {"id" :3, "FirstName":"Chanary", "LastName": "Pha", "PhoneNumber":"0987654321","Email": "linda@gmail.com", "ProfileImage":"r4.png", "Status" : "Inactive"},
-        {"id" :4, "FirstName":"Pros", "LastName": "Nob", "PhoneNumber":"0987654321","Email": "linda@gmail.com", "ProfileImage":"r3.png", "Status" : "Active"}
-      ],
-      "Departments" : [
-        {"id" :1, "DepartmentName":"Human Resource", "Created": "01-Jan-2021 12:00: PM"},
-        {"id" :2, "DepartmentName":"Information Technology", "Created": "01-Jan-2021 12:00: PM"},
-        {"id" :3, "DepartmentName":"Finace", "Created": "01-Jan-2021 12:00: PM"},
-        {"id" :4, "DepartmentName":"Design", "Created": "01-Jan-2021 12:00: PM"},
-        {"id" :5, "DepartmentName":"Operation", "Created": "01-Jan-2021 12:00: PM"}
-      ],
-      "LeaveTypes" : [
-        {"id":1, "name": "Annual Leave"},
-        {"id":2, "name": "Special Leave"},
-        {"id":3, "name": "Sick Leave"}
-      ],
-      "LeaveHistory": [
-        {"id":1,"EmployeeName": "Chanry", "LeaveType": "Special Leave","Created":"01-Jan-2021 12:00: PM","Status": "Panding"},
-        {"id":2,"EmployeeName": "Channary", "LeaveType": "sick Leave","Created":"01-Jan-2021 12:00: PM","Status": "Aproved"},
-        {"id":3,"EmployeeName": "Chanthy", "LeaveType": "Annual Leave","Created":"01-Jan-2021 12:00: PM","Status": "Rejected"},
-        {"id":4,"EmployeeName": "Pros", "LeaveType": "Special Leave","Created":"01-Jan-2021 12:00: PM","Status": "Panding"}
-
-      ],
-      "leaveType": [
-        { "id": 1, "name": "Annul leave","amount": "18"},
-        { "id": 2, "name": "Special Leave","amount": "12" },
-        { "id": 3, "name": " Sick Leave","amount": "23"}
-      ],
-      "Users": [
-        {
-          "id": 1,
-          "firstName": "Linda",
-          "lastName": "Soum",
-          "gender": "Male",
-          "userName": "lindasoum",
-          "role": "admin",
-          "password": "123456",
-          "phoneNumber": "0987654321",
-          "email": "lindasoum@gmail.com",
-          "profileImage": "r1.jpg",
-          "status": "Active"
-        },
-        {
-          "id": 2,
-          "firstName": "Chanry",
-          "lastName": "Chhoy",
-          "gender": "Female",
-          "userName": "chanrychhoy",
-          "role": "employmee",
-          "password": "123456",
-          "phoneNumber": "0987654321",
-          "email": "chanrychhoy@gmail.com",
-          "profileImage": "r2.jpg",
-          "status": "Active"
-        },
-        {
-          "id": 3,
-          "firstName": "Chanary",
-          "lastName": "Pha",
-          "gender": "Female",
-          "userName": "channarypha",
-          "role": "employmee",
-          "password": "123456",
-          "phoneNumber": "0987654321",
-          "email": "channarypha@gmail.com",
-          "profileImage": "r4.png",
-          "status": "Inactive"
-        },
-        {
-          "id": 4,
-          "firstName": "Pros",
-          "lastName": "Nob",
-          "gender": "Male",
-          "userName": "prosnob",
-          "role": "employmee",
-          "password": "123456",
-          "phoneNumber": "0987654321",
-          "email": "prosnob@gmail.com",
-          "profileImage": "r3.png",
-          "status": "Active"
-        },
-        {
-          "id": 5,
-          "firstName": "Chanthy",
-          "lastName": "tha",
-          "gender": "Male",
-          "userName": "chanthytha",
-          "role": "employmee",
-          "password": "123456",
-          "phoneNumber": "0987654321",
-          "email": "chanthytha@gmail.com",
-          "profileImage": "r3.png",
-          "status": "Active"
-        }
-      ]
-      
+  "Users": [
+    {
+      "id": 1,
+      "firstName": "Linda",
+      "lastName": "Soum",
+      "gender": "Male",
+      "userName": "lindasoum",
+      "role": "admin",
+      "password": "123456",
+      "phoneNumber": "0987654321",
+      "email": "lindasoum@gmail.com",
+      "profileImage": "r1.jpg",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "firstName": "Chanry",
+      "lastName": "Chhoy",
+      "gender": "Female",
+      "userName": "chanrychhoy",
+      "role": "employmee",
+      "password": "123456",
+      "phoneNumber": "0987654321",
+      "email": "chanrychhoy@gmail.com",
+      "profileImage": "r2.jpg",
+      "status": "Active"
+    },
+    {
+      "id": 3,
+      "firstName": "Chanary",
+      "lastName": "Pha",
+      "gender": "Female",
+      "userName": "channarypha",
+      "role": "employmee",
+      "password": "123456",
+      "phoneNumber": "0987654321",
+      "email": "channarypha@gmail.com",
+      "profileImage": "r4.png",
+      "status": "Inactive"
+    },
+    {
+      "id": 4,
+      "firstName": "Pros",
+      "lastName": "Nob",
+      "gender": "Male",
+      "userName": "prosnob",
+      "role": "employmee",
+      "password": "123456",
+      "phoneNumber": "0987654321",
+      "email": "prosnob@gmail.com",
+      "profileImage": "r3.png",
+      "status": "Active"
+    },
+    {
+      "id": 5,
+      "firstName": "Chanthy",
+      "lastName": "tha",
+      "gender": "Male",
+      "userName": "chanthytha",
+      "role": "employmee",
+      "password": "123456",
+      "phoneNumber": "0987654321",
+      "email": "chanthytha@gmail.com",
+      "profileImage": "r3.png",
+      "status": "Active"
+    }
+  ],
+  "Departments": [
+    {
+      "id": 1,
+      "departmentName": "Human Resource",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": 2,
+      "departmentName": "Information Technology",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": 3,
+      "departmentName": "Finace",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": 4,
+      "departmentName": "Design",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": 5,
+      "departmentName": "Operation",
+      "created": "01-Jan-2021 12:00: PM"
+    }
+  ],
+  "LeaveTypes": [
+    {
+      "id": 1,
+      "name": "Annual Leave",
+      "amount": 18
+    },
+    {
+      "id": 2,
+      "name": "Special Leave",
+      "amount": 6
+    },
+    {
+      "id": 3,
+      "name": "Sick Leave",
+      "amount": 12
+    }
+  ],
+  "LeaveLists": [
+    {
+      "id": 1,
+      "employmeId": 2,
+      "firstName": "Chanry",
+      "lastName": "Chhoy",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "Special Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "",
+      "Status": "Pending"
+    },
+    {
+      "id": 2,
+      "employmeId": 3,
+      "firstName": "Chanary",
+      "lastName": "Pha",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "sick Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "Good luck",
+      "status": "Aproved"
+    },
+    {
+      "id": 3,
+      "employmeId": 5,
+      "firstName": "Chanthy",
+      "lastName": "tha",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "Annual Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "Not Good",
+      "status": "Rejected"
+    },
+    {
+      "id": 4,
+      "employmeId": 4,
+      "firstName": "Pros",
+      "lastName": "Nob",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "Special Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "",
+      "status": "Pending"
+    }
+  ],
+  "leaveDetails": [
+    {
+      "id": 2,
+      "emplayeeId": 2,
+      "firstName": "Chanry",
+      "lastName": "Chhoy",
+      "gender": "Female",
+      "role": "employmee",
+      "PhoneNumber": "0987654321",
+      "email": "chanrychhoy@gmail.com",
+      "profileImage": "r2.jpg",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "Special Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "takeAction": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "",
+      "status": "Pending"
+    },
+    {
+      "id": 2,
+      "emplayeeId": 3,
+      "firstName": "Chanary",
+      "lastName": "Pha",
+      "gender": "Female",
+      "role": "employmee",
+      "phoneNumber": "0987654321",
+      "email": "channarypha@gmail.com",
+      "profileImage": "r4.png",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "sick Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "takeAction": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "Good luck",
+      "status": "Aproved"
+    },
+    {
+      "id": 3,
+      "emplayeeId": 5,
+      "firstName": "Chanthy",
+      "lastName": "tha",
+      "gender": "Male",
+      "role": "employmee",
+      "phoneNumber": "0987654321",
+      "email": "chanthytha@gmail.com",
+      "profileImage": "r3.png",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "Annual Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "takeAction": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "Not Good",
+      "status": "Rejected"
+    },
+    {
+      "id": 4,
+      "emplayeeId": 4,
+      "firstName": "Pros",
+      "lastName": "Nob",
+      "gender": "Male",
+      "userName": "prosnob",
+      "role": "employmee",
+      "phoneNumber": "0987654321",
+      "email": "prosnob@gmail.com",
+      "profileImage": "r3.png",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "Special Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "takeAction": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "",
+      "status": "Pending"
+    }
+  ],
+  "leaveStatus": [
+    "Pending",
+    "Rejected",
+    "Aproved"
+  ]
 }

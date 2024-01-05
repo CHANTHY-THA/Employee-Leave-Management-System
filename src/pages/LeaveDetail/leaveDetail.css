@@ -13,7 +13,7 @@ body{
     display: flex;
 }
 .leave-detail-container{
-    width: 85%;
+    width: 100%;
     margin: 20px;
 }
 .leave-detail-content{
