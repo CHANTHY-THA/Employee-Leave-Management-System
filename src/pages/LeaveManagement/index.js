@@ -4,116 +4,116 @@ import Header from "../../components/HeaderComponent";
 import Menu from "../../components/MenuComponent";
 import App from "../../App";
 import DataTable from "react-data-table-component";
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import Records from "../../data.json";
 
 class LeaveManagement extends React.Component {
   render() {
-    const columns = [
-      {
-        name: "No",
-        selector: row => row.no,
-        sortable: true,
-      },
-      {
-        name: "Type Of Leav",
-        selector: row => row.typeofleave,
-        sortable: true,
-      },
-      {
-        name: "From",
-        selector: row => row.from,
-        sortable: true,
-      },
-      {
-        name: "To",
-        selector: row => row.to,
-        sortable: true,
-      },
-      {
-        name: "Description",
-        selector: row => row.description,
-        sortable: true,
-      },
-      {
-        name: "Posting Date",
-        selector: row => row.postingdate,
-        sortable: true,
-      },
-      {
-        name: "Admin Remark",
-        selector: row => row.remark,
-        sortable: true,
-      },
-      {
-        name: "Status",
-        selector: row => row.status,
-        sortable: true,
-      },
-    ];
+    let leaveRecord = Records.LeaveHistory;
+    function onClickDelete(row, index) {
+      const leaveItem = leaveRecord.find((leave) => leave.id == row.id);
+      if (leaveItem) {
+        // console.log(leaveRecord.filter(f => f.id !== leaveItem.id));
+        return leaveRecord.filter((f) => f.id !== leaveItem.id);
+      }
+    }
 
-    const data = [
-      {
-        no: 1,
-        typeofleave: "Sick Leave",
-        from: "05/01/2024",
-        to: "07/01/2024",
-        description: "Simple Leave",
-        postingdate: 25,
-        remark: 25,
-        status: "Approved",
-      },
-      {
-        no: 1,
-        typeofleave: "Annul Leave",
-        from: "05/01/2024",
-        to: "07/01/2024",
-        description: "Simple Leave",
-        postingdate: 25,
-        remark: 25,
-        status: "Pending",
-      },
-      {
-        no: 1,
-        typeofleave: "Special Leav",
-        from: "05/01/2024",
-        to: "07/01/2024",
-        description: "Simple Leave",
-        postingdate: 25,
-        remark: 25,
-        status: "Pending",
-      },
-      {
-        no: 1,
-        typeofleave: "Sick Leave",
-        from: "05/01/2024",
-        to: "07/01/2024",
-        description: "Simple Leave",
-        postingdate: 25,
-        remark: 25,
-        status: "Not Approved",
-      },
-    
-    ];
-
-    // const [records, setRecords] = useState(data);
-
-    function handleFilter(event) {
-      const newData = data.filter(row => {
-        return row.name.toLowerCase().includes(event.target.value.toLowerCase())
-      })
-
-      // setRecords(newData);
+    function onClickEdit(row, index) {
+      console.log(row);
     }
 
     return (
       <div className="leave-history-page">
         <Header parentToChild={"Employee Leave Management System"} />
         <div className="leave-histroy-page-main">
-          <Menu />
+          {/* <Menu /> */}
           <div className="leave-history-container">
             <h3>LEAVE HISTORY {App.LeaveManagement}</h3>
             <div className="leave-history-content">
-              <div className="text_end mt-3"><input type="text" placeholder="search" onChange={handleFilter}/></div>
-              <DataTable columns={columns} data={data} pagination></DataTable>
+              <div className="text_end mt-3 mb-2">
+                <input type="text" placeholder="search" />
+              </div>
+
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Leave Type</th>
+                    <th scope="col">Leave From</th>
+                    <th scope="col">Leave To</th>
+                    <th scope="col">No Of Days</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">Posting Date</th>
+                    <th scope="col" className="text-center">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {leaveRecord.map((leave, index) => {
+                    return (
+                      <tr>
+                        <td key={index}>{index + 1}</td>
+                        <td>{leave.EmployeeName}</td>
+                        <td>{leave.LeaveType}</td>
+                        <td>{leave.LeaveFrom}</td>
+                        <td>{leave.LeaveTo}</td>
+                        <td>{leave.NoDay}</td>
+                        <td>
+                          {(() => {
+                            if (leave.Status === "Draft") {
+                              return (
+                                <span className="label label-draft">
+                                  {leave.Status}
+                                </span>
+                              );
+                            } else if (leave.Status === "Pending") {
+                              return (
+                                <span className="label label-pending">
+                                  {leave.Status}
+                                </span>
+                              );
+                            } else if (leave.Status === "Approved") {
+                              return (
+                                <span className="label label-approve">
+                                  {leave.Status}
+                                </span>
+                              );
+                            } else if (leave.Status === "Not Approve") {
+                              return (
+                                <span className="label label-notapprove">
+                                  {leave.Status}
+                                </span>
+                              );
+                            }
+                          })()}
+                        </td>
+                        <td>{leave.Reason}</td>
+                        <td>{leave.Created}</td>
+                        <td>
+                          <span className="actions">
+                            <MdEdit
+                              className="editIcon"
+                              onClick={() => {
+                                onClickEdit(leave, index);
+                              }}
+                            />
+                            <MdDelete
+                              className="deleteIcon"
+                              onClick={() => {
+                                onClickDelete(leave, index);
+                              }}
+                            />
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

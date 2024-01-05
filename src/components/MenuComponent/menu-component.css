@@ -1,9 +1,15 @@
 .menu-container{
-    width: 15%;
-    height: 93vh;
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    background: white;
+    background: rgb(0, 0, 0);
+}
+
+.nav-footer,
+.nav-body,
+.nav-header h5 {
+    color: white;
 }
 .nav-top,.nav-bottom{
     display: flex;
@@ -37,9 +43,9 @@
     cursor: pointer;
 }
 .nav-body div:hover,.nav-footer div:hover{
-    background: rgb(231, 231, 255);
+    background: rgba(107, 102, 102, 0.281);
     /* color: white; */
-    font-weight: 700;
+    /* font-weight: 700; */
 }
 .nav-body div span, .nav-footer div span{
     margin-left: 10px;

@@ -18,10 +18,12 @@
         {"id":3, "name": "Sick Leave"}
       ],
       "LeaveHistory": [
-        {"id":1,"EmployeeName": "Chanry", "LeaveType": "Special Leave","Created":"01-Jan-2021 12:00: PM","Status": "Panding"},
-        {"id":2,"EmployeeName": "Channary", "LeaveType": "sick Leave","Created":"01-Jan-2021 12:00: PM","Status": "Aproved"},
-        {"id":3,"EmployeeName": "Chanthy", "LeaveType": "Annual Leave","Created":"01-Jan-2021 12:00: PM","Status": "Rejected"},
-        {"id":4,"EmployeeName": "Pros", "LeaveType": "Special Leave","Created":"01-Jan-2021 12:00: PM","Status": "Panding"}
+        {"id":1,"EmployeeName": "Chanry", "LeaveType": "Special Leave","LeaveFrom": "05-Jan-2024","LeaveTo": "07-Jan-2024","NoDay": "2","Reason": "Join Event" ,"Created":"01-Jan-2021 12:00: PM","Status": "Draft"},
+        {"id":2,"EmployeeName": "Channary", "LeaveType": "Sick Leav","LeaveFrom": "08-Jan-2024","LeaveTo": "07-Jan-2024","NoDay": "3","Reason": "Not Well" ,"Created":"03-Jan-2021 12:00: PM","Status": "Approved"},
+        {"id":3,"EmployeeName": "Chanthy", "LeaveType": "Special Leave","LeaveFrom": "11-Jan-2024","LeaveTo": "07-Jan-2024","NoDay": "5","Reason": "Go to home town" ,"Created":"01-Jan-2021 12:00: PM","Status": "Pending"},
+        {"id":4,"EmployeeName": "Pros", "LeaveType": "Annul Leave","LeaveFrom": "15-Jan-2024","LeaveTo": "07-Jan-2024","NoDay": "1","Reason": "State Exam" ,"Created":"07-Jan-2021 12:00: PM","Status": "Approved"},
+        {"id":5,"EmployeeName": "Sinet", "LeaveType": "Special Leave","LeaveFrom": "14-Jan-2024","LeaveTo": "07-Jan-2024","NoDay": "2","Reason": "Have a Baby" ,"Created":"10-Jan-2021 12:00: PM","Status": "Approved"},
+        {"id":6,"EmployeeName": "Mengheang", "LeaveType": "Sick Leave","LeaveFrom": "01-Jan-2024","LeaveTo": "07-Jan-2024","NoDay": "4","Reason": "Date with hunni" ,"Created":"20-Jan-2021 12:00: PM","Status": "Not Approve"}
 
       ]
       

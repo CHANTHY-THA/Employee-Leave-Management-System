@@ -6,6 +6,7 @@ import { LuArrowLeftRight } from "react-icons/lu";
 import { TfiLayoutGrid3Alt } from "react-icons/tfi";
 import { MdOutlineMonitor } from "react-icons/md";
 import { FaArrowRightToBracket } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 class Menu extends React.Component {
   render() {
     return (
@@ -14,17 +15,20 @@ class Menu extends React.Component {
             <img src="./../../images/profile.png"></img>
             <h5>Admin</h5>
           </div>
+
           <div className="nav-body">
-              <div><FaCookie /><span>Dashboard</span></div>
-              <div><TfiLayoutGrid3Alt /><span>Department</span></div>
-              <div><LuArrowLeftRight /><span>Leave Type</span></div>
-              <div><FaAddressBook /><span>Employees</span></div>
-              <div><MdOutlineMonitor /><span>Leave Management</span></div>
+              <div><Link to="dashboard" className="nav-link text-white px-2"><FaCookie /><span>Dashboard</span></Link></div>
+              <div><Link to="department" className="nav-link text-white px-2"><TfiLayoutGrid3Alt /><span>Department</span></Link></div>
+              <div><Link to="leave-type" className="nav-link text-white px-2"><LuArrowLeftRight /><span>Leave Type</span></Link></div>
+              <div><Link to="employee" className="nav-link text-white px-2"><FaAddressBook /><span>Employees</span></Link></div>
+              <div><Link to="leave-management" className="nav-link text-white px-2"><MdOutlineMonitor /><span>Leave Management</span></Link></div>
+              <div><Link to="leave-detail" className="nav-link text-white px-2"><MdOutlineMonitor /><span>Leave Details</span></Link></div>
+      
           </div>
             
             <div className="nav-footer">
-              <div><FaKey /><span>Change Password</span></div>
-              <div><FaArrowRightToBracket /><span>Log Out</span></div>
+              <div><Link to="change-password" className="nav-link text-white px-2"><FaKey /><span>Change Password</span></Link></div>
+              <div><Link to="login" className="nav-link text-white px-2"><FaArrowRightToBracket /><span>Log Out</span></Link></div>
             </div>  
       </div>
     )
