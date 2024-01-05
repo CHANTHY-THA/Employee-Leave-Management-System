@@ -28,6 +28,73 @@
         { "id": 1, "name": "Annul leave","amount": "18"},
         { "id": 2, "name": "Special Leave","amount": "12" },
         { "id": 3, "name": " Sick Leave","amount": "23"}
+      ],
+      "Users": [
+        {
+          "id": 1,
+          "firstName": "Linda",
+          "lastName": "Soum",
+          "gender": "Male",
+          "userName": "lindasoum",
+          "role": "admin",
+          "password": "123456",
+          "phoneNumber": "0987654321",
+          "email": "lindasoum@gmail.com",
+          "profileImage": "r1.jpg",
+          "status": "Active"
+        },
+        {
+          "id": 2,
+          "firstName": "Chanry",
+          "lastName": "Chhoy",
+          "gender": "Female",
+          "userName": "chanrychhoy",
+          "role": "employmee",
+          "password": "123456",
+          "phoneNumber": "0987654321",
+          "email": "chanrychhoy@gmail.com",
+          "profileImage": "r2.jpg",
+          "status": "Active"
+        },
+        {
+          "id": 3,
+          "firstName": "Chanary",
+          "lastName": "Pha",
+          "gender": "Female",
+          "userName": "channarypha",
+          "role": "employmee",
+          "password": "123456",
+          "phoneNumber": "0987654321",
+          "email": "channarypha@gmail.com",
+          "profileImage": "r4.png",
+          "status": "Inactive"
+        },
+        {
+          "id": 4,
+          "firstName": "Pros",
+          "lastName": "Nob",
+          "gender": "Male",
+          "userName": "prosnob",
+          "role": "employmee",
+          "password": "123456",
+          "phoneNumber": "0987654321",
+          "email": "prosnob@gmail.com",
+          "profileImage": "r3.png",
+          "status": "Active"
+        },
+        {
+          "id": 5,
+          "firstName": "Chanthy",
+          "lastName": "tha",
+          "gender": "Male",
+          "userName": "chanthytha",
+          "role": "employmee",
+          "password": "123456",
+          "phoneNumber": "0987654321",
+          "email": "chanthytha@gmail.com",
+          "profileImage": "r3.png",
+          "status": "Active"
+        }
       ]
       
 }

@@ -8,17 +8,21 @@ const ChangePasswordForm = () => {
   });
 
   useEffect(() => {
-    fetch('/data.json')
+    fetch('../../data.json')
       .then(response => response.json())
       .then(data => {
-        // Set the default form data using the fetched data
-        setFormData(data);
+        if (data && data.Users) {
+          setFormData(prevData => ({
+            ...prevData,
+            currentPassword: data.Users[0]?.password || '', // Set the initial current password value
+          }));
+        }
       })
       .catch(error => {
         console.log('Error fetching sample data:', error);
       });
-  }, []); // Empty dependency array to only run on component mount
-
+  }, []); 
+  //get from input
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -27,11 +31,12 @@ const ChangePasswordForm = () => {
     }));
   };
 
+  // submit info 
   const handleSubmit = e => {
     e.preventDefault();
     // Perform password change logic here
     console.log(formData);
-    // Reset form fields
+    // Reset data after submit
     setFormData({
       currentPassword: '',
       newPassword: '',
@@ -46,14 +51,14 @@ const ChangePasswordForm = () => {
       <form onSubmit={handleSubmit}>
           <div class="mb-3">
             <label for="currentPassword" class="form-label">Current Password:</label>
-            <input type="password" class="form-control" id="currentPassword" name="currentPassword" value={formData.currentPassword} onChange={handleChange}required />
+            <input type="password" class="form-control" id="currentPassword" name="currentPassword" value={formData.currentPassword} onChange={handleChange} required />
           </div>
           <div class="mb-3">
-            <label for="newPassword"  class="form-label">New Password:</label>
-            <input type="password"  class="form-control" id="newPassword" name="newPassword" value={formData.newPassword} onChange={handleChange} required />
+            <label for="newPassword" class="form-label">New Password:</label>
+            <input type="password" class="form-control" id="newPassword" name="newPassword" value={formData.newPassword} onChange={handleChange} required />
           </div>
           <div class="mb-3">
-            <label for="confirmPassword"  class="form-label">Confirm Password:</label>
+            <label for="confirmPassword" class="form-label">Confirm Password:</label>
             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value={formData.confirmPassword}  onChange={handleChange} required />
           </div>
 
