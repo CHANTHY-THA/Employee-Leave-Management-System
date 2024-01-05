@@ -1,6 +1,7 @@
 import React from "react";
 import jsonData from "../../data.json";
 import "./index.css";
+import Header from "../../components/HeaderComponent";
 
 class LeaveType extends React.Component {
   
@@ -13,41 +14,44 @@ class LeaveType extends React.Component {
     this.GetLeaveTypeList();
   }
   GetLeaveTypeList(){
-    this.setState({leaveTypes:jsonData.leaveType})
+    this.setState({leaveTypes:jsonData.LeaveTypes})
   }
 
   render() {
     const {leaveTypes} = this.state;
     return (
-      <div >
-        {
-          <div class="mt-4">
-            <div className="card-table">
-                <h4 class="pt-3 pb-2 ">Leave Type List</h4>
-                <table class="table table-bordered">
+      <div className="page">
+        <Header parentToChild={"Employee Leave Management System"} />
+          <div className="page-main">
+            <div className="container">
+                <h4 className="pt-3 pb-2 ">Leave Type List</h4>
+                <div className="leave-history-content">
+                <div className="text_end mt-3 mb-2">
+                  <input type="text" className="form-control btn-search" placeholder="Search ......" />
+                </div>
+                <table className="table table-sm">
                   <thead>
                     <tr>
-                      <th >ID</th>
-                      <th >Name</th>
-                      <th >Amount</th>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Amount (A Year)</th>
                     </tr>
                   </thead>
                   <tbody >
-                  {leaveTypes.map((ele) => {
+                  {leaveTypes.map((type) => {
                     return (
                       <tr >
-                        <td>{ele.id}</td>
-                        <td>{ele.name}</td>
-                        <td>{ele.amount}</td>
+                        <td>{type.id}</td>
+                        <td>{type.name}</td>
+                        <td>{type.amount}</td>
                       </tr>
                     );
                   })} 
                   </tbody>
                 </table>
+                </div>
             </div>
-        </div>
-        }
-        
+          </div>
     </div>)
   }
 }
