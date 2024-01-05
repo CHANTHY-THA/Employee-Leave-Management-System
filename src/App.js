@@ -5,6 +5,9 @@ import LeaveDetail from "./pages/LeaveDetail";
 import Dashboard from "./pages/dashboard";
 import LeaveManagement from "./pages/LeaveManagement";
 import Menu from "./components/MenuComponent";
+import LeaveTypes from "./pages/LeaveType";
+import ChangePassword from "./pages/ChangePassword";
+
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
             <Route path="/department" element={<Dashboard />}></Route>
+            <Route path="/leave-type" element={<LeaveTypes />}></Route>
             <Route
               path="/leave-management"
               element={<LeaveManagement />}
@@ -27,6 +31,10 @@ function App() {
             <Route
               path="/leave-detail"
               element={<LeaveDetail />}
+            ></Route>
+            <Route
+              path="/change-password"
+              element={<ChangePassword />}
             ></Route>
           </Routes>
         </div>
