@@ -15,7 +15,7 @@ class Menu extends React.Component {
             <h5>Admin</h5>
           </div>
           <div className="nav-body">
-              <div><FaCookie /><span>Dashboard</span></div>
+              <div><FaCookie /><a href="/dashboard"><span>Dashboard</span></a></div>
               <div><TfiLayoutGrid3Alt /><span>Department</span></div>
               <div><LuArrowLeftRight /><span>Leave Type</span></div>
               <div><FaAddressBook /><span>Employees</span></div>
@@ -24,7 +24,7 @@ class Menu extends React.Component {
             
             <div className="nav-footer">
               <div><FaKey /><span>Change Password</span></div>
-              <div><FaArrowRightToBracket /><span>Log Out</span></div>
+              <div><FaArrowRightToBracket /><a href="../"><span>Log Out</span></a></div>
             </div>  
       </div>
     )

@@ -43,6 +43,10 @@
 }
 .nav-body div span, .nav-footer div span{
     margin-left: 10px;
+    color:black
 }
+.nav-body div a , .nav-footer div a {
+    text-decoration: none;
 
+}
 
