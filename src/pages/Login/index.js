@@ -15,6 +15,7 @@ const Login = () =>{
 
     let mssError = document.getElementById('errorMss');
     let isLogin = false;
+    let isAdmin = true
     
     if(formData.user ==="" && formData.password ===""){
       mssError.style.color = "red";
@@ -23,13 +24,21 @@ const Login = () =>{
       for(let user of JSONData.Users){
         if(user.userName === formData.user && user.password === formData.password ){
           localStorage.setItem("user",JSON.stringify(user));
-          isLogin = true
+          isLogin = true;
+          if(user.role == "employee"){
+            isAdmin = false ;
+          }
         }
       }
       if(isLogin){
         mssError.style.color = "green";
         mssError.textContent = "your user is successfully Logged in!"
-        window.location.replace("/dashboard")
+        if(isAdmin){
+          window.location.replace("/dashboard")
+        }
+        else{
+          window.location.replace("/my-leave")
+        }
       }
       else{
         mssError.style.color = "red";
