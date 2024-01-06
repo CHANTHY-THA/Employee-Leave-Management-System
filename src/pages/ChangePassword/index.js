@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import "./index.css";
 import Header from "../../components/HeaderComponent";
 
+// let user = localStorage.getItem("user");
+// console.log(user);
 const ChangePasswordForm = () => {
   const [formData, setFormData] = useState({
     currentPassword: '',
@@ -48,9 +50,9 @@ const ChangePasswordForm = () => {
 
 
   return (
-    <div className="main-page">
+    <div className="page">
       <Header parentToChild={"Employee Leave Management System"} />
-      <div className="page">
+      <div className="main-page">
           <h4 className="pt-3 pb-2 ">Change Password</h4>
           <form onSubmit={handleSubmit} className='container'>
               <div className="mb-3">

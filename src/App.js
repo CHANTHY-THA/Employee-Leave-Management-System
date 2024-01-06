@@ -7,8 +7,9 @@ import MyLeave from "./pages/MyLeave";
 import Menu from "./components/MenuComponent";
 import LeaveTypes from "./pages/LeaveType";
 import ChangePassword from "./pages/ChangePassword";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/Dashboard";
 import Profle from "./pages/Profile/profile";
+import Department from "./pages/Dapartment/department";
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
             <Route path="/profile" element={<Profle />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
             <Route path="/employee" element={<Dashboard />}></Route>
-            <Route path="/department" element={<Dashboard />}></Route>
+            <Route path="/department" element={<Department />}></Route>
             <Route path="/leave-type" element={<LeaveTypes />}></Route>
             <Route path="/my-leave" element={<MyLeave />}></Route>
             <Route
