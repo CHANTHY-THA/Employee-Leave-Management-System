@@ -6,11 +6,12 @@ import LeaveManagement from "./pages/LeaveManagement";
 import MyLeave from "./pages/MyLeave";
 import Menu from "./components/MenuComponent";
 import Employees from "./pages/Employees";
-import EmploymeeDetail from "./pages/Employees/Detail";
+import EmployeeDetail from "./pages/Employees/Detail";
 import LeaveTypes from "./pages/LeaveType";
 import ChangePassword from "./pages/ChangePassword";
 import Dashboard from "./pages/dashboard";
 import Profle from "./pages/Profile/profile";
+import EmployeeForm from "./pages/Employees/Form";
 
 
 function App() {
@@ -52,7 +53,11 @@ function App() {
             ></Route>
             <Route
               path="/employees/detail"
-              element={<EmploymeeDetail />}
+              element={<EmployeeDetail />}
+            ></Route >
+            <Route
+              path="/employees/form"
+              element={<EmployeeForm />}
             ></Route >
             <Route
               path="/change-password"

@@ -1,10 +1,10 @@
 import React from "react";
 import "./style.css";
 import Header from "../../../components/HeaderComponent";
-import Menu from "../../../components/MenuComponent";
+// import Menu from "../../../components/MenuComponent";
 import App from "../../../App";
 
-class EmploymeeDetail extends React.Component {
+class EmployeeDetail extends React.Component {
     render() {
         return (
             <div className="leave-detail-page">
@@ -104,4 +104,4 @@ class EmploymeeDetail extends React.Component {
 }
 
 
-export default EmploymeeDetail;
+export default EmployeeDetail;
