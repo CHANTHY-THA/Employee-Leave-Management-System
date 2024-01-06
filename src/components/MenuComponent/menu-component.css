@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: column;
 }
+
 .nav-header{
     flex:1.5;
     display: flex;
@@ -26,6 +27,10 @@
 .nav-body .nav-link{
     display: flex;
     align-items: center;
+}
+.nav-body .hidden{
+    display:none;
+    /* background: #000; */
 }
 .nav-header img{
     width: 75px;

@@ -1,4 +1,3 @@
-leave-management
 
 body{
     display: flex;
@@ -30,12 +29,16 @@ body{
     margin-bottom: 20px;
 }
 
+.searchBtn {
+    padding: 2px 5px;
+}
+
 .label {
     border-radius: 4px;
     padding: 1px 5px;
     color: white;
     text-align: center;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .label-approve {
@@ -54,13 +57,13 @@ body{
 
 .deleteIcon {
     color: red;
-    font-size: 18;
+    font-size: 18px;
     cursor: pointer;
 }
 
 .editIcon {
     color: green;
-    font-size: 18;
+    font-size: 18px;
     cursor: pointer;
 }
 

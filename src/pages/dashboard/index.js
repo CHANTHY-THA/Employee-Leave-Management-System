@@ -1,18 +1,15 @@
 import React from "react";
 import "./dashboard.css";
 import Header from "../../components/HeaderComponent";
-import Menu from "../../components/MenuComponent";
-import jsonData from "../../data.json";
+
 class Dashboard extends React.Component {
   render() {
-    console.log(jsonData);
     return (
       <div className="dashboard-page">
         <Header parentToChild={"Employee Leave Management System"} />
         <div className="dashboard-container">
-          {/* <Menu /> */}
           <div className="dashboard-content">
-            <table class="table table-sm">
+            <table className="table table-sm">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -36,7 +33,7 @@ class Dashboard extends React.Component {
                 </tr>
                 <tr>
                   <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
+                  <td colSpan="2">Larry the Bird</td>
                   <td>@twitter</td>
                 </tr>
               </tbody>
