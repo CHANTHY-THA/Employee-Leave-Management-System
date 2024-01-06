@@ -26,63 +26,65 @@ class Menu extends React.Component {
         </div>
 
         <div className="nav-body">
-          <div>
-            <Link to="profile " className="nav-link px-2">
+          <Link to="profile " className="nav-link px-2">
+            <div>
               <CgProfile />
               <span>Profile</span>
-            </Link>
-          </div>
-          <div className={userRole === "employee" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="dashboard ">
+            </div>
+          </Link>
+          <Link className="nav-link px-2" to="dashboard ">
+            <div className={userRole === "employee" ? "  hidden" : ""}>
               <FaCookie />
               <span>Dashboard</span>
-            </Link>
-          </div>
-          <div className={userRole === "employee" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="department">
+            </div>
+          </Link>
+          <Link className="nav-link px-2" to="department">
+            {" "}
+            <div className={userRole === "employee" ? "  hidden" : ""}>
               <TfiLayoutGrid3Alt />
               <span>Department</span>
-            </Link>
-          </div>
-          <div className={userRole === "employee" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="leave-type">
+            </div>
+          </Link>
+          <Link className="nav-link px-2" to="leave-type">
+            {" "}
+            <div className={userRole === "employee" ? "  hidden" : ""}>
               <LuArrowLeftRight />
               <span>Leave Type</span>
-            </Link>
-          </div>
-          <div className={userRole === "employee" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="employees">
+            </div>
+          </Link>
+          <Link className="nav-link px-2" to="employees">
+            <div className={userRole === "employee" ? "  hidden" : ""}>
               <FaAddressBook />
               <span>Employees</span>
-            </Link>
-          </div>
-          <div className={userRole === "employee" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="leave-management">
+            </div>
+          </Link>
+          <Link className="nav-link px-2" to="leave-management">
+            <div className={userRole === "employee" ? "  hidden" : ""}>
               <MdOutlineMonitor />
               <span>Leave Management</span>
-            </Link>
-          </div>
-          <div className={userRole === "admin" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="my-leave">
+            </div>
+          </Link>
+          <Link className="nav-link px-2" to="my-leave">
+            <div className={userRole === "admin" ? "  hidden" : ""}>
               <MdOutlineMonitor />
               <span>My Leaves</span>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
-       
+
         <div className="nav-footer">
-          <div>
-            <Link to="change-password" className="nav-link  px-2">
+          <Link to="change-password" className="nav-link  px-2">
+            <div>
               <FaKey />
               <span>Change Password</span>
-            </Link>
-          </div>
-          <div onClick={onLogOut}>
-            <Link to="login" className="nav-link  px-2">
+            </div>
+          </Link>
+          <Link to="login" className="nav-link  px-2">
+            <div onClick={onLogOut}>
               <FaArrowRightToBracket />
               <span>Log Out</span>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
     );
