@@ -4,29 +4,41 @@ import Header from "../../components/HeaderComponent";
 import JSONData from "../../data.json";
 
 const Login = () =>{
+ 
   const [formData, setFormData] = useState({
     user:'',
     password:'',
   });
   const handleLogin = (e) =>{
-    e.preventDefault()
+    e.preventDefault();
+    console.log("hello")
 
-    let mssError = document.querySelector('span');
+    let mssError = document.getElementById('errorMss');
     let isLogin = false;
+    let isAdmin = true
+    
     if(formData.user ==="" && formData.password ===""){
       mssError.style.color = "red";
     }
     else{
       for(let user of JSONData.Users){
         if(user.userName === formData.user && user.password === formData.password ){
-          isLogin = true
-          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("user",JSON.stringify(user));
+          isLogin = true;
+          if(user.role == "employee"){
+            isAdmin = false ;
+          }
         }
       }
       if(isLogin){
         mssError.style.color = "green";
         mssError.textContent = "your user is successfully Logged in!"
-        window.location.replace("/dashboard")
+        if(isAdmin){
+          window.location.replace("/dashboard")
+        }
+        else{
+          window.location.replace("/my-leave")
+        }
       }
       else{
         mssError.style.color = "red";
@@ -51,7 +63,7 @@ const Login = () =>{
                 <div className="txt_field">
                   <label>Password</label>
                   <input type="password" onChange={(e) => setFormData({...formData,password: e.target.value})}  />
-                  <span>All the inputs in form are required!</span>
+                  <span id="errorMss">Are the inputs in form are required!</span>
             
                 </div>
                 <div className="form-btn">

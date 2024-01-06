@@ -1,0 +1,30 @@
+
+body{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.leave-history-page{
+    width: 100%;
+}
+.leave-histroy-page-main{
+    width: 100%;
+    display: flex;
+}
+.profile-container{
+    width: 100%;
+    margin: 20px;
+}
+.profile-content{
+    background: white;
+    width: 100%; 
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+}
+.profile-page-main h3{
+    margin-bottom: 20px;
+}
