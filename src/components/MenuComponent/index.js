@@ -9,6 +9,11 @@ import { FaArrowRightToBracket } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 class Menu extends React.Component {
   render() {
+
+    function onLogOut() {
+      localStorage.clear();
+    }
+
     return (
       <div className="menu-container">
           <div className="nav-header">
@@ -28,7 +33,7 @@ class Menu extends React.Component {
             
             <div className="nav-footer">
               <div><Link to="change-password" className="nav-link  px-2"><FaKey /><span>Change Password</span></Link></div>
-              <div><Link to="login" className="nav-link  px-2"><FaArrowRightToBracket /><span>Log Out</span></Link></div>
+              <div onClick={onLogOut}><Link to="login" className="nav-link  px-2"><FaArrowRightToBracket /><span>Log Out</span></Link></div>
             </div>  
       </div>
     )

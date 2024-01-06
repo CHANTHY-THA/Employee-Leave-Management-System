@@ -29,7 +29,7 @@ class LeaveManagement extends React.Component {
             <h3>LEAVE HISTORY {App.LeaveManagement}</h3>
             <div className="leave-history-content">
               <div className="text_end mt-3 mb-2">
-                <input type="text" placeholder="search" />
+                <input className="searchBtn" type="text" placeholder="search" />
               </div>
               <table class="table table-sm">
                 <thead>
@@ -52,12 +52,12 @@ class LeaveManagement extends React.Component {
                   {leaveRecord.map((leave, index) => {
                     return (
                       <tr>
-                        <td key={index}>{index + 1}</td>
+                        <td>{index + 1}</td>
                         <td>{leave.EmployeeName}</td>
                         <td>{leave.LeaveType}</td>
                         <td>{leave.LeaveFrom}</td>
                         <td>{leave.LeaveTo}</td>
-                        <td>{leave.NoDay}</td>
+                        <td>{leave.NoDay} day</td>
                         <td>
                           {(() => {
                             if (leave.Status === "Draft") {
