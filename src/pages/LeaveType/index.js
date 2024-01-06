@@ -24,11 +24,11 @@ class LeaveType extends React.Component {
         <Header parentToChild={"Employee Leave Management System"} />
           <div className="page-main">
             <div className="container">
-                <h4 className="pt-3 pb-2 ">Leave Type List</h4>
+                <h4 className="pt-3 pb-2 ">Leave Type</h4>
                 <div className="leave-history-content">
-                <div className="text_end mt-3 mb-2">
+                {/* <div className="text_end mt-3 mb-2">
                   <input type="text" className="form-control btn-search" placeholder="Search ......" />
-                </div>
+                </div> */}
                 <table className="table table-sm">
                   <thead>
                     <tr>

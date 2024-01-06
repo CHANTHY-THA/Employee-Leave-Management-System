@@ -11,7 +11,7 @@ function DataTable(props){
   const items = props.items.map(item => {
     return (
       <tr key={item.id}>
-        <th >{item.id}</th>
+        <td >{item.id}</td>
         <td>{item.departmentName}</td>
         <td>{item.created}</td>
         <td>

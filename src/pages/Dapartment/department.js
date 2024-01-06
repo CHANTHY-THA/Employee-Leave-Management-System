@@ -37,7 +37,17 @@ function Department(props) {
     const updatedItems = items.filter((item) => item.id !== id);
     setItems(updatedItems);
   };
-
+  const filterData = (e)=>{
+    const value = e.target.value;
+    if(value !== "" && value !== null){
+      const data = items.filter(user => 
+        user.departmentName.toLowerCase().includes(value)
+      ); 
+      setItems(data);
+    }else{
+      setItems(jsonData.Departments);
+    }
+  }
   useEffect(() => {
     getItems();
   }, []);
@@ -53,10 +63,10 @@ function Department(props) {
               <div className="card-table">
                   <div className="mt-2 mb-2 d-flex justify-content-between">
                     <div>
-                    <ModalForm  buttonLabel="Add Item" addItemToState={addItemToState}/>
+                    <ModalForm  buttonLabel="Add Department" addItemToState={addItemToState}/>
                     </div>
                     <div className="d-flex ">
-                      <input type="text" className="form-control" placeholder="Search" />
+                      <input type="text" className="form-control" placeholder="Search" onChange={filterData}/>
                     </div>
                   </div>
                   <DataTable

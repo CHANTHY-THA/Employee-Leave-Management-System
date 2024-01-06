@@ -5,11 +5,14 @@ import LeaveDetail from "./pages/LeaveDetail";
 import LeaveManagement from "./pages/LeaveManagement";
 import MyLeave from "./pages/MyLeave";
 import Menu from "./components/MenuComponent";
+import Employees from "./pages/Employees";
+import EmployeeDetail from "./pages/Employees/Detail";
 import LeaveTypes from "./pages/LeaveType";
 import ChangePassword from "./pages/ChangePassword";
 import Profle from "./pages/Profile/profile";
 import Department from "./pages/Dapartment/department";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/Dashboard";
+import EmployeeForm from "./pages/Employees/Form";
 
 
 function App() {
@@ -22,7 +25,7 @@ function App() {
         <div className="col-auto sidebar-content">
           {(() => {
             if (user) {
-              return ( <Menu />)
+              return (<Menu />)
             }
           })()}
         </div>
@@ -33,7 +36,7 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/profile" element={<Profle />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
-            <Route path="/employee" element={<Dashboard />}></Route>
+            <Route path="/employees" element={<Employees />}></Route>
             <Route path="/department" element={<Department />}></Route>
             <Route path="/leave-type" element={<LeaveTypes />}></Route>
             <Route path="/my-leave" element={<MyLeave />}></Route>
@@ -45,6 +48,18 @@ function App() {
               path="/leave-detail"
               element={<LeaveDetail />}
             ></Route>
+            <Route
+              path="/employees"
+              element={<Employees />}
+            ></Route>
+            <Route
+              path="/employees/detail"
+              element={<EmployeeDetail />}
+            ></Route >
+            <Route
+              path="/employees/form"
+              element={<EmployeeForm />}
+            ></Route >
             <Route
               path="/change-password"
               element={<ChangePassword />}
