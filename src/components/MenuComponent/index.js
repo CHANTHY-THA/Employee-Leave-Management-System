@@ -8,6 +8,7 @@ import { TfiLayoutGrid3Alt } from "react-icons/tfi";
 import { MdOutlineMonitor } from "react-icons/md";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import ConfirmModal from "../Logout/ConfirmModal";
 class Menu extends React.Component {
   render() {
     function onLogOut() {
@@ -79,11 +80,8 @@ class Menu extends React.Component {
               <span>Change Password</span>
             </div>
           </Link>
-          <Link to="login" className="nav-link  px-2">
-            <div onClick={onLogOut}>
-              <FaArrowRightToBracket />
-              <span>Log Out</span>
-            </div>
+          <Link className="nav-link  px-2">
+            <ConfirmModal buttonLabel="Logout" />
           </Link>
         </div>
       </div>
