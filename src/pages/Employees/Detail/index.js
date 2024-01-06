@@ -57,11 +57,6 @@ class EmployeeDetail extends React.Component {
                                     <span>Cambodia</span>
                                 </div>
                             </div>
-
-                            {/* <div className="detail-row">
-                                 
-
-                            </div> */}
                             <div className="detail-row">
                                 <div className="detail-col">
                                     <label>City:</label>
@@ -72,29 +67,10 @@ class EmployeeDetail extends React.Component {
                                     <span >Sen Sok</span>
                                 </div>
                                 <div className="detail-col">
-                                    <label>Action:</label>
-                                    <button id="approved">Update</button>
+                                    {/* <label>Action:</label>
+                                    <button id="approved">Update</button> */}
                                 </div>
                             </div>
-                            {/* <div className="detail-row">
-                                <div className="detail-col">
-
-                                </div>
-                                <div className="detail-col">
-                                </div>
-                                <div className="detail-col">
-                                </div>
-                            </div> */}
-                            {/* <div className="detail-row">
-                                <div className="detail-col">
-                                    <label>Admin Action taken date:</label>
-                                    <span>29 Feb 2024 </span>
-                                </div>
-                                <div className="detail-col">
-                                </div>
-                                <div className="detail-col">
-                                </div>
-                            </div> */}
                         </div>
                     </div>
                 </div>

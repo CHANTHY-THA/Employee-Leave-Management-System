@@ -36,7 +36,7 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/profile" element={<Profle />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
-            <Route path="/employee" element={<Dashboard />}></Route>
+            <Route path="/employees" element={<Employees />}></Route>
             <Route path="/department" element={<Department />}></Route>
             <Route path="/leave-type" element={<LeaveTypes />}></Route>
             <Route path="/my-leave" element={<MyLeave />}></Route>

@@ -84,8 +84,6 @@ class Menu extends React.Component {
             </Link>
           </div>
         </div>
-        <div><Link to="employees" className="nav-link  px-2"><FaAddressBook /><span>Employees</span></Link></div>
-        <div><Link to="employees/detail" className="nav-link  px-2"><FaAddressBook /><span>Employees Detail</span></Link></div>
       </div>
     );
   }

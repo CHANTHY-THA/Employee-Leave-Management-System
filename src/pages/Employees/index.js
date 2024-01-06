@@ -6,10 +6,15 @@ import App from "../../App";
 import { MdEdit, MdOutlineVisibility } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import Records from "../../data.json";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+// import UseHistory from "react-router-dom";
+// import history from 'history';
 
 class Employees extends React.Component {
     render() {
         let userLists = Records.Users;
+
         function onClickDelete(row, index) {
             const foudnUser = userLists.find((user) => user.id == row.id);
             if (foudnUser) {
@@ -22,6 +27,8 @@ class Employees extends React.Component {
         }
 
         function onClickView(row, index) {
+            // let history = UseHistory();
+            // history.push("/employee/detail");
             console.log(row);
         }
 
@@ -32,8 +39,17 @@ class Employees extends React.Component {
                     <div className="leave-history-container">
                         <h3>Employee List {App.Employees}</h3>
                         <div className="leave-history-content">
-                            <div className="text_end mt-3 mb-2">
+                            {/* <div className="text_end mt-3 mb-2">
                                 <input type="text" placeholder="search" />
+                            </div> */}
+                            <div className="mt-2 mb-2 d-flex justify-content-between">
+                                <div>
+                                    {/* <ModalForm buttonLabel="Add Item" addItemToState={addItemToState} /> */}
+                                    <Button href="/employees/form">Add Employee</Button>
+                                </div>
+                                <div className="d-flex ">
+                                    <input type="text" className="form-control" placeholder="Search" />
+                                </div>
                             </div>
                             <table class="table table-sm">
                                 <thead>
@@ -91,24 +107,14 @@ class Employees extends React.Component {
                                                 <td>{user.status}</td>
                                                 <td>
                                                     <span className="actions">
-                                                        <MdEdit
-                                                            className="editIcon"
-                                                            onClick={() => {
-                                                                onClickEdit(user, index);
-                                                            }}
-                                                        />
+                                                        <Link to="/employees/form" className="nav-link  px-2"><MdEdit /></Link>
                                                         <MdDelete
                                                             className="deleteIcon"
                                                             onClick={() => {
                                                                 onClickDelete(user, index);
                                                             }}
                                                         />
-                                                        <MdOutlineVisibility
-                                                            className="outlineVisibilityIcon"
-                                                            onClick={() => {
-                                                                onClickView(user, index);
-                                                            }}
-                                                        />
+                                                        <Link to="/employees/detail" className="nav-link  px-2"><MdOutlineVisibility /></Link>
                                                     </span>
                                                 </td>
                                             </tr>

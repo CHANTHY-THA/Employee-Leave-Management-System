@@ -53,7 +53,7 @@ const EmployeeForm = () => {
 
 
     return (
-        <div className="main-page">
+        <div className="leave-detail-page">
             <Header parentToChild={"Employee Leave Management System"} />
             <div className="page">
                 <h4 className="pt-3 pb-2 ">Create Employee</h4>
@@ -119,7 +119,7 @@ const EmployeeForm = () => {
                             <Form.Control as="textarea" placeholder="Address" />
                         </Form.Group>
                     </Row>
-                    <Button variant="primary" type="submit">
+                    <Button href="/employees" variant="primary" type="submit">
                         Submit
                     </Button>
                 </Form>
