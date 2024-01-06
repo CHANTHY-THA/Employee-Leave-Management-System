@@ -7,6 +7,7 @@ import LeaveManagement from "./pages/LeaveManagement";
 import Menu from "./components/MenuComponent";
 
 function App() {
+
   let user = localStorage.getItem("user");
 
   return (

@@ -20,6 +20,7 @@ const Login = () =>{
       for(let user of JSONData.Users){
         if(user.userName === formData.user && user.password === formData.password ){
           isLogin = true
+          localStorage.setItem("user", JSON.stringify(user));
         }
       }
       if(isLogin){
@@ -31,6 +32,7 @@ const Login = () =>{
         mssError.style.color = "red";
         mssError.textContent = "You entered the wrong username or password!"
       }
+
     }
   }
   return (
