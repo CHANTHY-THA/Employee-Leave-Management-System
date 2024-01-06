@@ -11,7 +11,7 @@ import LeaveTypes from "./pages/LeaveType";
 import ChangePassword from "./pages/ChangePassword";
 import Profle from "./pages/Profile/profile";
 import Department from "./pages/Dapartment/department";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/Dashboard";
 import EmployeeForm from "./pages/Employees/Form";
 
 

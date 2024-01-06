@@ -52,7 +52,7 @@
     display: flex;align-items: center;
     cursor: pointer;
 }
-.nav-body div:hover,.nav-footer div:hover{
+.nav-body .nav-link:hover,.nav-footer .nav-link:hover{
     background: rgba(107, 102, 102, 0.281);
     /* color: white; */
     /* font-weight: 700; */
