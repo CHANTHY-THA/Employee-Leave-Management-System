@@ -5,6 +5,8 @@ import LeaveDetail from "./pages/LeaveDetail";
 import Dashboard from "./pages/dashboard";
 import LeaveManagement from "./pages/LeaveManagement";
 import Menu from "./components/MenuComponent";
+import Employees from "./pages/Employees";
+import EmploymeeDetail from "./pages/Employees/Detail";
 
 function App() {
   return (
@@ -27,6 +29,14 @@ function App() {
             <Route
               path="/leave-detail"
               element={<LeaveDetail />}
+            ></Route>
+            <Route
+              path="/employees"
+              element={<Employees />}
+            ></Route>
+            <Route
+              path="/employees/detail"
+              element={<EmploymeeDetail />}
             ></Route>
           </Routes>
         </div>

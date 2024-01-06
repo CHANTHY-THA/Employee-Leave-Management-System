@@ -6,12 +6,17 @@
       "lastName": "Soum",
       "gender": "Male",
       "userName": "lindasoum",
+      "department": "Human Resource",
       "role": "admin",
       "password": "123456",
       "phoneNumber": "0987654321",
       "email": "lindasoum@gmail.com",
       "profileImage": "r1.jpg",
-      "status": "Active"
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
     },
     {
       "id": 2,
@@ -19,12 +24,17 @@
       "lastName": "Chhoy",
       "gender": "Female",
       "userName": "chanrychhoy",
+      "department": "Information Technology",
       "role": "employmee",
       "password": "123456",
       "phoneNumber": "0987654321",
       "email": "chanrychhoy@gmail.com",
       "profileImage": "r2.jpg",
-      "status": "Active"
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
     },
     {
       "id": 3,
@@ -32,12 +42,17 @@
       "lastName": "Pha",
       "gender": "Female",
       "userName": "channarypha",
+      "department": "Information Technology",
       "role": "employmee",
       "password": "123456",
       "phoneNumber": "0987654321",
       "email": "channarypha@gmail.com",
       "profileImage": "r4.png",
-      "status": "Inactive"
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Inactive",
+      "created": "01-Jan-2021 12:00: PM"
     },
     {
       "id": 4,
@@ -45,25 +60,35 @@
       "lastName": "Nob",
       "gender": "Male",
       "userName": "prosnob",
+      "department": "Information Technology",
       "role": "employmee",
       "password": "123456",
       "phoneNumber": "0987654321",
       "email": "prosnob@gmail.com",
       "profileImage": "r3.png",
-      "status": "Active"
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
     },
     {
       "id": 5,
       "firstName": "Chanthy",
-      "lastName": "tha",
+      "lastName": "Tha",
       "gender": "Male",
       "userName": "chanthytha",
+      "department": "Information Technology",
       "role": "employmee",
       "password": "123456",
       "phoneNumber": "0987654321",
       "email": "chanthytha@gmail.com",
       "profileImage": "r3.png",
-      "status": "Active"
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
     }
   ],
   "Departments": [
