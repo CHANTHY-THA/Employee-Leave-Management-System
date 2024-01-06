@@ -9,6 +9,7 @@ class Dashboard extends React.Component {
     const leaveTypes = jsonData.LeaveTypes;
     const departments = jsonData.Departments;
     const LeaveHistories = jsonData.LeaveLists;
+
    // alert("employees" +employees);
     // alert("leaveTypes" +leaveTypes);
     // alert("departments" +departments);
@@ -65,20 +66,26 @@ class Dashboard extends React.Component {
                     <tbody >
                     {LeaveHistories.map((ele) => {
                       let textColor = "";
-                      if(ele.status === "Pending"){
+
+                      if (ele.Status === "Draft"){
+                        textColor = "fw-bold text-secondary"
+                      }
+                      else if(ele.Status === "Pending"){
                           textColor = "fw-bold text-warning"
-                      }else if(ele.status === "Rejected"){
+                      }else if(ele.Status === "Not Approve"){
                         textColor = "fw-bold text-danger"
-                      }else{
+                      }
+                      else if(ele.Status === "Approved"){
                         textColor = "fw-bold text-success"
                       }
+                     
                       return (
                         <tr >
                           <td>{ele.id}</td>
-                          <td>{ele.firstName}</td>
-                          <td>{ele.lastName}</td>
-                          <td>{ele.created}</td>
-                          <td className={textColor}>{ele.status}
+                          <td>{ele.EmployeeName}</td>
+                          <td>{ele.LeaveType}</td>
+                          <td>{ele.Created}</td>
+                          <td className={textColor}>{ele.Status}
                           
                           </td>
                           <td>
