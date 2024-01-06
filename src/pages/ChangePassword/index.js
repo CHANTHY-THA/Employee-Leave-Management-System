@@ -71,7 +71,7 @@ const ChangePasswordForm = () => {
           variant="filled" {...props} />;
   }
   return (
-    <div className="page">
+    <div className="change-password-page">
       <Header parentToChild={"Employee Leave Management System"} />
       {/* message success */}
       {showMessage && successMessage && (
@@ -89,7 +89,7 @@ const ChangePasswordForm = () => {
           {errorMessage}
         </Alert>
       )}
-      <div className="main-page">
+      <div className="change-password-main-page">
         <h4 className="pt-3 pb-2">Change Password</h4>
         <form onSubmit={handleSubmit} className='container'>
           <div className="mb-3">
