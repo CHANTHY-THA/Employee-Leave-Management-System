@@ -20,7 +20,7 @@ class LeaveType extends React.Component {
   render() {
     const {leaveTypes} = this.state;
     return (
-      <div className="page">
+      <div className="leave-page">
         <Header parentToChild={"Employee Leave Management System"} />
           <div className="page-main">
             <div className="container">

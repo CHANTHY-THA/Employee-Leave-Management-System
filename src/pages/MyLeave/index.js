@@ -69,7 +69,7 @@ class EmployeeLeave extends React.Component {
         <Header parentToChild={"Employee Leave Management System"} />
         <div className="leave-histroy-page-main">
           <div className="leave-history-container">
-            <h3>Employee Leaves {App.EmployeeLeave}</h3>
+            <h3>My Leaves {App.EmployeeLeave}</h3>
             <div className="leave-history-content">
               <div className="text_end mt-3"><input type="text" placeholder="search" onChange={handleFilter}/></div>
               <DataTable columns={columns} data={data} pagination></DataTable>
