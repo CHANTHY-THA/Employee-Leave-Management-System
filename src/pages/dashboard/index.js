@@ -8,11 +8,11 @@ class Dashboard extends React.Component {
     const employees = jsonData.Users;
     const leaveTypes = jsonData.LeaveTypes;
     const departments = jsonData.Departments;
-    const LeaveHistories = jsonData.LeaveLists;
+    const LeaveHistories = jsonData.LeaveLists.filter((item)=>item.Status==="Pending");
    // alert("employees" +employees);
     // alert("leaveTypes" +leaveTypes);
     // alert("departments" +departments);
-    // alert("LeaveHistories" +LeaveHistories);
+   console.log("LeaveHistories" +LeaveHistories);
     return (
       <div className="dashboard-page">
         <Header parentToChild={"Employee Leave Management System"} />
@@ -49,7 +49,7 @@ class Dashboard extends React.Component {
                 
               </div>
               <div className="card_table">
-                  <h4 className="pt-3 pb-2">Leave Histories</h4>
+                  <h4 className="pt-3 pb-2">Pending Leave</h4>
                   <table className="table table-bordered">
                     <thead>
                       <tr>
@@ -64,21 +64,21 @@ class Dashboard extends React.Component {
 
                     <tbody >
                     {LeaveHistories.map((ele) => {
-                      let textColor = "";
-                      if(ele.status === "Pending"){
-                          textColor = "fw-bold text-warning"
-                      }else if(ele.status === "Rejected"){
-                        textColor = "fw-bold text-danger"
-                      }else{
-                        textColor = "fw-bold text-success"
-                      }
+                      // let textColor = "";
+                      // if(ele.Status === "Pending"){
+                      //     textColor = "fw-bold text-warning"
+                      // }else if(ele.Status === "Rejected"){
+                      //   textColor = "fw-bold text-danger"
+                      // }else{
+                      //   textColor = "fw-bold text-success"
+                      // }
                       return (
                         <tr >
                           <td>{ele.id}</td>
-                          <td>{ele.firstName}</td>
-                          <td>{ele.lastName}</td>
-                          <td>{ele.created}</td>
-                          <td className={textColor}>{ele.status}
+                          <td>{ele.EmployeeName}</td>
+                          <td>{ele.LeaveType}</td>
+                          <td>{ele.Created}</td>
+                          <td className="fw-bold text-warning">{ele.Status}
                           
                           </td>
                           <td>
