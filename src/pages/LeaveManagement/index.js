@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./leaveManagement.css";
+import "../../App.css";
 import Header from "../../components/HeaderComponent";
+import Menu from "../../components/MenuComponent";
 import App from "../../App";
-// import DataTable from "react-data-table-component";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import Records from "../../data.json";
@@ -22,9 +23,11 @@ class LeaveManagement extends React.Component {
     }
 
     return (
-      <div className="leave-history-page">
-        <Header parentToChild={"Employee Leave Management System"} />
-        <div className="leave-histroy-page-main">
+      <div className="main-container-page">
+        <Menu className="nav-bar" />
+        <div className="main-content">
+        <Header  content="Employee Leave Management System" />
+        <div className="main-content-body">
           <div className="leave-history-container">
             <h3>LEAVE HISTORY {App.LeaveManagement}</h3>
             <div className="leave-history-content">
@@ -113,6 +116,7 @@ class LeaveManagement extends React.Component {
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
   }

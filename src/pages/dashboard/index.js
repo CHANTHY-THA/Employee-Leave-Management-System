@@ -1,13 +1,17 @@
 import React from "react";
 import "./dashboard.css";
+import "../../App.css";
 import Header from "../../components/HeaderComponent";
+import Menu from "../../components/MenuComponent";
 
 class Dashboard extends React.Component {
   render() {
     return (
-      <div className="dashboard-page">
-        <Header parentToChild={"Employee Leave Management System"} />
-        <div className="dashboard-container">
+      <div className="main-container-page">
+        <Menu className="nav-bar" />
+        <div className="main-content">
+        <Header  content="Employee Leave Management System" />
+        <div className="main-content-body">
           <div className="dashboard-content">
             <table className="table table-sm">
               <thead>
@@ -40,7 +44,8 @@ class Dashboard extends React.Component {
             </table>
           </div>
         </div>
-      </div>
+        </div>
+        </div>
     );
   }
 }

@@ -48,13 +48,11 @@ const Login = () =>{
     }
   }
   return (
-      <div >
-        <Header parentToChild={"Admin Login  |  Employee Login"}/>
-        <div className="login-container">
-          <div>
+      <div>
+        <Header content="Employee Login | Admin Login" />
+        <div  className="main-container" >
             <h3>Welcome to ELMS</h3>
             <form onSubmit={handleLogin}>
-   
               <div>
                 <div className="txt_field">
                   <label>Username</label>
@@ -74,9 +72,9 @@ const Login = () =>{
                   <span className="signup_link">Not a member?</span>
                   <a href="#">Signup</a>
                   </div>
-              </div>
+                </div>
             </form>
-          </div>
+ 
         </div>
       </div>
       

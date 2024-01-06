@@ -1,6 +1,8 @@
 import React from "react";
 import jsonData from "../../data.json";
-import "./index.css";
+import "../../App.css";
+import "./leaveType.css";
+import Menu from "../../components/MenuComponent";
 import Header from "../../components/HeaderComponent";
 
 class LeaveType extends React.Component {
@@ -20,10 +22,11 @@ class LeaveType extends React.Component {
   render() {
     const {leaveTypes} = this.state;
     return (
-      <div className="page">
-        <Header parentToChild={"Employee Leave Management System"} />
-          <div className="page-main">
-            <div className="container">
+      <div className="main-container-page">
+        <Menu className="nav-bar" />
+        <div className="main-content">
+          <Header  content="Employee Leave Management System" />
+          <div className="container">
                 <h4 className="pt-3 pb-2 ">Leave Type List</h4>
                 <div className="leave-history-content">
                 <div className="text_end mt-3 mb-2">

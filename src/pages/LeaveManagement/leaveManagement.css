@@ -1,17 +1,3 @@
-
-body{
-    display: flex;
-    width: 100%;
-    height: 100vh;
-}
-
-.leave-history-page{
-    width: 100%;
-}
-.leave-histroy-page-main{
-    width: 100%;
-    display: flex;
-}
 .leave-history-container{
     width: 100%;
     margin: 20px;

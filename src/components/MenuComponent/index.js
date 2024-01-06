@@ -26,48 +26,36 @@ class Menu extends React.Component {
         </div>
 
         <div className="nav-body">
-          <div>
             <Link to="profile " className="nav-link px-2">
               <CgProfile />
               <span>Profile</span>
             </Link>
-          </div>
-          <div className={userRole === "employee" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="dashboard ">
+            <div>
+            <Link className={userRole === "employee" ? "nav-link px-2 hidden" : "nav-link px-2"} to="../dashboard ">
               <FaCookie />
               <span>Dashboard</span>
             </Link>
-          </div>
-          <div className={userRole === "employee" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="department">
+            </div>
+            <Link className={userRole === "employee" ? "nav-link px-2 hidden" : "nav-link px-2"} to="../department">
               <TfiLayoutGrid3Alt />
               <span>Department</span>
             </Link>
-          </div>
-          <div className={userRole === "employee" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="leave-type">
+            <Link className={userRole === "employee" ? "nav-link px-2 hidden" : "nav-link px-2"} to="../leave-type">
               <LuArrowLeftRight />
               <span>Leave Type</span>
             </Link>
-          </div>
-          <div className={userRole === "employee" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="employees">
+            <Link className={userRole === "employee" ? "nav-link px-2 hidden" : "nav-link px-2"} to="../employees">
               <FaAddressBook />
               <span>Employees</span>
             </Link>
-          </div>
-          <div className={userRole === "employee" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="leave-management">
+            <Link className={userRole === "employee" ? "nav-link px-2 hidden" : "nav-link px-2"} to="../leave-management">
               <MdOutlineMonitor />
               <span>Leave Management</span>
             </Link>
-          </div>
-          <div className={userRole === "admin" ? "  hidden" : ""}>
-            <Link className="nav-link px-2" to="my-leave">
+            <Link className={userRole === "admin" ? "nav-link px-2 hidden" : "nav-link px-2"} to="../my-leave">
               <MdOutlineMonitor />
               <span>My Leaves</span>
             </Link>
-          </div>
         </div>
        
         <div className="nav-footer">

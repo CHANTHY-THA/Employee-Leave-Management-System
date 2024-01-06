@@ -1,6 +1,6 @@
 .menu-container{
-    width: 100%;
     height: 100vh;
+    width: 15%;
     display: flex;
     flex-direction: column;
     background: white;
@@ -22,47 +22,49 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid rgb(189, 187, 187);
+    box-shadow: 0 4px 2px -2px gray;
 }
+.nav-header img{
+    width: 75px;
+    height: 75px;
+}
+
 .nav-body .nav-link{
     display: flex;
     align-items: center;
 }
 .nav-body .hidden{
     display:none;
-    /* background: #000; */
 }
-.nav-header img{
-    width: 75px;
-    height: 75px;
-}
+
 .nav-body{
     flex:4;
-    border-bottom: 1px solid rgb(189, 187, 187);
+    box-shadow: 0 4px 2px -2px gray;
 }
-.nav-footer{
-    flex:1;
-}
+
 .nav-body, .nav-footer{
     display: flex;
     flex-direction: column;
 }
-.nav-body div,.nav-footer div{
+.nav-body .nav-link,.nav-footer .nav-link{
     padding: 10px;
-    display: flex;align-items: center;
+    display: flex;
+    align-items: center;
     cursor: pointer;
 }
-.nav-body div:hover,.nav-footer div:hover{
+.nav-body .nav-link:hover,.nav-footer .nav-link:hover{
     background: rgba(107, 102, 102, 0.281);
-    /* color: white; */
-    /* font-weight: 700; */
+    font-weight: 700;
 }
-.nav-body div span, .nav-footer div span{
+.nav-body .nav-link span, .nav-footer .nav-link span{
     margin-left: 10px;
     color:black
 }
-.nav-body div a , .nav-footer div a {
+.nav-body .nav-link a , .nav-footer .nav-link a {
     text-decoration: none;
 
+}
+.nav-footer{
+    flex:1;
 }
 
