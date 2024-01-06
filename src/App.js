@@ -9,9 +9,9 @@ import Employees from "./pages/Employees";
 import EmployeeDetail from "./pages/Employees/Detail";
 import LeaveTypes from "./pages/LeaveType";
 import ChangePassword from "./pages/ChangePassword";
-import Dashboard from "./pages/dashboard";
 import Profle from "./pages/Profile/profile";
 import Department from "./pages/Dapartment/department";
+import Dashboard from "./pages/dashboard";
 import EmployeeForm from "./pages/Employees/Form";
 
 
@@ -37,7 +37,7 @@ function App() {
             <Route path="/profile" element={<Profle />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
             <Route path="/employee" element={<Dashboard />}></Route>
-            <Route path="/department" element={<Dashboard />}></Route>
+            <Route path="/department" element={<Department />}></Route>
             <Route path="/leave-type" element={<LeaveTypes />}></Route>
             <Route path="/my-leave" element={<MyLeave />}></Route>
             <Route
