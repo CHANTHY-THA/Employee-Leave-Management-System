@@ -7,9 +7,9 @@ import MyLeave from "./pages/MyLeave";
 import Menu from "./components/MenuComponent";
 import LeaveTypes from "./pages/LeaveType";
 import ChangePassword from "./pages/ChangePassword";
-import Dashboard from "./pages/Dashboard";
 import Profle from "./pages/Profile/profile";
 import Department from "./pages/Dapartment/department";
+import Dashboard from "./pages/Dashboard";
 
 
 function App() {
