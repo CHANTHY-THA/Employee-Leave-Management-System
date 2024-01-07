@@ -1,16 +1,17 @@
 {
   "Users": [
     {
-      "id": 1,
-      "firstName": "Linda",
-      "lastName": "Soum",
+      "id": "ELMS001",
+      "firstName": "Mengheang",
+      "lastName": "PHO",
       "gender": "Male",
-      "department": "Human Resource",
+      "department": "Development",
+      "position": "Development Manager",
       "userName": "mengheang",
       "role": "admin",
       "password": "123456",
       "phoneNumber": "0987654321",
-      "email": "lindasoum@gmail.com",
+      "email": "mengheangpho@gmail.com",
       "profileImage": "r1.jpg",
       "city": "Phnom Penh",
       "country": "Cambodia",
@@ -19,12 +20,13 @@
       "created": "01-Jan-2021 12:00: PM"
     },
     {
-      "id": 2,
+      "id": "ELMS002",
       "firstName": "Chanry",
       "lastName": "Chhoy",
       "gender": "Female",
       "userName": "chanrychhoy",
-      "department": "Information Technology",
+      "department": "Development",
+      "position": "Development Manager",
       "role": "employee",
       "password": "123456",
       "phoneNumber": "0987654321",
@@ -37,12 +39,13 @@
       "created": "01-Jan-2021 12:00: PM"
     },
     {
-      "id": 3,
+      "id": "ELMS003",
       "firstName": "Chanary",
       "lastName": "Pha",
       "gender": "Female",
       "userName": "channarypha",
-      "department": "Information Technology",
+      "department": "Development",
+      "position": "Dev Ops",
       "role": "employee",
       "password": "123456",
       "phoneNumber": "0987654321",
@@ -55,12 +58,13 @@
       "created": "01-Jan-2021 12:00: PM"
     },
     {
-      "id": 4,
+      "id": "ELMS004",
       "firstName": "Pros",
       "lastName": "Nob",
       "gender": "Male",
       "userName": "prosnob",
-      "department": "Information Technology",
+      "department": "Development",
+      "position": "Back-End Developer",
       "role": "employee",
       "password": "123456",
       "phoneNumber": "0987654321",
@@ -73,12 +77,13 @@
       "created": "01-Jan-2021 12:00: PM"
     },
     {
-      "id": 5,
+      "id": "ELMS005",
       "firstName": "Chanthy",
       "lastName": "Tha",
       "gender": "Male",
       "userName": "chanthytha",
-      "department": "Information Technology",
+      "department": "Development",
+      "position": "Front-End Developer",
       "role": "employee",
       "password": "123456",
       "phoneNumber": "0987654321",
@@ -133,6 +138,16 @@
       "id": 3,
       "name": "Sick Leave",
       "amount": 12
+    },
+    {
+      "id": 4,
+      "name": "Carry Over Annual Leave",
+      "amount": 3
+    },
+    {
+      "id": 5,
+      "name": "Mission Leave",
+      "amount": 7
     }
   ],
   "LeaveLists": [

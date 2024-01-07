@@ -23,7 +23,7 @@ class Menu extends React.Component {
       <div className="menu-container">
         <div className="nav-header">
           <img src="./../../images/profile.png"></img>
-          <h5>Admin</h5>
+          <h5>{user.firstName} {user.lastName}</h5>
         </div>
 
         <div className="nav-body">
