@@ -1,11 +1,12 @@
 import React from "react";
 import "./profile.css";
 import Header from "../../components/HeaderComponent";
-import App from "../../App";
-// import Records from "../../data.json";
+// import JSONData from "../../data.json";
 
 class Profle extends React.Component {
   render() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    
     return (
       <div className="profile-page">
         <Header parentToChild={"Employee Leave Management System"} />
@@ -20,7 +21,7 @@ class Profle extends React.Component {
                     <tbody>
                       <tr>
                         <th scope="row">Emp Email</th>
-                        <td>mengheang@email.com</td>
+                        <td>{user.email}</td>
                       </tr>
                       <tr>
                         <th scope="row">Start working Day</th>
@@ -49,14 +50,14 @@ class Profle extends React.Component {
                 <div className="profile-content-right">
                   <div className="profile-right-top">
                     <img src="./../../images/profile.png" ></img>
-                    <h3>Mengheang PHO</h3>
-                    <h6>Web Developer</h6>
+                    <h3>{user.firstName} {user.lastName}</h3>
+                    <h6>{user.position}</h6>
                   </div>
                   <div className="profile-right-bottom">
-                    <div><label>Employee ID:</label><span>WD001</span></div>
-                    <div><label>Emp Gender:</label><span>Male</span></div>
+                    <div><label>Employee ID:</label><span>{user.id}</span></div>
+                    <div><label>Emp Gender:</label><span>{user.gender}</span></div>
                     <div><label>Emp Manager:</label><span>Mr. VengLeap</span></div>
-                    <div><label>Emp Department:</label><span>Development</span></div>
+                    <div><label>Emp Department:</label><span>{user.department}</span></div>
                   </div>
                 </div>
                 
