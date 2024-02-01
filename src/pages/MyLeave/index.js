@@ -3,6 +3,7 @@ import Header from "../../components/HeaderComponent";
 import App from "../../App";
 import DataTable from "react-data-table-component";
 import dataJson from "../../data.json";
+import LeaveFormModal from "../../components/MyLeave/FormModal";
 
 class EmployeeLeave extends React.Component {
   render() {
@@ -48,14 +49,14 @@ class EmployeeLeave extends React.Component {
         sortable: true,
       },
     ];
-    const leaveLists=dataJson.LeaveLists;
+    const leaveLists = dataJson.LeaveLists;
     const userJSON = localStorage.getItem("user");
     const userObject = JSON.parse(userJSON);
-  
+
     let data = leaveLists.filter(
       (item) => item.EmployeeName === userObject.firstName
     );
-  
+
 
 
     function handleFilter(event) {
@@ -69,9 +70,16 @@ class EmployeeLeave extends React.Component {
         <Header parentToChild={"Employee Leave Management System"} />
         <div className="leave-histroy-page-main">
           <div className="leave-history-container">
-            <h3>Employee Leaves {App.EmployeeLeave}</h3>
+            <h3>My Leaves {App.EmployeeLeave}</h3>
             <div className="leave-history-content">
-              <div className="text_end mt-3"><input type="text" placeholder="search" onChange={handleFilter}/></div>
+              <div className="mt-2 mb-2 d-flex justify-content-between">
+                <div>
+                  <LeaveFormModal buttonLabel="Request Leave" />
+                </div>
+                <div className="d-flex ">
+                  <input type="text" className="form-control" placeholder="Search" onChange={handleFilter} />
+                </div>
+              </div>
               <DataTable columns={columns} data={data} pagination></DataTable>
             </div>
           </div>

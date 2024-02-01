@@ -1,69 +1,99 @@
 {
   "Users": [
     {
-      "id": 1,
-      "firstName": "Linda",
-      "lastName": "Soum",
+      "id": "ELMS001",
+      "firstName": "Mengheang",
+      "lastName": "PHO",
       "gender": "Male",
+      "department": "Development",
+      "position": "Development Manager",
       "userName": "mengheang",
       "role": "admin",
       "password": "123456",
       "phoneNumber": "0987654321",
-      "email": "lindasoum@gmail.com",
+      "email": "mengheangpho@gmail.com",
       "profileImage": "r1.jpg",
-      "status": "Active"
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
     },
     {
-      "id": 2,
+      "id": "ELMS002",
       "firstName": "Chanry",
       "lastName": "Chhoy",
       "gender": "Female",
       "userName": "chanrychhoy",
+      "department": "Development",
+      "position": "Development Manager",
       "role": "employee",
       "password": "123456",
       "phoneNumber": "0987654321",
       "email": "chanrychhoy@gmail.com",
       "profileImage": "r2.jpg",
-      "status": "Active"
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
     },
     {
-      "id": 3,
+      "id": "ELMS003",
       "firstName": "Chanary",
       "lastName": "Pha",
       "gender": "Female",
       "userName": "channarypha",
+      "department": "Development",
+      "position": "Dev Ops",
       "role": "employee",
       "password": "123456",
       "phoneNumber": "0987654321",
       "email": "channarypha@gmail.com",
       "profileImage": "r4.png",
-      "status": "Inactive"
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Inactive",
+      "created": "01-Jan-2021 12:00: PM"
     },
     {
-      "id": 4,
+      "id": "ELMS004",
       "firstName": "Pros",
       "lastName": "Nob",
       "gender": "Male",
       "userName": "prosnob",
+      "department": "Development",
+      "position": "Back-End Developer",
       "role": "employee",
       "password": "123456",
       "phoneNumber": "0987654321",
       "email": "prosnob@gmail.com",
       "profileImage": "r3.png",
-      "status": "Active"
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
     },
     {
-      "id": 5,
+      "id": "ELMS005",
       "firstName": "Chanthy",
-      "lastName": "tha",
+      "lastName": "Tha",
       "gender": "Male",
       "userName": "chanthytha",
+      "department": "Development",
+      "position": "Front-End Developer",
       "role": "employee",
       "password": "123456",
       "phoneNumber": "0987654321",
       "email": "chanthytha@gmail.com",
       "profileImage": "r3.png",
-      "status": "Active"
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
     }
   ],
   "Departments": [
@@ -108,6 +138,16 @@
       "id": 3,
       "name": "Sick Leave",
       "amount": 12
+    },
+    {
+      "id": 4,
+      "name": "Carry Over Annual Leave",
+      "amount": 3
+    },
+    {
+      "id": 5,
+      "name": "Mission Leave",
+      "amount": 7
     }
   ],
   "LeaveLists": [

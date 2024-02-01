@@ -3,9 +3,10 @@ import "./leaveManagement.css";
 import Header from "../../components/HeaderComponent";
 import App from "../../App";
 // import DataTable from "react-data-table-component";
-import { MdEdit } from "react-icons/md";
+import { MdEdit, MdOutlineVisibility } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import Records from "../../data.json";
+import { Link } from "react-router-dom";
 
 class LeaveManagement extends React.Component {
   render() {
@@ -103,6 +104,7 @@ class LeaveManagement extends React.Component {
                                 onClickDelete(leave, index);
                               }}
                             />
+                            <Link to="/leave-detail" className="nav-link  px-2"><MdOutlineVisibility /></Link>
                           </span>
                         </td>
                       </tr>
