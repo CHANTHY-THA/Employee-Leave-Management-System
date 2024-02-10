@@ -51,14 +51,14 @@ const ChangePasswordForm = () => {
         newPassword: '',
         confirmPassword: ''
       });
-      setSuccessMessage('Password changed successfully!');
-      setErrorMessage('');
-      setShowMessage(true);
+      // setSuccessMessage('Password changed successfully!');
+      // setErrorMessage('');
+      // setShowMessage(true);
     } else {
-      // console.log("Invalid password or passwords do not match.");
-      setErrorMessage('Invalid password or passwords do not match.');
-      setSuccessMessage('');
-      setShowMessage(true);
+      console.log("Invalid password or passwords do not match.");
+      // setErrorMessage('Invalid password or passwords do not match.');
+      // setSuccessMessage('');
+      // setShowMessage(true);
     }
     // Reset the message after 5 seconds
       setTimeout(() => {
