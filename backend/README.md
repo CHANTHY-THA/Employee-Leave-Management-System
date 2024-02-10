@@ -1,0 +1,8 @@
+- Create nodejs as backend application
+- Basic route with Express
+- Create api for CRUD route for users with dummy data
+- authentication (login)
+- Encrypt user's password with harse algorithm (md5, bcrypt)
+- generate token with jwt
+- create protected routes
+- Convert from dummy data to database's data

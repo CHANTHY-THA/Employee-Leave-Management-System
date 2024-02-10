@@ -1,0 +1,29 @@
+body{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+.dashboard-page{
+    width: 100%;
+}
+.dashboard-container{
+    width: 100%;
+    height: 93vh;
+    display: flex;
+    /* background: #978c8c; */
+    /* padding: 10px; */
+}
+.dashboard-content{
+    /* background: #dfb5b5; */
+    width: 100%; ;
+    margin: 20px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.card_table{
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+    /* box-shadow: rgb(255, 255, 255) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+    background-color: white;
+}

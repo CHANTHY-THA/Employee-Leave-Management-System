@@ -1,0 +1,56 @@
+
+.login-container{
+    height: 93vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    background: white;
+    padding: 20px;
+    width: 450px;
+    border-radius: 5px;
+}
+.txt_field{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+.txt_field label {
+    font-weight: 600;
+}
+.txt_field input{
+    border:none;
+    border-bottom: 1px solid gray;
+    background: rgb(250, 250, 250);
+}
+.txt_field input:focus{
+    background: rgb(238, 238, 238);
+    outline: none;
+}
+.txt_field span{
+    font-size: 13px;
+    color: white;
+}
+.error{
+    color:red;
+}
+.success{
+    color:green;
+}
+.form-btn{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+.form-btn :first-child{
+    margin-right: 10px;
+}
+input[type="submit"]{
+    background: blue;
+    border: none;
+    padding: 2px 20px;
+    color:white;
+    font-weight: 700;
+    border-radius: 5px;
+}

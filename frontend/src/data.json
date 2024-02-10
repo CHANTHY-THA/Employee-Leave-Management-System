@@ -1,0 +1,305 @@
+{
+  "Users": [
+    {
+      "id": "ELMS001",
+      "firstName": "Mengheang",
+      "lastName": "PHO",
+      "gender": "Male",
+      "department": "Development",
+      "position": "Development Manager",
+      "userName": "mengheang",
+      "role": "admin",
+      "password": "123456",
+      "phoneNumber": "0987654321",
+      "email": "mengheangpho@gmail.com",
+      "profileImage": "r1.jpg",
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": "ELMS002",
+      "firstName": "Chanry",
+      "lastName": "Chhoy",
+      "gender": "Female",
+      "userName": "chanrychhoy",
+      "department": "Development",
+      "position": "Development Manager",
+      "role": "employee",
+      "password": "123456",
+      "phoneNumber": "0987654321",
+      "email": "chanrychhoy@gmail.com",
+      "profileImage": "r2.jpg",
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": "ELMS003",
+      "firstName": "Chanary",
+      "lastName": "Pha",
+      "gender": "Female",
+      "userName": "channarypha",
+      "department": "Development",
+      "position": "Dev Ops",
+      "role": "employee",
+      "password": "123456",
+      "phoneNumber": "0987654321",
+      "email": "channarypha@gmail.com",
+      "profileImage": "r4.png",
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Inactive",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": "ELMS004",
+      "firstName": "Pros",
+      "lastName": "Nob",
+      "gender": "Male",
+      "userName": "prosnob",
+      "department": "Development",
+      "position": "Back-End Developer",
+      "role": "employee",
+      "password": "123456",
+      "phoneNumber": "0987654321",
+      "email": "prosnob@gmail.com",
+      "profileImage": "r3.png",
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": "ELMS005",
+      "firstName": "Chanthy",
+      "lastName": "Tha",
+      "gender": "Male",
+      "userName": "chanthytha",
+      "department": "Development",
+      "position": "Front-End Developer",
+      "role": "employee",
+      "password": "123456",
+      "phoneNumber": "0987654321",
+      "email": "chanthytha@gmail.com",
+      "profileImage": "r3.png",
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "address": "Sen Sok",
+      "status": "Active",
+      "created": "01-Jan-2021 12:00: PM"
+    }
+  ],
+  "Departments": [
+    {
+      "id": 1,
+      "departmentName": "Human Resource",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": 2,
+      "departmentName": "Information Technology",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": 3,
+      "departmentName": "Finace",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": 4,
+      "departmentName": "Design",
+      "created": "01-Jan-2021 12:00: PM"
+    },
+    {
+      "id": 5,
+      "departmentName": "Operation",
+      "created": "01-Jan-2021 12:00: PM"
+    }
+  ],
+  "LeaveTypes": [
+    {
+      "id": 1,
+      "name": "Annual Leave",
+      "amount": 18
+    },
+    {
+      "id": 2,
+      "name": "Special Leave",
+      "amount": 6
+    },
+    {
+      "id": 3,
+      "name": "Sick Leave",
+      "amount": 12
+    },
+    {
+      "id": 4,
+      "name": "Carry Over Annual Leave",
+      "amount": 3
+    },
+    {
+      "id": 5,
+      "name": "Mission Leave",
+      "amount": 7
+    }
+  ],
+  "LeaveLists": [
+    {
+      "id": 1,
+      "EmployeeName": "Chanry",
+      "LeaveType": "Special Leave",
+      "LeaveFrom": "05-Jan-2024",
+      "LeaveTo": "07-Jan-2024",
+      "NoDay": "2",
+      "Reason": "Join Event",
+      "Created": "01-Jan-2021 12:00: PM",
+      "Status": "Draft"
+    },
+    {
+      "id": 2,
+      "EmployeeName": "Channary",
+      "LeaveType": "Sick Leav",
+      "LeaveFrom": "08-Jan-2024",
+      "LeaveTo": "07-Jan-2024",
+      "NoDay": "3",
+      "Reason": "Not Well",
+      "Created": "03-Jan-2021 12:00: PM",
+      "Status": "Approved"
+    },
+    {
+      "id": 3,
+      "EmployeeName": "Chanthy",
+      "LeaveType": "Special Leave",
+      "LeaveFrom": "11-Jan-2024",
+      "LeaveTo": "07-Jan-2024",
+      "NoDay": "5",
+      "Reason": "Go to home town",
+      "Created": "01-Jan-2021 12:00: PM",
+      "Status": "Pending"
+    },
+    {
+      "id": 4,
+      "EmployeeName": "Pros",
+      "LeaveType": "Annul Leave",
+      "LeaveFrom": "15-Jan-2024",
+      "LeaveTo": "07-Jan-2024",
+      "NoDay": "1",
+      "Reason": "State Exam",
+      "Created": "07-Jan-2021 12:00: PM",
+      "Status": "Approved"
+    },
+    {
+      "id": 5,
+      "EmployeeName": "Sinet",
+      "LeaveType": "Special Leave",
+      "LeaveFrom": "14-Jan-2024",
+      "LeaveTo": "07-Jan-2024",
+      "NoDay": "2",
+      "Reason": "Have a Baby",
+      "Created": "10-Jan-2021 12:00: PM",
+      "Status": "Approved"
+    },
+    {
+      "id": 6,
+      "EmployeeName": "Mengheang",
+      "LeaveType": "Sick Leave",
+      "LeaveFrom": "01-Jan-2024",
+      "LeaveTo": "07-Jan-2024",
+      "NoDay": "4",
+      "Reason": "Date with hunni",
+      "Created": "20-Jan-2021 12:00: PM",
+      "Status": "Not Approve"
+    }
+  ],
+  "leaveDetails": [
+    {
+      "id": 2,
+      "emplayeeId": 2,
+      "firstName": "Chanry",
+      "lastName": "Chhoy",
+      "gender": "Female",
+      "role": "employee",
+      "PhoneNumber": "0987654321",
+      "email": "chanrychhoy@gmail.com",
+      "profileImage": "r2.jpg",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "Special Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "takeAction": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "",
+      "status": "Pending"
+    },
+    {
+      "id": 2,
+      "emplayeeId": 3,
+      "firstName": "Chanary",
+      "lastName": "Pha",
+      "gender": "Female",
+      "role": "employee",
+      "phoneNumber": "0987654321",
+      "email": "channarypha@gmail.com",
+      "profileImage": "r4.png",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "sick Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "takeAction": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "Good luck",
+      "status": "Aproved"
+    },
+    {
+      "id": 3,
+      "emplayeeId": 5,
+      "firstName": "Chanthy",
+      "lastName": "tha",
+      "gender": "Male",
+      "role": "employee",
+      "phoneNumber": "0987654321",
+      "email": "chanthytha@gmail.com",
+      "profileImage": "r3.png",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "Annual Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "takeAction": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "Not Good",
+      "status": "Rejected"
+    },
+    {
+      "id": 4,
+      "emplayeeId": 4,
+      "firstName": "Pros",
+      "lastName": "Nob",
+      "gender": "Male",
+      "userName": "prosnob",
+      "role": "employee",
+      "phoneNumber": "0987654321",
+      "email": "prosnob@gmail.com",
+      "profileImage": "r3.png",
+      "fromDate": "01-Jan-2021 12:00: PM",
+      "toDate": "01-Jan-2021 12:00: PM",
+      "leaveType": "Special Leave",
+      "created": "01-Jan-2021 12:00: PM",
+      "takeAction": "01-Jan-2021 12:00: PM",
+      "description": "",
+      "remark": "",
+      "status": "Pending"
+    }
+  ],
+  "leaveStatus": [
+    "Pending",
+    "Rejected",
+    "Aproved"
+  ]
+}
