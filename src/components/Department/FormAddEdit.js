@@ -1,76 +1,81 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Row, Col } from "react-bootstrap";
-import jsonData from "../../data.json";
-import { format } from 'date-fns';
+import { Button, Form ,Row,Col} from "react-bootstrap";
+import axios from "axios";
 
 function AddEditForm(props) {
-    let index = 0;
-    const data = jsonData.Departments;
-    let last_element = data[data.length - 1];
-
-    const [form, setValues] = useState({
-        id: last_element.id + index,
+    const [department, setValues] = useState({
+        id: "",
         departmentName: "",
         created: "",
-
     });
+    const [errorMessage, setErrorMessage] = useState("");
 
     const onChange = (e) => {
         setValues({
-            ...form,
-            [e.target.name]: e.target.value
+        ...department,
+        [e.target.name]: e.target.value
         });
+        if(e.target.name !== ""){
+            setErrorMessage("");
+        }
     };
 
     const submitFormAdd = (e) => {
-        index += 1;
-        form.id = last_element.id + index;
-        form.created = format(new Date(), 'dd-MMM-yyyy h:mm a');
         e.preventDefault();
-        props.addItemToState(form);
-        props.toggle();
-        data.push(form);
-
+        axios.post(process.env.REACT_APP_URL+'/department',department,{validateStatus: () => true}).then((res)=>{
+            if(res.data.id > 0){
+                props.addItemToState(res.data);
+                props.toggle();
+            }else{
+                setErrorMessage(res.data.message)
+            }
+        })
     };
 
     const submitFormEdit = (e) => {
         e.preventDefault();
-        props.updateState(form);
-        props.toggle();
+        axios.put(process.env.REACT_APP_URL+'/department',department,{validateStatus: () => true})
+             .then((res)=>{
+                if(res.data.id > 0){
+                    props.updateState(res.data);
+                    props.toggle();
+                }else{
+                    setErrorMessage(res.data.message)
+                }
+        })
     };
-    const CloseModal = (e) => {
+    const CloseModal = (e)=>{
         e.preventDefault();
         props.toggle();
     }
     useEffect(() => {
         if (props.item) {
-            const { id, departmentName, created } = props.item;
-            setValues({ id, departmentName, created });
+            const { id, departmentName,created } = props.item;
+            setValues({ id, departmentName,created });
         }
     }, [props.item]);
 
     return (
-        <Form className="">
-            <Form.Group as={Row} className="mb-4" style={{ marginTop: "-20px" }}>
-                <Form.Label column sm="6">
-                    Department Name
-                </Form.Label>
+        <Form  className="">
+            <Form.Group as={Row} className="mb-4" style={{marginTop:"-20px"}}>
+                <Form.Label column sm="6">Department Name</Form.Label>
                 <Col sm="12">
                     <Form.Control onChange={onChange}
-                        name="departmentName"
-                        type="text"
-                        placeholder="Enter Name"
-                        value={form.departmentName === null ? "" : form.departmentName}
-                        required />
+                    name="departmentName"
+                    type="text"
+                    placeholder="Enter Name"
+                    value={department.departmentName === null ? "" : department.departmentName}
+                    required />
+                    <small className="text-danger">{errorMessage}</small>
                 </Col>
             </Form.Group>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-                <Button style={{ width: "100px", marginRight: "10px" }} onClick={props.item ? submitFormEdit : submitFormAdd}>Submit</Button>
-                <Button className="btn btn-danger" onClick={CloseModal}>Cancel</Button>
+            <div style={{display:"flex",justifyContent:"center"}}>
+                <Button  style={{width:"100px", marginRight:"10px"}} onClick={props.item ? submitFormEdit : submitFormAdd}>Submit</Button> 
+                <Button style={{width:"100px"}} className="btn btn-danger" onClick={CloseModal}>Cancel</Button>                   
             </div>
-
-        </Form>
-
+                   
+        </Form>        
+        
     );
 }
 

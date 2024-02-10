@@ -2,52 +2,69 @@ import React, { useState, useEffect } from "react";
 import "./department.css";
 import ModalForm from "../../components/Department/Modal";
 import DataTable from "../../components/Department/DataTable";
-import jsonData from "../../data.json";
+import { Toast, ToastContainer} from "react-bootstrap"; 
 import Header from "../../components/HeaderComponent";
+import axios from 'axios';
 
 function Department(props) {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      departmentName: "Human Resource",
-      created: "01-Jan-2021 12:00: PM"
-    }
-  ]);
-
+  const [items, setItems] = useState([{}]);
+  const [showAlert, setShowAlert] = useState(false);
+  const [background, setBackground] = useState("");
+  const [message, setMessage] = useState("");
   const getItems = () => {
-    setItems(jsonData.Departments)
+   
+    axios.get(process.env.REACT_APP_URL+"/department",{validateStatus: () => true} ).then(res=>{
+      // console.log("data: " + res.data.data);
+      setItems(res.data.data)
+    });
+    // setItems(jsonData.Departments)
     
   };
 
-  const addItemToState = (item) => {
-    setItems([...items, item]);
+  const addItemToState = (result) => {
+    if(result.id > 0){
+      setBackground("Success");
+    }else{
+      setBackground("Danger");
+    }
+    getItems();
+    setShowAlert(true);
+    setMessage(result.message);
   };
 
-  const updateState = (item) => {
-    const itemIndex = items.findIndex((data) => data.id === item.id);
-    const newArray = [
-      ...items.slice(0, itemIndex),
-      item,
-      ...items.slice(itemIndex + 1)
-    ];
-    setItems(newArray);
+  const updateState = (result) => {
+    if(result.id > 0){
+      setBackground("Success");
+    }else{
+      setBackground("Danger");
+    }
+    getItems();
+    setShowAlert(true);
+    setMessage(result.message);
+  };
+  const deleteItemFromState = (result) => {
+    if(result.id > 0){
+      setBackground("Success");
+    }else{
+      setBackground("Danger");
+    }
+    getItems();
+    setShowAlert(true);
+    setMessage(result.message);
   };
 
-  const deleteItemFromState = (id) => {
-    const updatedItems = items.filter((item) => item.id !== id);
-    setItems(updatedItems);
-  };
   const filterData = (e)=>{
     const value = e.target.value;
-    if(value !== "" && value !== null){
-      const data = items.filter(user => 
-        user.departmentName.toLowerCase().includes(value)
+    if(value !== ""){
+      const data = items.filter(dep => 
+        dep.departmentName.toLowerCase().includes(value.toLowerCase())
       ); 
       setItems(data);
     }else{
-      setItems(jsonData.Departments);
+      getItems();
     }
   }
+
   useEffect(() => {
     getItems();
   }, []);
@@ -56,17 +73,38 @@ function Department(props) {
     <div>
       <div className="dashboard-page">
         <Header parentToChild={"Employee Leave Management System"} />
-        <div className="dashboard-container">
-          <div className="dashboard-content">
+        <div className="department-main">
+          <div className="department-container">
+            <div > 
+              <ToastContainer className="mt-5"  position="top-end"> 
+                <Toast
+                  onClose={() => setShowAlert(false)}
+                  bg={background.toLowerCase()}
+                  show={showAlert} 
+                  className="d-inline-block m-1"
+                  delay={3000}
+                  autohide
+                  position='top-end'
+                >
+                  <Toast.Body className='text-white font-weight-bold'>
+                  {message}
+                  </Toast.Body>
+                </Toast>
+              </ToastContainer> 
+            </div> 
             <div>
-              <h4 className="pb-2 ">Department List</h4>
+           
+              <h4 className="">Department List</h4>
+             
+              <div className="pb-5">
+                    <ModalForm buttonLabel="Add Department" addItemToState={addItemToState}/>
+                    
+              </div>
               <div className="card-table">
                   <div className="mt-2 mb-2 d-flex justify-content-between">
-                    <div>
-                    <ModalForm  buttonLabel="Add Department" addItemToState={addItemToState}/>
-                    </div>
-                    <div className="d-flex ">
-                      <input type="text" className="form-control" placeholder="Search" onChange={filterData}/>
+                    <div></div>
+                    <div className=" ">
+                      <input type="text" className="form-control " placeholder="Search" onChange={filterData}/>
                     </div>
                   </div>
                   <DataTable
@@ -80,7 +118,6 @@ function Department(props) {
         </div>
       </div>
     </div>
-    
   );
 }
 
