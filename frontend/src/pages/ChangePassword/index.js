@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import React, { useState, useEffect } from 'react';
-import MuiAlert from "@material-ui/lab/Alert";
+// import MuiAlert from "@material-ui/lab/Alert";
 import "./index.css";
 import Header from "../../components/HeaderComponent";
 
@@ -10,9 +10,9 @@ const ChangePasswordForm = () => {
     newPassword: '',
     confirmPassword: ''
   });
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [showMessage, setShowMessage] = useState(false);
+  // const [successMessage, setSuccessMessage] = useState('');
+  // const [errorMessage, setErrorMessage] = useState('');
+  // const [showMessage, setShowMessage] = useState(false);
 
   // useEffect(() => {
   //   const userJSON = localStorage.getItem("user");
@@ -51,44 +51,18 @@ const ChangePasswordForm = () => {
         newPassword: '',
         confirmPassword: ''
       });
-      // setSuccessMessage('Password changed successfully!');
-      // setErrorMessage('');
-      // setShowMessage(true);
     } else {
       console.log("Invalid password or passwords do not match.");
-      // setErrorMessage('Invalid password or passwords do not match.');
-      // setSuccessMessage('');
-      // setShowMessage(true);
     }
     // Reset the message after 5 seconds
-      setTimeout(() => {
-        setShowMessage(false);
-      }, 5000);
+      // setTimeout(() => {
+      //   setShowMessage(false);
+      // }, 5000);
   };
-
-  function Alert(props) {
-      return <MuiAlert elevation={6}
-          variant="filled" {...props} />;
-  }
   return (
     <div className="change-password-page">
       <Header parentToChild={"Employee Leave Management System"} />
-      {/* message success */}
-      {showMessage && successMessage && (
-
-        <Alert severity="success" onClose={() => setShowMessage(false)}>
-          {successMessage}
-        </Alert>
-        // <MuiAlert severity="success" onClose={() => setShowMessage(false)}>
-        //   {successMessage}
-        // </MuiAlert>
-      )}
-      {/* message error */}
-      {showMessage && errorMessage && (
-        <Alert severity="error" onClose={() => setShowMessage(false)}>
-          {errorMessage}
-        </Alert>
-      )}
+ 
       <div className="change-password-main-page">
         <h4 className="pt-3 pb-2">Change Password</h4>
         <form onSubmit={handleSubmit} className='container'>
