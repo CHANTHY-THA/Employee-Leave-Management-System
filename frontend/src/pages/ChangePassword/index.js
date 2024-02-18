@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 // import MuiAlert from "@material-ui/lab/Alert";
 import "./index.css";
 import Header from "../../components/HeaderComponent";
+import axios from 'axios';
+import { Toast, ToastContainer } from "react-bootstrap";
 
 const ChangePasswordForm = () => {
   const [formData, setFormData] = useState({
@@ -10,21 +12,22 @@ const ChangePasswordForm = () => {
     newPassword: '',
     confirmPassword: ''
   });
-  // const [successMessage, setSuccessMessage] = useState('');
-  // const [errorMessage, setErrorMessage] = useState('');
-  // const [showMessage, setShowMessage] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [background, setBackground] = useState("");
+  const [message, setMessage] = useState("");
 
-  // useEffect(() => {
-  //   const userJSON = localStorage.getItem("user");
-  //   const userObject = JSON.parse(userJSON);
+  const updateState = (result) => {
+    if (result.statusCode !== 201) {
+      setBackground("Danger");
 
-  //   if (userObject && userObject.password) {
-  //     setFormData((prevData) => ({
-  //       ...prevData,
-  //       currentPassword: userObject.password
-  //     }));
-  //   }
-  // }, []);
+    } else {
+      setBackground("Success");
+
+    }
+    // getItems();
+    setShowAlert(true);
+    setMessage(result.message);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,33 +39,75 @@ const ChangePasswordForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    const userJSON = localStorage.getItem("user");
-    const userObject = JSON.parse(userJSON);
-    
-    if (userObject && formData.currentPassword === userObject.password && formData.newPassword === formData.confirmPassword) {
-      // Update the password in the user object
-      userObject.password = formData.newPassword;
-      // Save the updated user object to local storage
-      localStorage.setItem("user", JSON.stringify(userObject));
-      // console.log("Password changed successfully!");
-      setFormData({
+    const token = localStorage.getItem("token");
+    console.log("🚀 ~ Menu ~ render ~ token:12345", token)
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+
+
+    if (formData.newPassword === formData.confirmPassword) {
+      axios.put(process.env.REACT_APP_URL + '/user/changePassword', formData, { headers: headers }, { validateStatus: () => true })
+        .then(res => {
+          console.log("🚀 ~ axios.post ~ res.data-changepwd:", res.data)
+          updateState(res.data);
+          const clearpwd = {
+            currentPassword: '',
+            newPassword: '',
+            confirmPassword: ''
+          }
+          setFormData(clearpwd);
+        }).catch(err => {
+          console.log("🚀 ~ handleSubmit ~ err:", err.response.data)
+          updateState(err.response.data);
+          const clearpwd = {
+            currentPassword: '',
+            newPassword: '',
+            confirmPassword: ''
+          }
+          setFormData(clearpwd);
+
+
+        })
+
+
+    } else {
+      const result = {
+        statusCode: 400,
+        message: "New Password & Confirm Password must be match!"
+
+      }
+      updateState(result);
+      const clearpwd = {
         currentPassword: '',
         newPassword: '',
         confirmPassword: ''
-      });
-    } else {
-      console.log("Invalid password or passwords do not match.");
+      }
+      setFormData(clearpwd);
     }
-    // Reset the message after 5 seconds
-      // setTimeout(() => {
-      //   setShowMessage(false);
-      // }, 5000);
   };
   return (
     <div className="change-password-page">
       <Header parentToChild={"Employee Leave Management System"} />
- 
+      <div >
+        <ToastContainer className="mt-5" position="top-end">
+          <Toast
+            onClose={() => setShowAlert(false)}
+            bg={background.toLowerCase()}
+            show={showAlert}
+            className="d-inline-block m-1"
+            delay={3000}
+            autohide
+            position='top-end'
+          >
+            <Toast.Body className='text-white font-weight-bold'>
+              {message}
+            </Toast.Body>
+          </Toast>
+        </ToastContainer>
+      </div>
+
       <div className="change-password-main-page">
         <h4 className="pt-3 pb-2">Change Password</h4>
         <form onSubmit={handleSubmit} className='container'>

@@ -74,7 +74,7 @@ class Dashboard extends React.Component {
                       //   textColor = "fw-bold text-success"
                       // }
                       return (
-                        <tr >
+                        <tr key={ele.id}>
                           <td>{ele.id}</td>
                           <td>{ele.EmployeeName}</td>
                           <td>{ele.LeaveType}</td>
