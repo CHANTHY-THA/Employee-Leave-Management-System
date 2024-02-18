@@ -54,7 +54,7 @@ class EmployeeLeave extends React.Component {
     const userObject = JSON.parse(userJSON);
 
     let data = leaveLists.filter(
-      (item) => item.EmployeeName === userObject.firstName
+      (item) => item.EmployeeName === "Pros"
     );
 
 

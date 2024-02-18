@@ -1,133 +1,124 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
+import ModalForm from "../../components/Employee/Modal";
+import DataTable from "../../components/Employee/DataTable";
+import { Toast, ToastContainer } from "react-bootstrap";
 import Header from "../../components/HeaderComponent";
-import App from "../../App";
-// import DataTable from "react-data-table-component";
-import { MdEdit, MdOutlineVisibility } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
-import Records from "../../data.json";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-// import UseHistory from "react-router-dom";
-// import history from 'history';
+import axios from 'axios';
 
-class Employees extends React.Component {
-    render() {
-        let userLists = Records.Users;
+function User(props) {
+    const [items, setItems] = useState([{}]);
+    const [showAlert, setShowAlert] = useState(false);
+    const [background, setBackground] = useState("");
+    const [message, setMessage] = useState("");
+    const getItems = () => {
 
-        function onClickDelete(row, index) {
-            const foudnUser = userLists.find((user) => user.id == row.id);
-            if (foudnUser) {
-                return userLists.filter((f) => f.id !== foudnUser.id);
-            }
+        axios.get(process.env.REACT_APP_URL + "/user/all", { validateStatus: () => true }).then(res => {
+            console.log("data: " + res.data.data);
+            setItems(res.data.data)
+        });
+        // setItems(jsonData.Departments)
+
+    };
+
+    const addItemToState = (result) => {
+        if (result.id > 0) {
+            setBackground("Success");
+        } else {
+            setBackground("Danger");
         }
+        getItems();
+        setShowAlert(true);
+        setMessage(result.message);
+    };
 
-        function onClickEdit(row, index) {
-            console.log(row);
+    const updateState = (result) => {
+        if (result.id > 0) {
+            setBackground("Success");
+        } else {
+            setBackground("Danger");
         }
-
-        function onClickView(row, index) {
-            // let history = UseHistory();
-            // history.push("/employee/detail");
-            console.log(row);
+        getItems();
+        setShowAlert(true);
+        setMessage(result.message);
+    };
+    const deleteItemFromState = (result) => {
+        if (result.id > 0) {
+            setBackground("Success");
+        } else {
+            setBackground("Danger");
         }
+        getItems();
+        setShowAlert(true);
+        setMessage(result.message);
+    };
 
-        return (
-            <div className="leave-history-page">
+    const filterData = (e) => {
+        const value = e.target.value;
+        if (value !== "") {
+            const data = items.filter(user =>
+                user.firstname.toLowerCase().includes(value.toLowerCase()) || user.lastname.toLowerCase().includes(value.toLowerCase())
+            );
+            setItems(data);
+        } else {
+            getItems();
+        }
+    }
+
+    useEffect(() => {
+        getItems();
+    }, []);
+
+    return (
+        <div>
+            <div className="dashboard-page">
                 <Header parentToChild={"Employee Leave Management System"} />
-                <div className="leave-histroy-page-main">
-                    <div className="leave-history-container">
-                        <h3>Employee List {App.Employees}</h3>
-                        <div className="leave-history-content">
-                            {/* <div className="text_end mt-3 mb-2">
-                                <input type="text" placeholder="search" />
-                            </div> */}
-                            <div className="mt-2 mb-2 d-flex justify-content-between">
-                                <div>
-                                    {/* <ModalForm buttonLabel="Add Item" addItemToState={addItemToState} /> */}
-                                    <Button href="/employees/form">Add Employee</Button>
-                                </div>
-                                <div className="d-flex ">
-                                    <input type="text" className="form-control" placeholder="Search" />
-                                </div>
-                            </div>
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        {/* <th scope="col">#</th> */}
-                                        <th scope="col">Employee ID</th>
-                                        <th scope="col">Employee Name</th>
-                                        <th scope="col">Department</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Created Date</th>
-                                        <th scope="col" className="text-center">
-                                            Action
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {userLists.map((user, index) => {
-                                        return (
-                                            <tr>
-                                                {/* <td key={index}>{index + 1}</td> */}
-                                                <td>{user.id}</td>
-                                                <td>{user.firstName} {user.lastName}</td>
-                                                <td>{user.department}</td>
-                                                <td>{user.created}</td>
-                                                {/* <td>
-                                                    {(() => {
-                                                        if (leave.Status === "Draft") {
-                                                            return (
-                                                                <span className="label label-draft">
-                                                                    {leave.Status}
-                                                                </span>
-                                                            );
-                                                        } else if (leave.Status === "Pending") {
-                                                            return (
-                                                                <span className="label label-pending">
-                                                                    {leave.Status}
-                                                                </span>
-                                                            );
-                                                        } else if (leave.Status === "Approved") {
-                                                            return (
-                                                                <span className="label label-approve">
-                                                                    {leave.Status}
-                                                                </span>
-                                                            );
-                                                        } else if (leave.Status === "Not Approve") {
-                                                            return (
-                                                                <span className="label label-notapprove">
-                                                                    {leave.Status}
-                                                                </span>
-                                                            );
-                                                        }
-                                                    })()}
-                                                </td> */}
+                <div className="department-main">
+                    <div className="department-container">
+                        <div >
+                            <ToastContainer className="mt-5" position="top-end">
+                                <Toast
+                                    onClose={() => setShowAlert(false)}
+                                    bg={background.toLowerCase()}
+                                    show={showAlert}
+                                    className="d-inline-block m-1"
+                                    delay={3000}
+                                    autohide
+                                    position='top-end'
+                                >
+                                    <Toast.Body className='text-white font-weight-bold'>
+                                        {message}
+                                    </Toast.Body>
+                                </Toast>
+                            </ToastContainer>
+                        </div>
+                        <div>
 
-                                                <td>{user.status}</td>
-                                                <td>
-                                                    <span className="actions">
-                                                        <Link to="/employees/form" className="nav-link  px-2"><MdEdit /></Link>
-                                                        <MdDelete
-                                                            className="deleteIcon"
-                                                            onClick={() => {
-                                                                onClickDelete(user, index);
-                                                            }}
-                                                        />
-                                                        <Link to="/employees/detail" className="nav-link  px-2"><MdOutlineVisibility /></Link>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
+                            <h4 className="">Department List</h4>
+
+                            <div className="pb-5">
+                                <ModalForm buttonLabel="Add Department" addItemToState={addItemToState} />
+
+                            </div>
+                            <div className="card-table">
+                                <div className="mt-2 mb-2 d-flex justify-content-between">
+                                    <div></div>
+                                    <div className=" ">
+                                        <input type="text" className="form-control " placeholder="Search" onChange={filterData} />
+                                    </div>
+                                </div>
+                                <DataTable
+                                    items={items}
+                                    updateState={updateState}
+                                    deleteItemFromState={deleteItemFromState}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
-export default Employees;
+export default User;

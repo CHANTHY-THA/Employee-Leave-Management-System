@@ -12,13 +12,28 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
-  username String @db.VarChar(50)
+  departmentId Int
+  position String
+  firstname String
+  lastname String
+  username String @db.VarChar(50) @unique
+  profile String?
+  gender String
+  phonenumber String
   password String
+  email String @unique
+  role String @default("normal")
+  country String
+  city String
+  address String
   isActive Boolean @default(true)
+  created DateTime @default(now())
+  updated  DateTime   @updatedAt
 }
 
 model Department {
   id Int @id @default(autoincrement())
   departmentName String @unique
   created DateTime @default(now())
+  updated  DateTime   @updatedAt
 }
