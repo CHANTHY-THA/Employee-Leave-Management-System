@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors')
 const userRoutes = require("./routes/users");
 const departmentRoutes = require("./routes/departments");
+const leaveRoutes = require('./routes/leave');
 app.set("view engine", "ejs");
 
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use(cors(corsOptions));
 
 // app.use("/api/user", userRoutes);
 app.use("/api/department",departmentRoutes);
+app.use("/api/leave",leaveRoutes);
 // app.use("/api", require("./routes/auth"));
 
 const PORT = process.env.PORT || 8080;

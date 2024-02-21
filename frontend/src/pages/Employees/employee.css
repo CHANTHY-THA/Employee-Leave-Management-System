@@ -73,10 +73,6 @@ leave-management body {
     cursor: pointer;
 }
 
-/* table tbody tr td :hover {
-    background-color: rgba(91, 87, 87, 0.627);
-} */
-
 .actions {
     display: flex;
     justify-content: space-evenly;

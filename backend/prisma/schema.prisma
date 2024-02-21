@@ -14,11 +14,32 @@ model User {
   id Int @id @default(autoincrement())
   username String @db.VarChar(50)
   password String
+  role String
   isActive Boolean @default(true)
+  leaves Leave[]
 }
 
 model Department {
   id Int @id @default(autoincrement())
   departmentName String @unique
   created DateTime @default(now())
+}
+
+model Leave {
+  id Int @id @default(autoincrement())
+  employeeid Int
+  leaveStatusid Int
+  leaveTypeid Int
+  totalLeave Int
+  fromDate DateTime
+  toDate DateTime
+  reason String
+  created DateTime @default(now())
+  isActive Boolean @default(true)
+  user User @relation(fields: [employeeid], references: [id])
+}
+
+enum Role {
+  EMPLOYEE
+  ADMIN
 }
