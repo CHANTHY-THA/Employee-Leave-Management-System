@@ -1,7 +1,7 @@
 import React from 'react'
 import ModalForm from './Modal';
 import FormDeleteItem from './FormDelete';
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 
 function DataTable(props){
   if(props.items !== undefined){

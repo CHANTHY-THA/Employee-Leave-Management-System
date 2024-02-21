@@ -5,16 +5,14 @@ const dayjs = require('dayjs');
 
 const prisma = new PrismaClient()
 
-leaveRoutes.get("/", async (req, res) => {
+leaveRoutes.get("/all", async (req, res) => {
     try {
         let result = [];
         const leave = await prisma.leave.findMany({ 
-            orderBy: { id: 'desc',
-            relationLoadStrategy: 'join',
+            orderBy: { id: 'desc'} ,
             include: {
-                
+                employee: true
             }
-        } 
         });
         leave.forEach(element => {
             const dateFormat = dayjs(element.created);
@@ -22,15 +20,12 @@ leaveRoutes.get("/", async (req, res) => {
             element.toDate = dateFormat.format("DD-MMM-YYYY h:mm A");
             element.created = dateFormat.format("DD-MMM-YYYY h:mm A");
             result.push(element);
-
-            // console.log(result);
         });
         res.status(200).send({ id: 1, message: "Transaction completed.", data: result });
     } catch (err) {
         console.log("Error Message: " + err.message);
         res.status(500).send({ id: 0, message: "Something went wrong." })
     }
-
 });
 
 leaveRoutes.post("/", async (req, res) => {

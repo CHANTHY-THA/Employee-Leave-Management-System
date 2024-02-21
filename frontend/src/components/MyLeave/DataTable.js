@@ -1,6 +1,4 @@
 import React from 'react'
-// import FormDeleteItem from './FormDelete';
-// import ApplyLeaveFormModal from './FormApplyLeav';
 
 function DataTable(props) {
   if (props.items !== undefined) {
@@ -8,17 +6,15 @@ function DataTable(props) {
       return (
         <tr key={item.id}>
           <td >{item.id}</td>
-          <td>Chanthy Tha</td>
+          <td >
+            {item.employee != null ? item.employee.firstname + " " : ""} 
+            {item.employee != null ? item.employee.lastname : ""}
+          </td>
           <td>{item.leaveTypeid}</td>
           <td>{item.fromDate}</td>
           <td>{item.toDate}</td>
           <td>{item.totalLeave}</td>
-          <td style={{
-            background: 'red',
-            borderRadius: '15px',
-            textAlign: 'center',
-            color: 'white'
-            }}>Pending</td>
+          <td className='leaveStatus'>Pending</td>
           <td>{item.reason}</td>
           <td>{item.created}</td>
         </tr>

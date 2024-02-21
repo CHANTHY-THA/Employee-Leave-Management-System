@@ -1,6 +1,7 @@
 import React from 'react'
 import FormDeleteItem from './FormDelete';
 import ApplyLeaveFormModal from './FormApplyLeav';
+import { Button } from "react-bootstrap";
 
 function DataTable(props) {
   if (props.items !== undefined) {
@@ -8,19 +9,22 @@ function DataTable(props) {
       return (
         <tr key={item.id}>
           <td >{item.id}</td>
-          <td>{item.departmentName}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>
+            {item.employee != null ? item.employee.firstname + " " : ""}
+            {item.employee != null ? item.employee.lastname : ""}
+          </td>
+          <td>{item.leaveTypeid}</td>
+          <td>{item.fromDate}</td>
+          <td>{item.toDate}</td>
+          <td>{item.totalLeave}</td>
+          <td>{item.leaveStatusid}</td>
+          <td>{item.reason}</td>
           <td>{item.created}</td>
           <td>
             <div className='d-flex'>
-              <ApplyLeaveFormModal buttonLabel="Edit" item={item} updateState={props.updateState} ></ApplyLeaveFormModal>
-              <FormDeleteItem buttonLabel="Delete" item={item} deleteItemFromState={props.deleteItemFromState}></FormDeleteItem>
+              {/* <ApplyLeaveFormModal buttonLabel="Edit" item={item} updateState={props.updateState} ></ApplyLeaveFormModal> */}
+              <Button href="/leave-detail">View Detail</Button>
+              <FormDeleteItem item={item} deleteItemFromState={props.deleteItemFromState}></FormDeleteItem>
             </div>
           </td>
         </tr>
@@ -40,7 +44,6 @@ function DataTable(props) {
           <th>Status</th>
           <th>Reason</th>
           <th>Posting Date</th>
-          <th>Created</th>
           <th>Action</th>
         </tr>
       </thead>

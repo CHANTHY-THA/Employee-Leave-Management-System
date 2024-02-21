@@ -12,10 +12,23 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
-  username String @db.VarChar(50)
+  departmentId Int
+  position String
+  firstname String
+  lastname String
+  username String @db.VarChar(50) @unique
+  profile String?
+  gender String
+  phonenumber String
   password String
-  role String
+  email String @unique
+  role String @default("normal")
+  country String
+  city String
+  address String
   isActive Boolean @default(true)
+  created DateTime @default(now())
+  updated  DateTime   @updatedAt
   leaves Leave[]
 }
 
@@ -23,6 +36,7 @@ model Department {
   id Int @id @default(autoincrement())
   departmentName String @unique
   created DateTime @default(now())
+  updated  DateTime   @updatedAt
 }
 
 model Leave {
@@ -36,7 +50,25 @@ model Leave {
   reason String
   created DateTime @default(now())
   isActive Boolean @default(true)
-  user User @relation(fields: [employeeid], references: [id])
+  employee User @relation(fields: [employeeid], references: [id])
+}
+
+model LeaveType {
+  id Int @id @default(autoincrement())
+  name String
+  amount Int
+  created DateTime @default(now())
+  isActive Boolean @default(true)
+}
+
+model PreData {
+  id Int @id @default(autoincrement())
+  criterial String
+  value String
+  type String
+  description String
+  created DateTime @default(now())
+  isActive Boolean @default(true)
 }
 
 enum Role {

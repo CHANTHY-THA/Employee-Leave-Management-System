@@ -1,7 +1,7 @@
 import React from "react";
 import "./leaveDetail.css";
 import Header from "../../components/HeaderComponent";
-import Menu from "../../components/MenuComponent";
+// import Menu from "../../components/MenuComponent";
 import App from "../../App";
 
 class LeaveDetail extends React.Component {

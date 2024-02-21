@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from 'react-bootstrap';
 import LeaveForm from "../MyLeave/LeaveForm";
+import { MdEdit } from "react-icons/md";
 
 function ApplyLeaveFormModal(props) {
     const [modal, setModal] = useState(false);
@@ -13,16 +14,13 @@ function ApplyLeaveFormModal(props) {
 
     if (label === "Edit") {
         button = (
-            <Button
-                className="btn btn-sm"
-                variant="success"
-                onClick={toggle}
-                style={{ float: "left", marginRight: "10px" }}
-            >
-                {label}
-            </Button>
-        );
-        title = "Update Department";
+            <MdEdit 
+            onClick={toggle}
+            size={18}
+            className="editIcon"
+            ></MdEdit>
+          );
+          title = "Edit Leave";
     } else {
         button = (
             <Button
@@ -44,7 +42,10 @@ function ApplyLeaveFormModal(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <LeaveForm
+                        addItemToState={props.addItemToState}
+                        updateState={props.updateState}
                         toggle={toggle}
+                        item={props.item}
                     />
                 </Modal.Body>
             </Modal>

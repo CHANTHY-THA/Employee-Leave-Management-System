@@ -22,7 +22,7 @@ function LeaveFormModal(props) {
                 {label}
             </Button>
         );
-        title = "Update Department";
+        title = "Update Leave";
     } else {
         button = (
             <Button
@@ -44,7 +44,10 @@ function LeaveFormModal(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <LeaveForm
-                        toggle={toggle}
+                         addItemToState={props.addItemToState}
+                         updateState={props.updateState}
+                         toggle={toggle}
+                         item={props.item}
                     />
                 </Modal.Body>
             </Modal>

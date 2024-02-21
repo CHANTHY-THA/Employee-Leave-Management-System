@@ -1,79 +1,29 @@
-leave-management body {
-    display: flex;
+.card-table {
     width: 100%;
-    height: 100vh;
+    padding: 10px 20px 10px 20px;
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+    background-color: white;
 }
 
-.leave-history-page {
+.tbl_edit {
+    margin-right: 5px;
+}
+
+.department-main {
     width: 100%;
 }
 
-.leave-histroy-page-main {
+.department-container {
     width: 100%;
-    display: flex;
+    padding: 20px;
 }
 
-.leave-history-container {
-    width: 100%;
-    margin: 20px;
+.modal.fade .modal-dialog {
+    max-width: 800px !important;
 }
 
-.leave-history-content {
-    background: white;
-    width: 100%;
-    font-size: 15px;
-    border-radius: 5px;
-    padding: 0px 10px;
-    display: flex;
-    flex-direction: column;
-}
+form {
+    width: 782px !important;
+    padding-right: 20px;
 
-.leave-history-page-main h3 {
-    margin-bottom: 20px;
-}
-
-.label {
-    border-radius: 4px;
-    padding: 1px 5px;
-    color: white;
-    text-align: center;
-    font-size: 12px;
-}
-
-.label-approve {
-    background-color: green;
-}
-
-.label-draft {
-    background-color: gray;
-}
-
-.label-notapprove {
-    background-color: red;
-}
-
-.label-pending {
-    background-color: rgb(210, 157, 11);
-}
-
-.deleteIcon {
-    color: red;
-    font-size: 18;
-    cursor: pointer;
-}
-
-.editIcon {
-    color: green;
-    font-size: 18;
-    cursor: pointer;
-}
-
-.outlineVisibilityIcon {
-    font-size: 18;
-    cursor: pointer;
-}
-
-.actions {
-    display: flex;
-    justify-content: space-evenly;
 }

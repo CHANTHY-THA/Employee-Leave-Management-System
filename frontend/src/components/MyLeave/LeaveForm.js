@@ -8,17 +8,15 @@ import moment from 'moment';
 
 function LeaveForm(props) {
 
+    const employeeid = Number(localStorage.getItem("userID"));
     const [myleave, setValues] = useState({
-        id: 0,
-        employeeid: 1,
+        employeeid: employeeid,
         leaveStatusid: 1,
-        leaveTypeid: "",
-        totalLeave: 0,
+        leaveTypeid: 1,
+        totalLeave: "",
         fromDate: "",
         toDate: "",
         reason: "",
-        created: "",
-        isActive: 1
     });
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -68,8 +66,8 @@ function LeaveForm(props) {
     }
     useEffect(() => {
         if (props.item) {
-            const { id, employeeid,leaveStatusid, leaveTypeid, totalLeave, fromDate, toDate, reason, created } = props.item;
-            setValues({ id, employeeid,leaveStatusid, leaveTypeid, totalLeave, fromDate, toDate, reason, created });
+            const { employeeid,leaveStatusid, leaveTypeid, totalLeave, fromDate, toDate, reason } = props.item;
+            setValues({ employeeid,leaveStatusid, leaveTypeid, totalLeave, fromDate, toDate, reason });
         }
     }, [props.item]);
 

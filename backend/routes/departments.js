@@ -34,10 +34,10 @@ departmentRoute.post("/",async (req,res)=>{
         const foundDepartment = await prisma.department.findFirst({where:{departmentName:dep_name}});
         if(!foundDepartment){
             await prisma.department.create({ data: {departmentName:dep_name} });
-            return res.status(201).send({id:1, message:"Transaction completed. "});
+            return res.status(201).send({id:1, message:"Department created successfully. "});
         }else{
             // console.log("department:" + foundDepartment.id)
-            return res.status(400).send({id: 0, message: "Transaction already exist. "});
+            return res.status(400).send({id: 0, message: "Department already exist. "});
         }
         
     }catch(err){
@@ -62,13 +62,13 @@ departmentRoute.put("/", async(req,res)=>{
         const checkRecordExist = await prisma.department.findFirst({where:{departmentName:departmentName}});
         console.log("checkRecordExist : " + checkRecordExist);
         if(checkRecordExist && checkRecordExist?.id != id){
-            return res.status(400).send({id: 0, message:"Transaction already exist."});
+            return res.status(400).send({id: 0, message:"Department already exist."});
         }else{
             await prisma.department.update({
                 where:{id:id},
                 data:{departmentName:departmentName}
             });
-            return res.status(200).send({id:1,message:"Transaction completed."})
+            return res.status(200).send({id:1,message:"Department updated successfully."})
             
         }
         // console.log("department : " + foundDepartment);
