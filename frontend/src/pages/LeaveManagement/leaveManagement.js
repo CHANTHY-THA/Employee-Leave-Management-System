@@ -86,7 +86,6 @@ function LeaveManagement(props) {
             <h4>LEAVE HISTORY {App.LeaveManagement}</h4>
             <div className="card-table">
               <div className="mt-2 mb-2 d-flex justify-content-between">
-                <div></div>
                 <div className=" ">
                   <input type="text" className="form-control " placeholder="Search" onChange={filterData} />
                 </div>

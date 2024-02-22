@@ -5,10 +5,10 @@ import { MdDelete } from "react-icons/md";
 import axios from "axios";
 
 function FormDeleteItem(props) {
-    const [department, setValues] = useState({
+    const [predata, setValues] = useState({
         id: "",
-        departmentName: "",
-        created: "",
+        criterial: "",
+        value: "",
     });
     const [modal, setModal] = useState(false);
     const toggle = () => {
@@ -16,7 +16,7 @@ function FormDeleteItem(props) {
     };
     const ConfirmDeleteItem = (e) => {
         e.preventDefault();
-        axios.delete(process.env.REACT_APP_URL+'/department/'+department.id,{validateStatus: () => true}).then((res)=>{
+        axios.delete(process.env.REACT_APP_URL+'/predata/'+predata.id,{validateStatus: () => true}).then((res)=>{
             if(res.data.id > 0){
                 props.deleteItemFromState(res.data);
                 setModal(false);
@@ -29,8 +29,8 @@ function FormDeleteItem(props) {
     }
     useEffect(() => {
         if (props.item) {
-        const { id, departmentName,created } = props.item;
-        setValues({ id, departmentName,created });
+        const { id, criterial,value } = props.item;
+        setValues({ id, criterial,value });
         }
     }, [props.item]);
     return (
@@ -43,12 +43,12 @@ function FormDeleteItem(props) {
         />
             <Modal centered backdrop="static"  show={modal}>
                 <Modal.Header >
-                    <Modal.Title >Delete Item</Modal.Title>
+                    <Modal.Title >Delete Pre Data</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form  className="">
                         <Form.Group as={Row} className="mb-4" style={{marginTop:"-20px"}}>
-                            <Form.Label column sm="12">Are you sure, you want to delete department <q className="font-weight-bold">{department.departmentName}</q> ?</Form.Label>
+                            <Form.Label column sm="12">Are you sure, you want to delete predata <q className="font-weight-bold">{predata.value}</q> ?</Form.Label>
                         </Form.Group>
                         <div style={{display:"flex",justifyContent:"center"}}>
                             <Button  style={{width:"80px", marginRight:"10px"}} onClick={ConfirmDeleteItem}>Yes</Button> 

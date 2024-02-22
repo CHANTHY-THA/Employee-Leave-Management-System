@@ -101,7 +101,6 @@ function Department(props) {
               </div>
               <div className="card-table">
                 <div className="mt-2 mb-2 d-flex justify-content-between">
-                  <div></div>
                   <div className=" ">
                     <input type="text" className="form-control " placeholder="Search" onChange={filterData} />
                   </div>

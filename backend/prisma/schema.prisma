@@ -67,8 +67,6 @@ model PreData {
   id Int @id @default(autoincrement())
   criterial String
   value String
-  type String
-  description String
   created DateTime @default(now())
   isActive Boolean @default(true)
 }

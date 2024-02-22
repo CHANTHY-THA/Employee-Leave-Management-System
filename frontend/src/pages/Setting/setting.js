@@ -6,15 +6,13 @@ import DataTable from "../../components/SettingComponent/DataTable";
 import ModalForm from "../../components/SettingComponent/Modal";
 
 function Setting(props) {
-
     const [items, setItems] = useState([{}]);
     const [showAlert, setShowAlert] = useState(false);
     const [background, setBackground] = useState("");
     const [message, setMessage] = useState("");
     const getItems = () => {
-  
-      axios.get(process.env.REACT_APP_URL + "/department", { validateStatus: () => true }).then(res => {
-        // console.log("data: " + res.data.data);
+      axios.get(process.env.REACT_APP_URL + "/predata/all", { validateStatus: () => true }).then(res => {
+        // console.log("data: ", res.data.data);
         setItems(res.data.data)
       });
       // setItems(jsonData.Departments)
@@ -57,7 +55,7 @@ function Setting(props) {
       const value = e.target.value;
       if (value !== "") {
         const data = items.filter(dep =>
-          dep.departmentName.toLowerCase().includes(value.toLowerCase())
+          dep.value.toLowerCase().includes(value.toLowerCase())
         );
         setItems(data);
       } else {
@@ -100,7 +98,6 @@ function Setting(props) {
                 </div>
                 <div className="card-table">
                   <div className="mt-2 mb-2 d-flex justify-content-between">
-                    <div></div>
                     <div className=" ">
                       <input type="text" className="form-control " placeholder="Search" onChange={filterData} />
                     </div>

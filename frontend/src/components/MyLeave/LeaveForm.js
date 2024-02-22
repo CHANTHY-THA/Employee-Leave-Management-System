@@ -7,12 +7,29 @@ import moment from 'moment';
 // import { format } from 'date-fns';
 
 function LeaveForm(props) {
-
     const employeeid = Number(localStorage.getItem("userID"));
+    const [leavetypes, setLeaveType] = useState([{}]);
+    const [status, setStatus] = useState([{}]);
+    let myStatus = "";
+
+    const getPredata = () => {
+        axios.get(process.env.REACT_APP_URL + "/leavetype/all", { validateStatus: () => true }).then(res => {
+            // console.log(res.data.data);
+            setLeaveType(res.data.data)
+        });
+
+        axios.get(process.env.REACT_APP_URL + "/predata/all", { validateStatus: () => true }).then(res => {
+            // console.log(res.data.data);
+            setStatus(res.data.data)
+            myStatus = status.filter(status => (status.value === "Pending" || status.value === "pending"));
+            console.log(myStatus);
+        });
+    };
+
     const [myleave, setValues] = useState({
         id: "",
         employeeid: employeeid,
-        leaveStatusid: 1,
+        leaveStatusid: myStatus.id,
         leaveTypeid: 1,
         totalLeave: "",
         fromDate: "",
@@ -30,7 +47,6 @@ function LeaveForm(props) {
 
     const submitFormAdd = (e) => {
         e.preventDefault();
-
         myleave.leaveTypeid = Number(myleave.leaveTypeid)
         myleave.totalLeave = Number(myleave.totalLeave)
         myleave.fromDate = moment().toISOString(myleave.fromDate);
@@ -38,14 +54,14 @@ function LeaveForm(props) {
 
         console.log(myleave);
 
-        axios.post(process.env.REACT_APP_URL + '/leave', myleave, { validateStatus: () => true }).then((res) => {
-            if (res.data.id > 0) {
-                props.addItemToState(res.data);
-                props.toggle();
-            } else {
-                setErrorMessage(res.data.message)
-            }
-        })
+        // axios.post(process.env.REACT_APP_URL + '/leave', myleave, { validateStatus: () => true }).then((res) => {
+        //     if (res.data.id > 0) {
+        //         props.addItemToState(res.data);
+        //         props.toggle();
+        //     } else {
+        //         setErrorMessage(res.data.message)
+        //     }
+        // })
 
     };
 
@@ -66,6 +82,7 @@ function LeaveForm(props) {
         props.toggle();
     }
     useEffect(() => {
+        getPredata();
         if (props.item) {
             const { id, employeeid, leaveStatusid, leaveTypeid, totalLeave, fromDate, toDate, reason } = props.item;
             setValues({ id, employeeid, leaveStatusid, leaveTypeid, totalLeave, fromDate, toDate, reason });
@@ -84,9 +101,14 @@ function LeaveForm(props) {
                                 name="leaveTypeid"
                                 value={myleave.leaveTypeid}
                                 aria-label="Default select example">
-                                <option value="1">Annual Leave</option>
-                                <option value="2">Special Leave</option>
-                                <option value="3">Sick Leave</option>
+                                {leavetypes.map((leavetype) => (
+                                    <option key={leavetype.value} value={leavetype.id}>
+                                        {leavetype.name}
+                                    </option>
+                                ))}
+                                {/* <option value="1">Annual Leave</option> */}
+                                {/* <option value="2">Special Leave</option>
+                                <option value="3">Sick Leave</option> */}
                             </Form.Select>
                         </Form.Group>
 

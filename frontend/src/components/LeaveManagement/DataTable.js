@@ -13,7 +13,7 @@ function DataTable(props) {
             {item.employee != null ? item.employee.firstname + " " : ""}
             {item.employee != null ? item.employee.lastname : ""}
           </td>
-          <td>{item.leaveTypeid}</td>
+          <td>{item.leavetype ? item.leavetype.name : ""}</td>
           <td>{item.fromDate}</td>
           <td>{item.toDate}</td>
           <td>{item.totalLeave}</td>

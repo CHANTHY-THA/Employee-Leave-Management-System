@@ -3,14 +3,14 @@ import ModalForm from './Modal';
 import FormDeleteItem from './FormDelete';
 // import { format } from 'date-fns';
 
-function DataTable(props){
-  if(props.items !== undefined){
-    var items = props.items.map(item => {
+function DataTable(props) {
+  if (props.items !== undefined) {
+    var items = props.items.map((item, index) => {
       return (
-        <tr key={item.id}>
-          <td >{item.id}</td>
-          <td ></td>
-          <td>{item.departmentName}</td>
+        <tr key={index}>
+          <td>{index + 1}</td>
+          <td>{item.criterial}</td>
+          <td>{item.value}</td>
           <td>{item.created}</td>
           <td>
             <div className='d-flex'>
@@ -19,25 +19,25 @@ function DataTable(props){
             </div>
           </td>
         </tr>
-        )
+      )
     })
   }
   return (
     <table className="table table-sm">
-        <thead>
-            <tr>
-              <th >No</th>
-              <th >Name</th>
-              <th >Value</th>
-              <th >Created</th>
-              <th >Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {items}
-        </tbody>
+      <thead>
+        <tr>
+          <th >#</th>
+          <th >Criterial</th>
+          <th >Value</th>
+          <th >Created</th>
+          <th >Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {items}
+      </tbody>
     </table>
-);
+  );
 }
 
 

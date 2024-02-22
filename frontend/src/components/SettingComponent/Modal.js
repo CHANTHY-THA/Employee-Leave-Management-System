@@ -32,7 +32,7 @@ function ModalForm(props) {
             {label}
           </Button>
         );
-        title = "Add New Item";
+        title = "Add New Criterial";
     }
     return (
         <div className="mb-2">
