@@ -12,7 +12,7 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
-  departmentId Int
+  departmentId Int @unique
   position String
   firstname String
   lastname String
@@ -28,15 +28,17 @@ model User {
   address String
   isActive Boolean @default(true)
   created DateTime @default(now())
-  updated  DateTime   @updatedAt
+  updated  DateTime @updatedAt
   leaves Leave[]
+  department Department @relation(fields: [departmentId], references: [id])
 }
 
 model Department {
   id Int @id @default(autoincrement())
   departmentName String @unique
   created DateTime @default(now())
-  updated  DateTime   @updatedAt
+  updated  DateTime @updatedAt
+  user User?
 }
 
 model Leave {

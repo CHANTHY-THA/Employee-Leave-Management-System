@@ -36,12 +36,14 @@ authRoutes.post("/login", async (req, res) => {
 
 authRoutes.post("/profile", authMiddleware, async (req, res) => {
     loginId = req.userId;
-    console.log("userId", loginId);
-    const foundUser = await prisma.user.findUnique({ where: { id: loginId } });
-    // console.log("🚀 ~ authRoutes.post ~ foundUser:", foundUser)
+    const foundUser = await prisma.user.findUnique({
+        where: { id: loginId },
+        include: {
+            department: true
+        }
+    });
     const dateFormat = dayjs(foundUser.created);
     foundUser.created = dateFormat.format("DD-MMM-YYYY")
-    // console.log("🚀 ~ authRoutes.post ~ foundUser:", foundUser)
     const { password: _, ...noPassUserData } = foundUser;
 
     return res.status(200).send({ result: noPassUserData, message: "found user" });

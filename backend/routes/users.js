@@ -152,17 +152,13 @@ userRoutes.post("/", async (req, res) => {
 userRoutes.put("/", async (req, res) => {
   // const user = req.body || {};
   const id = req.body.id;
-  console.log("🚀 ~ userRoutes.put ~ id:", id)
   const user = req.body;
   user.departmentId = parseInt(user.departmentId);
   delete user.id;
   delete user.created;
   delete user.updated;
-
   // user.remove(created)
   // user.remove(id)
-
-  console.log("🚀 ~ userRoutes.put ~ user:", user)
   try {
     if (
       !user.firstname ||
@@ -182,8 +178,6 @@ userRoutes.put("/", async (req, res) => {
     }
     delete user.password;
     const userFound = await prisma.user.findUnique({ where: { id: id } });
-    console.log("🚀 ~ userRoutes.put ~ userFound:", userFound)
-    console.log("🚀 ~ userRoutes.put ~ userFound:", !userFound)
     if (!userFound) {
       return res.status(404).send({ id: 0, message: "No data found!" });
     }
@@ -210,9 +204,8 @@ userRoutes.put("/", async (req, res) => {
     return res.status(500).send({ id: 0, message: "Something went wrong." });
   }
 });
-userRoutes.delete("/:id", async (req, res) => {
-  console.log("🚀 ~ userRoutes.delete ~ req.params:", req.params)
 
+userRoutes.delete("/:id", async (req, res) => {
   const { id } = req.params || {};
   const user_id = parseInt(id);
   if (isNaN(user_id)) {
@@ -236,15 +229,10 @@ userRoutes.put("/changePassword", authMiddleware, async (req, res) => {
   // const user = req.body || {};
   const id = req.userId;
   // const { id } = req.params || 0;
-  console.log("🚀 ~ userRoutes.put ~ id:", id)
   const passwordDto = req.body;
-  console.log("🚀 ~ userRoutes.put ~ passwordDto:", passwordDto)
-
-
   // user.remove(created)
   // user.remove(id)
 
-  // console.log("🚀 ~ userRoutes.put ~ user:", user)
   try {
     if (
       !passwordDto.newPassword ||

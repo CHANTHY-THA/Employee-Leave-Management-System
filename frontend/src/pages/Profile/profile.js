@@ -5,24 +5,19 @@ import Header from "../../components/HeaderComponent";
 import axios from "axios";
 
 function Profile() {
-
-
   const [user, setItems] = useState({});
   // const [showAlert, setShowAlert] = useState(false);
   // const [background, setBackground] = useState("");
   // const [message, setMessage] = useState("");
   const getItems = () => {
-
-
     const token = localStorage.getItem("token");
-    console.log("🚀 ~ Menu ~ render ~ token:12345", token)
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
     axios.post(process.env.REACT_APP_URL + '/auth/profile', {}, { headers: headers }, { validateStatus: () => true })
       .then(res => {
-        console.log("🚀 ~ axios.post ~ res.data:", res.data)
+        // console.log(res.data.result);
         setItems(res.data.result)
       })
 
@@ -63,7 +58,6 @@ function Profile() {
   useEffect(() => {
     getItems();
   }, []);
-
 
   return (
     <div className="profile-page">
@@ -115,7 +109,7 @@ function Profile() {
                 <div><label>Employee ID:</label><span>{user.id}</span></div>
                 <div><label>Emp Gender:</label><span>{user.gender}</span></div>
                 <div><label>Emp Manager:</label><span>Mr. VengLeap</span></div>
-                <div><label>Emp Department:</label><span>{user.departmentId}</span></div>
+                <div><label>Emp Department:</label><span>{user.department ? user.department.departmentName : ""}</span></div>
               </div>
             </div>
 
@@ -124,7 +118,6 @@ function Profile() {
       </div>
     </div>
   );
-  // }
 }
 
 export default Profile;

@@ -3,8 +3,8 @@ import { Button, Form, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 function AddEditForm(props) {
+    const [departments, setDepartment] = useState([{}]);
     const [employee, setValues] = useState({
-
         firstname: "",
         lastname: "",
         username: "",
@@ -21,6 +21,13 @@ function AddEditForm(props) {
     });
     // const [errorMessage, setErrorMessage] = useState("");
 
+    const getPredata = () => {
+        axios.get(process.env.REACT_APP_URL + "/department", { validateStatus: () => true }).then(res => {
+            // console.log(res.data.data);
+            setDepartment(res.data.data)
+        });
+    };
+
     const onChange = (e) => {
         setValues({
             ...employee,
@@ -29,8 +36,6 @@ function AddEditForm(props) {
         if (e.target.name !== "") {
             // setErrorMessage("");
         }
-        console.log("🚀 ~ onChange ~ employee:", employee)
-
     };
 
     const submitFormAdd = (e) => {
@@ -62,12 +67,10 @@ function AddEditForm(props) {
         props.toggle();
     }
     useEffect(() => {
+        getPredata();
         if (props.item) {
-            console.log("🚀 ~ useEffect ~ props.item:", props.item)
             const employee = props.item;
             setValues(employee);
-            console.log("🚀 ~ useEffect ~ employee:", employee)
-
         }
     }, [props.item]);
 
@@ -160,12 +163,23 @@ function AddEditForm(props) {
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="formGridFirstName">
                     <Form.Label>Department</Form.Label>
-                    <Form.Control onChange={onChange}
+                    <Form.Select
+                        onChange={onChange}
+                        name="departmentId"
+                        value={employee.departmentId === null ? "" : employee.departmentId}
+                        aria-label="Default select example">
+                        {departments.map((department) => (
+                            <option key={department.value} value={department.id}>
+                                {department.departmentName}
+                            </option>
+                        ))}
+                    </Form.Select>
+                    {/* <Form.Control onChange={onChange}
                         name="departmentId"
                         type="text"
                         placeholder="Department"
                         value={employee.departmentId === null ? "" : employee.departmentId}
-                        required />
+                        required /> */}
                 </Form.Group>
                 <Form.Group as={Col} controlId="formGridFirstName">
                     <Form.Label>Country</Form.Label>
