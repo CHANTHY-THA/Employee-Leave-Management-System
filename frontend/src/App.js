@@ -7,7 +7,6 @@ import MyLeave from "./pages/MyLeave/myleave";
 import Menu from "./components/MenuComponent";
 import Employees from "./pages/Employees/employee";
 import EmployeeDetail from "./pages/Employees/Detail";
-import LeaveTypes from "./pages/LeaveType";
 import ChangePassword from "./pages/ChangePassword";
 import Profile from "./pages/Profile/profile";
 import Department from "./pages/Dapartment/department";
@@ -17,6 +16,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Protected from "./components/Protected";
 import Setting from "./pages/Setting/setting";
+import LeaveType from "./pages/LeaveType/leaveType";
 
 
 const ProtectedDashboard = () => {
@@ -43,9 +43,9 @@ const ProtectedDepartment = () => {
   </Protected>
 }
 
-const ProtectedLeaveTypes = () => {
+const ProtectedLeaveType = () => {
   return <Protected>
-    <LeaveTypes />
+    <LeaveType />
   </Protected>
 }
 
@@ -160,7 +160,7 @@ function App() {
             <Route path="/dashboard" element={<ProtectedDashboard />}></Route>
             <Route path="/employees" element={<ProtectedEmployees />}></Route>
             <Route path="/department" element={<ProtectedDepartment />}></Route>
-            <Route path="/leave-type" element={<ProtectedLeaveTypes />}></Route>
+            <Route path="/leave-type" element={<ProtectedLeaveType />}></Route>
             <Route path="/my-leave" element={<ProtectedMyLeave />}></Route>
             <Route
               path="/leave-management"

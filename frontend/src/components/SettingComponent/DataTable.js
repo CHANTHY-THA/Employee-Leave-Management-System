@@ -5,10 +5,11 @@ import FormDeleteItem from './FormDelete';
 
 function DataTable(props){
   if(props.items !== undefined){
-    var items = props.items.map((item, index) => {
+    var items = props.items.map(item => {
       return (
-        <tr key={index}>
-          <td >{index + 1}</td>
+        <tr key={item.id}>
+          <td >{item.id}</td>
+          <td ></td>
           <td>{item.departmentName}</td>
           <td>{item.created}</td>
           <td>
@@ -25,8 +26,9 @@ function DataTable(props){
     <table className="table table-sm">
         <thead>
             <tr>
-              <th >ID</th>
-              <th >Department Name</th>
+              <th >No</th>
+              <th >Name</th>
+              <th >Value</th>
               <th >Created</th>
               <th >Action</th>
             </tr>

@@ -10,6 +10,7 @@ function LeaveForm(props) {
 
     const employeeid = Number(localStorage.getItem("userID"));
     const [myleave, setValues] = useState({
+        id: "",
         employeeid: employeeid,
         leaveStatusid: 1,
         leaveTypeid: 1,
@@ -29,13 +30,13 @@ function LeaveForm(props) {
 
     const submitFormAdd = (e) => {
         e.preventDefault();
-       
+
         myleave.leaveTypeid = Number(myleave.leaveTypeid)
         myleave.totalLeave = Number(myleave.totalLeave)
         myleave.fromDate = moment().toISOString(myleave.fromDate);
         myleave.toDate = moment().toISOString(myleave.toDate);
 
-         console.log(myleave);
+        console.log(myleave);
 
         axios.post(process.env.REACT_APP_URL + '/leave', myleave, { validateStatus: () => true }).then((res) => {
             if (res.data.id > 0) {
@@ -66,8 +67,8 @@ function LeaveForm(props) {
     }
     useEffect(() => {
         if (props.item) {
-            const { employeeid,leaveStatusid, leaveTypeid, totalLeave, fromDate, toDate, reason } = props.item;
-            setValues({ employeeid,leaveStatusid, leaveTypeid, totalLeave, fromDate, toDate, reason });
+            const { id, employeeid, leaveStatusid, leaveTypeid, totalLeave, fromDate, toDate, reason } = props.item;
+            setValues({ id, employeeid, leaveStatusid, leaveTypeid, totalLeave, fromDate, toDate, reason });
         }
     }, [props.item]);
 

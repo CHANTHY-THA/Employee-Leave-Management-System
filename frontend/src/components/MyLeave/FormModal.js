@@ -33,7 +33,7 @@ function LeaveFormModal(props) {
                 {label}
             </Button>
         );
-        title = "Add New Leave";
+        title = "Apply Leave";
     }
     return (
         <div className="mb-2">

@@ -51,6 +51,30 @@ CREATE TABLE "Leave" (
     CONSTRAINT "Leave_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "LeaveType" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "amount" INTEGER NOT NULL,
+    "created" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "isActive" BOOLEAN NOT NULL DEFAULT true,
+
+    CONSTRAINT "LeaveType_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "PreData" (
+    "id" SERIAL NOT NULL,
+    "criterial" TEXT NOT NULL,
+    "value" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "created" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "isActive" BOOLEAN NOT NULL DEFAULT true,
+
+    CONSTRAINT "PreData_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 
@@ -59,3 +83,12 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Department_departmentName_key" ON "Department"("departmentName");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Leave_leaveTypeid_key" ON "Leave"("leaveTypeid");
+
+-- AddForeignKey
+ALTER TABLE "Leave" ADD CONSTRAINT "Leave_employeeid_fkey" FOREIGN KEY ("employeeid") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Leave" ADD CONSTRAINT "Leave_leaveTypeid_fkey" FOREIGN KEY ("leaveTypeid") REFERENCES "LeaveType"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

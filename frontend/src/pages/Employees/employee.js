@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import "./employee.css";
+import "./employee.css";
 import ModalForm from "../../components/Employee/Modal";
 import DataTable from "../../components/Employee/DataTable";
 import { Toast, ToastContainer } from "react-bootstrap";
@@ -71,11 +71,11 @@ function User(props) {
 
     return (
         <div>
-            <div className="dashboard-page">
+            <div className="employee-page">
                 <Header parentToChild={"Employee Leave Management System"} />
-                <div className="department-main">
-                    <div className="department-container">
-                        <div >
+                <div className="employee-main">
+                    <div className="employee-container">
+                        <div>
                             <ToastContainer className="mt-5" position="top-end">
                                 <Toast
                                     onClose={() => setShowAlert(false)}
@@ -93,16 +93,12 @@ function User(props) {
                             </ToastContainer>
                         </div>
                         <div>
-
-                            <h4 className="">Employee List</h4>
-
+                            <h4>Employee List</h4>
                             <div className="pb-5">
                                 <ModalForm buttonLabel="Add Employee" addItemToState={addItemToState} />
-
                             </div>
                             <div className="card-table">
                                 <div className="mt-2 mb-2 d-flex justify-content-between">
-                                    <div></div>
                                     <div className=" ">
                                         <input type="text" className="form-control " placeholder="Search" onChange={filterData} />
                                     </div>

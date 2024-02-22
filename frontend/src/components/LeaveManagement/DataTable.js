@@ -5,10 +5,10 @@ import { Button } from "react-bootstrap";
 
 function DataTable(props) {
   if (props.items !== undefined) {
-    var items = props.items.map(item => {
+    var items = props.items.map((item, index) => {
       return (
-        <tr key={item.id}>
-          <td >{item.id}</td>
+        <tr key={index}>
+          <td>{index + 1}</td>
           <td>
             {item.employee != null ? item.employee.firstname + " " : ""}
             {item.employee != null ? item.employee.lastname : ""}

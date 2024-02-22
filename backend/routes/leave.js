@@ -11,7 +11,8 @@ leaveRoutes.get("/all", async (req, res) => {
         const leave = await prisma.leave.findMany({ 
             orderBy: { id: 'desc'} ,
             include: {
-                employee: true
+                employee: true,
+                leavetype: true
             }
         });
         leave.forEach(element => {
@@ -30,7 +31,6 @@ leaveRoutes.get("/all", async (req, res) => {
 
 leaveRoutes.post("/", async (req, res) => {
     const leave = req.body;
-    console.log(req.body);
     try {
         const newLeave = {
             employeeid: leave.employeeid,
@@ -48,7 +48,6 @@ leaveRoutes.post("/", async (req, res) => {
         console.log("Error Message : " + err.message);
         return res.status(500).send({ id: 0, message: "Something went wrong." });
     }
-
 
 });
 

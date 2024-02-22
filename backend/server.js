@@ -5,6 +5,7 @@ const userRoutes = require("./routes/users");
 const departmentRoutes = require("./routes/departments");
 const leaveRoutes = require('./routes/leave');
 const authRoutes = require("./routes/auth");
+const leaveTypeRoutes = require('./routes/leave-type');
 app.set("view engine", "ejs");
 
 app.use(express.json());
@@ -17,6 +18,7 @@ app.use(cors(corsOptions));
 // app.use("/api/user", userRoutes);
 app.use("/api/department",departmentRoutes);
 app.use("/api/leave",leaveRoutes);
+app.use("/api/leavetype",leaveTypeRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 // app.use("/api", require("./routes/auth"));

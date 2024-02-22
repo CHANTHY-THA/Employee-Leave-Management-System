@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Header from "../../components/HeaderComponent";
-import LeaveFormModal from "../../components/MyLeave/FormModal";
-import DataTable from "../../components/MyLeave/DataTable";
+import React, { useState, useEffect } from "react";
+import "./leaveType.css";
 import { Toast, ToastContainer } from "react-bootstrap";
-import axios from "axios";
-import "./myleave.css"
+import Header from "../../components/HeaderComponent";
+import axios from 'axios';
+import ModalForm from "../../components/LeaveTypeComponent/Modal";
+import DataTable from "../../components/LeaveTypeComponent/DataTable";
 
-function EmployeeLeave(props) {
+function LeaveType(props) {
   const [items, setItems] = useState([{}]);
   const [showAlert, setShowAlert] = useState(false);
   const [background, setBackground] = useState("");
   const [message, setMessage] = useState("");
-
   const getItems = () => {
-    axios.get(process.env.REACT_APP_URL + "/leave/all", { validateStatus: () => true }).then(res => {
-      // console.log(res.data.data);
+
+    axios.get(process.env.REACT_APP_URL + "/leavetype/all", { validateStatus: () => true }).then(res => {
+      // console.log("data: ", res.data.data);
       setItems(res.data.data)
     });
     // setItems(jsonData.Departments)
@@ -54,10 +54,11 @@ function EmployeeLeave(props) {
 
   const filterData = (e) => {
     const value = e.target.value;
-
     if (value !== "") {
-      // const data = items.filter(emp => emp.employee.toLowerCase().includes(value.toLowerCase()));
-      // setItems(data);
+      const data = items.filter(dep =>
+        dep.departmentName.toLowerCase().includes(value.toLowerCase())
+      );
+      setItems(data);
     } else {
       getItems();
     }
@@ -69,10 +70,10 @@ function EmployeeLeave(props) {
 
   return (
     <div>
-      <div className="leave-page">
+      <div className="leave-type-page">
         <Header parentToChild={"Employee Leave Management System"} />
-        <div className="leav-main">
-          <div className="leave-container">
+        <div className="leave-type-main">
+          <div className="leave-type-container">
             <div >
               <ToastContainer className="mt-5" position="top-end">
                 <Toast
@@ -90,15 +91,16 @@ function EmployeeLeave(props) {
                 </Toast>
               </ToastContainer>
             </div>
-
             <div>
-              <h4>My Leaves</h4>
-              <div className="pb-5">
-                <LeaveFormModal buttonLabel="Request Leave" addItemToState={addItemToState} />
-              </div>
 
+              <h4 className="">Leave Type List</h4>
+
+              <div className="pb-5">
+                <ModalForm buttonLabel="Add Leave Type" addItemToState={addItemToState} />
+              </div>
               <div className="card-table">
                 <div className="mt-2 mb-2 d-flex justify-content-between">
+                  <div></div>
                   <div className=" ">
                     <input type="text" className="form-control " placeholder="Search" onChange={filterData} />
                   </div>
@@ -117,4 +119,4 @@ function EmployeeLeave(props) {
   );
 }
 
-export default EmployeeLeave;
+export default LeaveType;
