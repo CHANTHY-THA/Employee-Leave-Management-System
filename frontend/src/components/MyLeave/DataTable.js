@@ -1,4 +1,5 @@
 import React from 'react'
+import "../../pages/MyLeave/myleave.css"
 
 function DataTable(props) {
   if (props.items !== undefined) {
@@ -14,7 +15,25 @@ function DataTable(props) {
           <td>{item.fromDate}</td>
           <td>{item.toDate}</td>
           <td>{item.totalLeave}</td>
-          <td className='leaveStatus'>Pending</td>
+          <td>
+            {(() => {
+              if (item.leaveStatus == "Pending") {
+                return <div style={{
+                  color: '#FFA07A'
+                }} >{item.leaveStatus}</div>;
+
+              } else if (item.leaveStatus == "Approved") {
+                return <div style={{
+                  color: '#20B2AA'
+                }}>{item.leaveStatus}</div>;
+
+              } else if (item.leaveStatus == "Not Approve") {
+                return <div style={{
+                  color: '#FF4500'
+                }}>{item.leaveStatus}</div>;
+              }
+            })()}
+          </td>
           <td>{item.reason}</td>
           <td>{item.created}</td>
         </tr>
