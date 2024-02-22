@@ -12,9 +12,10 @@ function User(props) {
     const [background, setBackground] = useState("");
     const [message, setMessage] = useState("");
     const getItems = () => {
+        const token = localStorage.getItem("token");
 
-        axios.get(process.env.REACT_APP_URL + "/user/all", { validateStatus: () => true }).then(res => {
-            console.log("data: " + res.data.data);
+        axios.get(process.env.REACT_APP_URL + "/user/all", { headers: { Authorization: `Bearer ${token}` } }, { validateStatus: () => true }).then(res => {
+            console.log("data: ", res.data.data);
             setItems(res.data.data)
         });
         // setItems(jsonData.Departments)

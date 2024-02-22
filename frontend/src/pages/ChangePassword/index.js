@@ -48,7 +48,7 @@ const ChangePasswordForm = () => {
 
 
     if (formData.newPassword === formData.confirmPassword) {
-      axios.put(process.env.REACT_APP_URL + '/user/changePassword', formData, { headers: headers }, { validateStatus: () => true })
+      axios.put(process.env.REACT_APP_URL + '/user/changePassword', formData, headers, { headers: headers }, { validateStatus: () => true })
         .then(res => {
           console.log("🚀 ~ axios.post ~ res.data-changepwd:", res.data)
           updateState(res.data);

@@ -21,12 +21,14 @@ function FormDeleteItem(props) {
         address: "",
     });
     const [modal, setModal] = useState(false);
+    const token = localStorage.getItem("token");
+    const headers = { headers: { Authorization: `Bearer ${token}` } }
     const toggle = () => {
         setModal(!modal);
     };
     const ConfirmDeleteItem = (e) => {
         e.preventDefault();
-        axios.delete(process.env.REACT_APP_URL + '/user/' + user.id, { validateStatus: () => true }).then((res) => {
+        axios.delete(process.env.REACT_APP_URL + '/user/' + user.id, headers, { validateStatus: () => true }).then((res) => {
             if (res.data.id > 0) {
                 props.deleteItemFromState(res.data);
                 setModal(false);

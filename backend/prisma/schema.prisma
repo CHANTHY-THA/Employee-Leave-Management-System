@@ -12,7 +12,7 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
-  departmentId Int @unique
+  departmentId Int
   position String
   firstname String
   lastname String
@@ -38,7 +38,7 @@ model Department {
   departmentName String @unique
   created DateTime @default(now())
   updated  DateTime @updatedAt
-  user User?
+  user User[]
 }
 
 model Leave {

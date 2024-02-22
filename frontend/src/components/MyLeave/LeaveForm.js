@@ -9,9 +9,11 @@ import moment from 'moment';
 function LeaveForm(props) {
     const employeeid = Number(localStorage.getItem("userID"));
     const [leavetypes, setLeaveType] = useState([{}]);
+    const token = localStorage.getItem("token");
+    const headers = { headers: { Authorization: `Bearer ${token}` } }
 
     const getPredata = () => {
-        axios.get(process.env.REACT_APP_URL + "/leavetype/all", { validateStatus: () => true }).then(res => {
+        axios.get(process.env.REACT_APP_URL + "/leavetype/all", headers, { validateStatus: () => true }).then(res => {
             // console.log(res.data.data);
             setLeaveType(res.data.data)
         });
@@ -43,7 +45,7 @@ function LeaveForm(props) {
         myleave.fromDate = moment().toISOString(myleave.fromDate);
         myleave.toDate = moment().toISOString(myleave.toDate);
 
-        axios.post(process.env.REACT_APP_URL + '/leave', myleave, { validateStatus: () => true }).then((res) => {
+        axios.post(process.env.REACT_APP_URL + '/leave', myleave, headers, { validateStatus: () => true }).then((res) => {
             if (res.data.id > 0) {
                 props.addItemToState(res.data);
                 props.toggle();
@@ -56,7 +58,7 @@ function LeaveForm(props) {
 
     const submitFormEdit = (e) => {
         e.preventDefault();
-        axios.put(process.env.REACT_APP_URL + '/leave', myleave, { validateStatus: () => true })
+        axios.put(process.env.REACT_APP_URL + '/leave', myleave, headers, { validateStatus: () => true })
             .then((res) => {
                 if (res.data.id > 0) {
                     props.updateState(res.data);

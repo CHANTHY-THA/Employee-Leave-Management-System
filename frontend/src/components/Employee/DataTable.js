@@ -7,7 +7,7 @@ function DataTable(props) {
     if (props.items !== undefined) {
         var items = props.items.map((item, index) => {
             return (
-                <tr key={index}>
+                <tr key={item.id}>
                     <td>{index + 1}</td>
                     <td>{item.firstname}</td>
                     <td>{item.lastname}</td>

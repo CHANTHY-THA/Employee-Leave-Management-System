@@ -4,6 +4,8 @@ import axios from "axios";
 
 function AddEditForm(props) {
     const [departments, setDepartment] = useState([{}]);
+    const token = localStorage.getItem("token");
+    const headers = { headers: { Authorization: `Bearer ${token}` } }
     const [employee, setValues] = useState({
         firstname: "",
         lastname: "",
@@ -22,7 +24,7 @@ function AddEditForm(props) {
     // const [errorMessage, setErrorMessage] = useState("");
 
     const getPredata = () => {
-        axios.get(process.env.REACT_APP_URL + "/department", { validateStatus: () => true }).then(res => {
+        axios.get(process.env.REACT_APP_URL + "/department", headers, { validateStatus: () => true }).then(res => {
             // console.log(res.data.data);
             setDepartment(res.data.data)
         });
@@ -40,7 +42,7 @@ function AddEditForm(props) {
 
     const submitFormAdd = (e) => {
         e.preventDefault();
-        axios.post(process.env.REACT_APP_URL + '/user', employee, { validateStatus: () => true }).then((res) => {
+        axios.post(process.env.REACT_APP_URL + '/user', employee, headers, { validateStatus: () => true }).then((res) => {
             if (res.data.id > 0) {
                 props.addItemToState(res.data);
                 props.toggle();
@@ -52,7 +54,7 @@ function AddEditForm(props) {
 
     const submitFormEdit = (e) => {
         e.preventDefault();
-        axios.put(process.env.REACT_APP_URL + '/user', employee, { validateStatus: () => true })
+        axios.put(process.env.REACT_APP_URL + '/user', employee, headers, { validateStatus: () => true })
             .then((res) => {
                 if (res.data.id > 0) {
                     props.updateState(res.data);

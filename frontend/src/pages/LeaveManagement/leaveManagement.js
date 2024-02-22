@@ -11,9 +11,11 @@ function LeaveManagement(props) {
   const [showAlert, setShowAlert] = useState(false);
   const [background, setBackground] = useState("");
   const [message, setMessage] = useState("");
+  const token = localStorage.getItem("token");
+  const headers = { headers: { Authorization: `Bearer ${token}` } }
 
   const getItems = () => {
-    axios.get(process.env.REACT_APP_URL + "/leave/all", { validateStatus: () => true }).then(res => {
+    axios.get(process.env.REACT_APP_URL + "/leave/all", headers, { validateStatus: () => true }).then(res => {
       // console.log("data: " + res.data.data);
       setItems(res.data.data)
     });

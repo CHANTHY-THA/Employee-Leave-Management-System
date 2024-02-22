@@ -19,10 +19,12 @@ function AddEditForm(props) {
             setErrorMessage("");
         }
     };
+    const token = localStorage.getItem("token");
+    const headers = { headers: { Authorization: `Bearer ${token}` } }
 
     const submitFormAdd = (e) => {
         e.preventDefault();
-        axios.post(process.env.REACT_APP_URL + '/predata', predata, { validateStatus: () => true }).then((res) => {
+        axios.post(process.env.REACT_APP_URL + '/predata', predata, headers, { validateStatus: () => true }).then((res) => {
             if (res.data.id > 0) {
                 props.addItemToState(res.data);
                 props.toggle();
@@ -34,7 +36,7 @@ function AddEditForm(props) {
 
     const submitFormEdit = (e) => {
         e.preventDefault();
-        axios.put(process.env.REACT_APP_URL + '/predata', predata, { validateStatus: () => true })
+        axios.put(process.env.REACT_APP_URL + '/predata', predata, headers, { validateStatus: () => true })
             .then((res) => {
                 if (res.data.id > 0) {
                     props.updateState(res.data);

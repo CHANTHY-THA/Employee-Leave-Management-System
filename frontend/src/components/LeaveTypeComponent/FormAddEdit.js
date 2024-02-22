@@ -19,11 +19,13 @@ function AddEditForm(props) {
             setErrorMessage("");
         }
     };
+    const token = localStorage.getItem("token");
+    const headers = { headers: { Authorization: `Bearer ${token}` } }
 
     const submitFormAdd = (e) => {
         e.preventDefault();
         leavetype.amount = Number(leavetype.amount);
-        axios.post(process.env.REACT_APP_URL + '/leavetype', leavetype, { validateStatus: () => true }).then((res) => {
+        axios.post(process.env.REACT_APP_URL + '/leavetype', leavetype, headers, { validateStatus: () => true }).then((res) => {
             if (res.data.id > 0) {
                 props.addItemToState(res.data);
                 props.toggle();
@@ -36,7 +38,7 @@ function AddEditForm(props) {
     const submitFormEdit = (e) => {
         e.preventDefault();
         leavetype.amount = Number(leavetype.amount);
-        axios.put(process.env.REACT_APP_URL + '/leavetype', leavetype, { validateStatus: () => true })
+        axios.put(process.env.REACT_APP_URL + '/leavetype', leavetype, headers, { validateStatus: () => true })
             .then((res) => {
                 if (res.data.id > 0) {
                     props.updateState(res.data);
@@ -52,8 +54,8 @@ function AddEditForm(props) {
     }
     useEffect(() => {
         if (props.item) {
-            const {id, name, amount } = props.item;
-            setValues({id, name, amount });
+            const { id, name, amount } = props.item;
+            setValues({ id, name, amount });
         }
     }, [props.item]);
 
