@@ -58,7 +58,7 @@ function LeaveType(props) {
     const value = e.target.value;
     if (value !== "") {
       const data = items.filter(dep =>
-        dep.departmentName.toLowerCase().includes(value.toLowerCase())
+        dep.name.toLowerCase().includes(value.toLowerCase())
       );
       setItems(data);
     } else {
@@ -94,15 +94,12 @@ function LeaveType(props) {
               </ToastContainer>
             </div>
             <div>
-
               <h4 className="">Leave Type List</h4>
-
               <div className="pb-5">
                 <ModalForm buttonLabel="Add Leave Type" addItemToState={addItemToState} />
               </div>
               <div className="card-table">
                 <div className="mt-2 mb-2 d-flex justify-content-between">
-                  <div></div>
                   <div className=" ">
                     <input type="text" className="form-control " placeholder="Search" onChange={filterData} />
                   </div>
