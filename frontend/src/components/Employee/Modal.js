@@ -37,7 +37,7 @@ function ModalForm(props) {
     return (
         <div className="mb-2" >
             {button}
-            <Modal centered backdrop="static" show={modal} >
+            <Modal centered backdrop="static" show={modal} className="employ">
                 <Modal.Header >
                     <Modal.Title>{title}</Modal.Title>
                 </Modal.Header>

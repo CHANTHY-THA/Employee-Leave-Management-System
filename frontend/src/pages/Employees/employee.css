@@ -18,12 +18,11 @@
     padding: 20px;
 }
 
-.modal.fade .modal-dialog {
+.employ .modal-dialog {
     max-width: 800px !important;
 }
 
-form {
+form.add-employ {
     width: 782px !important;
     padding-right: 20px;
-
 }

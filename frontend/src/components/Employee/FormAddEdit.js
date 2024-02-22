@@ -77,7 +77,7 @@ function AddEditForm(props) {
     }, [props.item]);
 
     return (
-        <Form className="">
+        <Form className="add-employ">
 
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="formGridFirstName">
