@@ -9,27 +9,18 @@ import moment from 'moment';
 function LeaveForm(props) {
     const employeeid = Number(localStorage.getItem("userID"));
     const [leavetypes, setLeaveType] = useState([{}]);
-    const [status, setStatus] = useState([{}]);
-    let myStatus = "";
 
     const getPredata = () => {
         axios.get(process.env.REACT_APP_URL + "/leavetype/all", { validateStatus: () => true }).then(res => {
             // console.log(res.data.data);
             setLeaveType(res.data.data)
         });
-
-        axios.get(process.env.REACT_APP_URL + "/predata/all", { validateStatus: () => true }).then(res => {
-            // console.log(res.data.data);
-            setStatus(res.data.data)
-            myStatus = status.filter(status => (status.value === "Pending" || status.value === "pending"));
-            console.log(myStatus);
-        });
     };
 
     const [myleave, setValues] = useState({
         id: "",
         employeeid: employeeid,
-        leaveStatusid: myStatus.id,
+        leaveStatus: "Pending",
         leaveTypeid: 1,
         totalLeave: "",
         fromDate: "",
@@ -52,16 +43,14 @@ function LeaveForm(props) {
         myleave.fromDate = moment().toISOString(myleave.fromDate);
         myleave.toDate = moment().toISOString(myleave.toDate);
 
-        console.log(myleave);
-
-        // axios.post(process.env.REACT_APP_URL + '/leave', myleave, { validateStatus: () => true }).then((res) => {
-        //     if (res.data.id > 0) {
-        //         props.addItemToState(res.data);
-        //         props.toggle();
-        //     } else {
-        //         setErrorMessage(res.data.message)
-        //     }
-        // })
+        axios.post(process.env.REACT_APP_URL + '/leave', myleave, { validateStatus: () => true }).then((res) => {
+            if (res.data.id > 0) {
+                props.addItemToState(res.data);
+                props.toggle();
+            } else {
+                setErrorMessage(res.data.message)
+            }
+        })
 
     };
 

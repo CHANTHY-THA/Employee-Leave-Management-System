@@ -39,13 +39,13 @@ CREATE TABLE "Department" (
 CREATE TABLE "Leave" (
     "id" SERIAL NOT NULL,
     "employeeid" INTEGER NOT NULL,
-    "leaveStatusid" INTEGER NOT NULL,
+    "leaveStatus" TEXT NOT NULL,
     "leaveTypeid" INTEGER NOT NULL,
     "totalLeave" INTEGER NOT NULL,
-    "fromDate" TIMESTAMP(3) NOT NULL,
-    "toDate" TIMESTAMP(3) NOT NULL,
+    "fromDate" TIMESTAMPTZ NOT NULL,
+    "toDate" TIMESTAMPTZ NOT NULL,
     "reason" TEXT NOT NULL,
-    "created" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created" DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
 
     CONSTRAINT "Leave_pkey" PRIMARY KEY ("id")
@@ -67,8 +67,6 @@ CREATE TABLE "PreData" (
     "id" SERIAL NOT NULL,
     "criterial" TEXT NOT NULL,
     "value" TEXT NOT NULL,
-    "type" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
     "created" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
 

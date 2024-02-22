@@ -42,7 +42,7 @@ model Department {
 model Leave {
   id Int @id @default(autoincrement())
   employeeid Int
-  leaveStatusid Int
+  leaveStatus String
   leaveTypeid Int @unique
   totalLeave Int
   fromDate DateTime @db.Timestamptz

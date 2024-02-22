@@ -34,7 +34,7 @@ leaveRoutes.post("/", async (req, res) => {
     try {
         const newLeave = {
             employeeid: leave.employeeid,
-            leaveStatusid: leave.leaveStatusid,
+            leaveStatus: leave.leaveStatus,
             leaveTypeid: leave.leaveTypeid,
             totalLeave: leave.totalLeave,
             fromDate: leave.fromDate,
