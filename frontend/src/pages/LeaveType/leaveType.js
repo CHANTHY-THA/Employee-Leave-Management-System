@@ -12,7 +12,6 @@ function LeaveType(props) {
   const [background, setBackground] = useState("");
   const [message, setMessage] = useState("");
   const getItems = () => {
-
     axios.get(process.env.REACT_APP_URL + "/leavetype/all", { validateStatus: () => true }).then(res => {
       // console.log("data: ", res.data.data);
       setItems(res.data.data)
@@ -56,7 +55,7 @@ function LeaveType(props) {
     const value = e.target.value;
     if (value !== "") {
       const data = items.filter(dep =>
-        dep.departmentName.toLowerCase().includes(value.toLowerCase())
+        dep.name.toLowerCase().includes(value.toLowerCase())
       );
       setItems(data);
     } else {
@@ -92,15 +91,12 @@ function LeaveType(props) {
               </ToastContainer>
             </div>
             <div>
-
               <h4 className="">Leave Type List</h4>
-
               <div className="pb-5">
                 <ModalForm buttonLabel="Add Leave Type" addItemToState={addItemToState} />
               </div>
               <div className="card-table">
                 <div className="mt-2 mb-2 d-flex justify-content-between">
-                  <div></div>
                   <div className=" ">
                     <input type="text" className="form-control " placeholder="Search" onChange={filterData} />
                   </div>
