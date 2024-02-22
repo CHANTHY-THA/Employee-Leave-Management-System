@@ -113,12 +113,17 @@ function AddEditForm(props) {
 
                 <Form.Group as={Col} controlId="formGridLastName">
                     <Form.Label>Gender</Form.Label>
-                    <Form.Control onChange={onChange}
+                    <Form.Select
+                        onChange={onChange}
                         name="gender"
                         type="text"
                         placeholder="Gender"
                         value={employee.gender === null ? "" : employee.gender}
-                        required />
+                        aria-label="Default select example" required>
+                
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </Form.Select>
                 </Form.Group>
             </Row>
             <Row className="mb-3">
