@@ -63,7 +63,7 @@ function Dashboard() {
           <div>
             <div className="row ">
               <div className="col-4">
-                <div className="card  mb-3" >
+                <div className="card bg-secondary text-white mb-3" >
                   <div className="card-body">
                     <h5>Total Employees</h5>
                     <h5>{employees.length}</h5>
@@ -72,7 +72,7 @@ function Dashboard() {
                 </div>
               </div>
               <div className="col-4">
-                <div className="card  mb-3" >
+                <div className="card bg-secondary text-white  mb-3" >
                   <div className="card-body">
                     <h5>Total Departments</h5>
                     <h5>{departments.length}</h5>
@@ -80,7 +80,7 @@ function Dashboard() {
                 </div>
               </div>
               <div className="col-4">
-                <div className="card  mb-3 ">
+                <div className="card bg-secondary text-white mb-3 ">
                   <div className="card-body">
                     <h5>Total Leave Types</h5>
                     <h5>{leaveTypes.length}</h5>
