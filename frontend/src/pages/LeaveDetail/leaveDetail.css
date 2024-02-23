@@ -64,3 +64,24 @@ body{
     font-weight: 500;
     color: white;
 }
+
+.label {
+    border-radius: 15px;
+    padding: 2px 10px;
+    padding-bottom: 4px;
+    color: white;
+    text-align: center;
+    font-size: 13px;
+}
+
+.label-approve {
+    background-color: green;
+}
+
+.label-not-approve {
+    background-color: red;
+}
+
+.label-pending {
+    background-color: rgb(210, 157, 11);
+}

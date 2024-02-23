@@ -1,8 +1,9 @@
 import React from 'react'
-import FormDeleteItem from './FormDelete';
-import ApplyLeaveFormModal from './FormApplyLeav';
+// import FormDeleteItem from './FormDelete';
+// import ApplyLeaveFormModal from './FormApplyLeav';
 import { Button } from "react-bootstrap";
 import "../../pages/LeaveManagement/leaveManagement.css"
+import { Link } from 'react-router-dom';
 
 function DataTable(props) {
   if (props.items !== undefined) {
@@ -48,8 +49,12 @@ function DataTable(props) {
           <td>
             <div className='d-flex'>
               {/* <ApplyLeaveFormModal buttonLabel="Edit" item={item} updateState={props.updateState} ></ApplyLeaveFormModal> */}
-              <Button href="/leave-detail">View Detail</Button>
+              {/* <Button className='btnDetail' href="/leave-detail">View Detail</Button> */}
               {/* <FormDeleteItem item={item} deleteItemFromState={props.deleteItemFromState}></FormDeleteItem> */}
+              <Link to={{pathname: `/leave-detail/${item.id}`}}>
+                <Button>Details</Button>
+              </Link>
+
             </div>
           </td>
         </tr>

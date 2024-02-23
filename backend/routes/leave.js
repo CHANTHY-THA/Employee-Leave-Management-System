@@ -8,8 +8,8 @@ const prisma = new PrismaClient()
 leaveRoutes.get("/all", async (req, res) => {
     try {
         let result = [];
-        const leave = await prisma.leave.findMany({ 
-            orderBy: { id: 'desc'} ,
+        const leave = await prisma.leave.findMany({
+            orderBy: { id: 'desc' },
             include: {
                 employee: true,
                 leavetype: true
@@ -17,8 +17,13 @@ leaveRoutes.get("/all", async (req, res) => {
         });
         leave.forEach(element => {
             const dateFormat = dayjs(element.created);
-            element.fromDate = dateFormat.format("DD-MMM-YYYY h:mm A");
-            element.toDate = dateFormat.format("DD-MMM-YYYY h:mm A");
+            const fromDate = dayjs(element.fromDate);
+            const toDate = dayjs(element.toDate);
+            const approveDate = dayjs(element.approveDate);
+
+            element.fromDate = fromDate.format("DD-MMM-YYYY h:mm A");
+            element.toDate = toDate.format("DD-MMM-YYYY h:mm A");
+            element.approveDate = approveDate.format("DD-MMM-YYYY h:mm A");
             element.created = dateFormat.format("DD-MMM-YYYY h:mm A");
             result.push(element);
         });
@@ -50,6 +55,74 @@ leaveRoutes.post("/", async (req, res) => {
     }
 
 });
+
+leaveRoutes.post("/:id", async (req, res) => {
+    const { id } = req.params || {};
+    const leaveId = parseInt(id);
+    try {
+        let result = [];
+        const foundLeave = await prisma.leave.findUnique({
+            where: { id: leaveId },
+            include: {
+                employee: true,
+                leavetype: true
+            }
+        });
+        const dateFormat = dayjs(foundLeave.created);
+        const fromDate = dayjs(foundLeave.fromDate);
+        const toDate = dayjs(foundLeave.toDate);
+        const approveDate = dayjs(foundLeave.approveDate);
+
+        foundLeave.created = dateFormat.format("DD-MMM-YYYY")
+        foundLeave.fromDate = fromDate.format("DD-MMM-YYYY")
+        foundLeave.toDate = toDate.format("DD-MMM-YYYY")
+        foundLeave.approveDate = approveDate.format("DD-MMM-YYYY")
+
+        return res.status(200).send({ result: foundLeave, message: "found leave" });
+
+    } catch (err) {
+        console.log("Error Message: " + err.message);
+        res.status(500).send({ id: 0, message: "Something went wrong." })
+    }
+})
+
+leaveRoutes.put("/approve", async (req, res) => {
+    const { id,leaveStatus, approveBy, approveDate } = req.body || {};
+    try {
+        await prisma.leave.update({
+            where: { id: id },
+            data: { 
+                leaveStatus: leaveStatus,
+                approveBy: approveBy,
+                approveDate: approveDate 
+            }
+        });
+        return res.status(200).send({ id: 1, message: "Leave has been Approved" })
+
+
+    } catch (err) {
+        console.log("Error Message: " + err.message);
+        res.status(500).send({ id: 0, message: "Something went wrong." })
+    }
+})
+
+leaveRoutes.put("/reject", async (req, res) => {
+    const { id,leaveStatus, remark } = req.body || {};
+    try {
+        await prisma.leave.update({
+            where: { id: id },
+            data: { 
+                remark: remark,
+                leaveStatus: leaveStatus 
+            }
+        });
+        return res.status(200).send({ id: 1, message: "Leave has been rejected" })
+
+    } catch (err) {
+        console.log("Error Message: " + err.message);
+        res.status(500).send({ id: 0, message: "Something went wrong." })
+    }
+})
 
 // leaveRoutes.put("/", async (req, res) => {
 //     const { departmentName, id } = req.body || {};
