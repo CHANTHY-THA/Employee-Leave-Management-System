@@ -41,7 +41,7 @@ leaveRoutes.get("/:id", async (req, res) => {
         let result = [];
         const leave = await prisma.leave.findMany({
             orderBy: { id: 'desc' },
-            where: { id: leaveId },
+            where: { employeeid: leaveId },
             include: {
                 employee: true,
                 leavetype: true
