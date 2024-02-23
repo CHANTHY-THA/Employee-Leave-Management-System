@@ -5,6 +5,14 @@ You can run this command to install the node_module in the project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This is intended to allow in render async requests.
+
+## `npm i react-axios`
+
+React component for the moment date library.
+
+## `npm i react-moment`
+
 ## Available Scripts
 
 In the project directory, you can run:

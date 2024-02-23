@@ -6,6 +6,10 @@ This command to install node_module package
 
 ## `npm init or npm i`
 
+Create a directory to hold your application, and make that your working directory.
+
+## `npm install express`
+
 We use this command to install Prisma
 
 ## `npm i prisma --save-dev`
