@@ -123,20 +123,17 @@ leaveRoutes.put("/reject", async (req, res) => {
     }
 })
 
-leaveRoutes.get("/count/:id", async (req, res) => {
+leaveRoutes.post("/count/:id", async (req, res) => {
     const { id } = req.params || {};
-
-    console.log("My ID: ");
-    console.log(id);
-
+    const user_id = parseInt(id);
     try {
-        const countleave = await prisma.post.count({
+        const countleave = await prisma.leave.count({
             where: {
-                employeeid: 1,
+                employeeid: user_id,
             },
         })
-
         return res.status(200).send({ result: countleave, message: "Leave has been rejected" })
+
     } catch (err) {
         console.log("Error Message: " + err.message);
         res.status(500).send({ id: 0, message: "Something went wrong." })

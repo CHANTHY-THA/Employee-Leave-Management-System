@@ -75,7 +75,7 @@ function Menu() {
   return (
     <div className="menu-container">
       <div className="nav-header">
-        <img src="./../../images/profile.png"></img>
+        <img src={user.profile}></img>
         <h5>{user.firstname} {user.lastname}</h5>
       </div>
 
