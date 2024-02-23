@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+You can run this command to install the node_module in the project
+##  `npm init`
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
