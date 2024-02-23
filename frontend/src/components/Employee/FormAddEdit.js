@@ -10,7 +10,7 @@ function AddEditForm(props) {
         firstname: "",
         lastname: "",
         username: "",
-        gender: "",
+        gender: "Femmale",
         email: "",
         password: "",
         phonenumber: "",
@@ -43,6 +43,7 @@ function AddEditForm(props) {
 
     const submitFormAdd = (e) => {
         e.preventDefault();
+
         axios.post(process.env.REACT_APP_URL + '/user', employee, headers, { validateStatus: () => true }).then((res) => {
             if (res.data.id > 0) {
                 props.addItemToState(res.data);

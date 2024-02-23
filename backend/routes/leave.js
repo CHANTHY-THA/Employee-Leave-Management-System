@@ -34,6 +34,38 @@ leaveRoutes.get("/all", async (req, res) => {
     }
 });
 
+leaveRoutes.get("/:id", async (req, res) => {
+    const { id } = req.params || {};
+    const leaveId = parseInt(id);
+    try {
+        let result = [];
+        const leave = await prisma.leave.findMany({
+            orderBy: { id: 'desc' },
+            where: { id: leaveId },
+            include: {
+                employee: true,
+                leavetype: true
+            }
+        });
+        leave.forEach(element => {
+            const dateFormat = dayjs(element.created);
+            const fromDate = dayjs(element.fromDate);
+            const toDate = dayjs(element.toDate);
+            const approveDate = dayjs(element.approveDate);
+
+            element.fromDate = fromDate.format("DD-MMM-YYYY h:mm A");
+            element.toDate = toDate.format("DD-MMM-YYYY h:mm A");
+            element.approveDate = approveDate.format("DD-MMM-YYYY h:mm A");
+            element.created = dateFormat.format("DD-MMM-YYYY h:mm A");
+            result.push(element);
+        });
+        res.status(200).send({ id: 1, message: "Transaction completed.", data: result });
+    } catch (err) {
+        console.log("Error Message: " + err.message);
+        res.status(500).send({ id: 0, message: "Something went wrong." })
+    }
+});
+
 leaveRoutes.post("/", async (req, res) => {
     const leave = req.body;
     try {

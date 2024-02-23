@@ -9,6 +9,8 @@ import moment from 'moment';
 function LeaveForm(props) {
     const employeeid = Number(localStorage.getItem("userID"));
     const [leavetypes, setLeaveType] = useState([{}]);
+    const [countLeave, setCountLeave] = useState([{}]);
+    const [user, setUseer] = useState([{}]);
     const token = localStorage.getItem("token");
     const headers = { headers: { Authorization: `Bearer ${token}` } }
 
@@ -17,6 +19,18 @@ function LeaveForm(props) {
             // console.log(res.data.data);
             setLeaveType(res.data.data)
         });
+
+        axios.post(process.env.REACT_APP_URL + '/auth/profile', {}, headers, { validateStatus: () => true })
+            .then(res => {
+                // console.log(res.data.result);
+                setUseer(res.data.result)
+            })
+
+        axios.post(process.env.REACT_APP_URL + '/leave/count/' + employeeid, {}, headers, { validateStatus: () => true })
+            .then(res => {
+                // console.log(res.data.result);
+                setCountLeave(res.data.result)
+            })
     };
 
     const [myleave, setValues] = useState({
@@ -45,14 +59,19 @@ function LeaveForm(props) {
         myleave.fromDate = moment().toISOString(myleave.fromDate);
         myleave.toDate = moment().toISOString(myleave.toDate);
 
-        axios.post(process.env.REACT_APP_URL + '/leave', myleave, headers, { validateStatus: () => true }).then((res) => {
-            if (res.data.id > 0) {
-                props.addItemToState(res.data);
-                props.toggle();
-            } else {
-                setErrorMessage(res.data.message)
-            }
-        })
+        if (user.totalLeave - countLeave > 0) {
+            console.log("Can Request Leave");
+            axios.post(process.env.REACT_APP_URL + '/leave', myleave, headers, { validateStatus: () => true }).then((res) => {
+                if (res.data.id > 0) {
+                    props.addItemToState(res.data);
+                    props.toggle();
+                } else {
+                    setErrorMessage(res.data.message)
+                }
+            })
+        } else {
+            setErrorMessage("You can't not request leave, beucause Your total leave is 0!")
+        }
 
     };
 
@@ -112,7 +131,7 @@ function LeaveForm(props) {
                                 type="number"
                                 placeholder="Total Leave"
                             />
-                            <small className="text-danger">{errorMessage}</small>
+                            {/* <small className="text-danger">{errorMessage}</small> */}
                         </Form.Group>
                     </Row>
                     <Row className="mb-3">
@@ -125,7 +144,7 @@ function LeaveForm(props) {
                                 placeholder="from date"
                                 value={myleave.fromDate}
                             />
-                            <small className="text-danger">{errorMessage}</small>
+                            {/* <small className="text-danger">{errorMessage}</small> */}
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridDateOfBirth">
@@ -137,7 +156,7 @@ function LeaveForm(props) {
                                 placeholder="to date"
                                 value={myleave.toDate}
                             />
-                            <small className="text-danger">{errorMessage}</small>
+                            {/* <small className="text-danger">{errorMessage}</small> */}
                         </Form.Group>
                     </Row>
 

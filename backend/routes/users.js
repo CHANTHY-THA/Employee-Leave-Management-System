@@ -42,11 +42,10 @@ class Response {
 }
 
 userRoutes.get("/all", async (req, res) => {
-  console.log("herere")
   try {
     let result = [];
     const employees = await prisma.user.findMany({ orderBy: { id: 'desc' }, where: { role: "employee" } });
-    console.log("🚀 ~ userRoutes.get ~ employees:", employees)
+    // console.log("🚀 ~ userRoutes.get ~ employees:", employees)
     employees.forEach(element => {
       console.log("🚀 ~ userRoutes.get ~ element:", element)
       const dateFormat = dayjs(element.created);
@@ -70,8 +69,6 @@ function getProfile(profile) {
     return profile;
   }
 }
-
-
 
 
 userRoutes.get("/", authMiddleware, async (req, res) => {
@@ -172,6 +169,7 @@ userRoutes.put("/", async (req, res) => {
   delete user.id;
   delete user.created;
   delete user.updated;
+  delete user.profile;
   // user.remove(created)
   // user.remove(id)
   try {
