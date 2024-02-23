@@ -45,7 +45,7 @@ userRoutes.get("/all", async (req, res) => {
   console.log("herere")
   try {
     let result = [];
-    const employees = await prisma.user.findMany({ orderBy: { id: 'desc' } });
+    const employees = await prisma.user.findMany({ orderBy: { id: 'desc' }, where: { role: "employee" } });
     console.log("🚀 ~ userRoutes.get ~ employees:", employees)
     employees.forEach(element => {
       console.log("🚀 ~ userRoutes.get ~ element:", element)
