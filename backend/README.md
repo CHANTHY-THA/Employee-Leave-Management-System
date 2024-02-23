@@ -24,5 +24,5 @@ You can run this command to start the project
 
 The db push command to Introspects the database to infer and executes the changes required to make your database schema reflect the state of your Prisma schema(If you want to migration without lose data).
 
-## `npx prisma db`
+## `npx prisma db push`
 
