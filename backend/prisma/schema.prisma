@@ -26,6 +26,7 @@ model User {
   country String
   city String
   address String
+  totalLeave Int
   isActive Boolean @default(true)
   created DateTime @default(now())
   updated  DateTime @updatedAt

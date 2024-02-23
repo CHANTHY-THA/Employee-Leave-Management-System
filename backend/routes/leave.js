@@ -60,7 +60,6 @@ leaveRoutes.post("/:id", async (req, res) => {
     const { id } = req.params || {};
     const leaveId = parseInt(id);
     try {
-        let result = [];
         const foundLeave = await prisma.leave.findUnique({
             where: { id: leaveId },
             include: {
@@ -87,14 +86,14 @@ leaveRoutes.post("/:id", async (req, res) => {
 })
 
 leaveRoutes.put("/approve", async (req, res) => {
-    const { id,leaveStatus, approveBy, approveDate } = req.body || {};
+    const { id, leaveStatus, approveBy, approveDate } = req.body || {};
     try {
         await prisma.leave.update({
             where: { id: id },
-            data: { 
+            data: {
                 leaveStatus: leaveStatus,
                 approveBy: approveBy,
-                approveDate: approveDate 
+                approveDate: approveDate
             }
         });
         return res.status(200).send({ id: 1, message: "Leave has been Approved" })
@@ -107,17 +106,37 @@ leaveRoutes.put("/approve", async (req, res) => {
 })
 
 leaveRoutes.put("/reject", async (req, res) => {
-    const { id,leaveStatus, remark } = req.body || {};
+    const { id, leaveStatus, remark } = req.body || {};
     try {
         await prisma.leave.update({
             where: { id: id },
-            data: { 
+            data: {
                 remark: remark,
-                leaveStatus: leaveStatus 
+                leaveStatus: leaveStatus
             }
         });
         return res.status(200).send({ id: 1, message: "Leave has been rejected" })
 
+    } catch (err) {
+        console.log("Error Message: " + err.message);
+        res.status(500).send({ id: 0, message: "Something went wrong." })
+    }
+})
+
+leaveRoutes.get("/count/:id", async (req, res) => {
+    const { id } = req.params || {};
+
+    console.log("My ID: ");
+    console.log(id);
+
+    try {
+        const countleave = await prisma.post.count({
+            where: {
+                employeeid: 1,
+            },
+        })
+
+        return res.status(200).send({ result: countleave, message: "Leave has been rejected" })
     } catch (err) {
         console.log("Error Message: " + err.message);
         res.status(500).send({ id: 0, message: "Something went wrong." })

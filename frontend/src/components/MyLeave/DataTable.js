@@ -41,6 +41,10 @@ function DataTable(props) {
             })()}
           </td>
           <td>{item.reason}</td>
+          <td 
+          style={{ color: 'red' }}>
+            {item.remark}
+            </td>
           <td>{item.created}</td>
         </tr>
       )
@@ -58,6 +62,7 @@ function DataTable(props) {
           <th>No Of Days</th>
           <th>Status</th>
           <th>Reason</th>
+          <th>Remark</th>
           <th>Posting Date</th>
         </tr>
       </thead>

@@ -19,6 +19,7 @@ function AddEditForm(props) {
         country: "",
         city: "",
         address: "",
+        totalLeave: 0
 
     });
     // const [errorMessage, setErrorMessage] = useState("");
@@ -181,20 +182,14 @@ function AddEditForm(props) {
                             </option>
                         ))}
                     </Form.Select>
-                    {/* <Form.Control onChange={onChange}
-                        name="departmentId"
-                        type="text"
-                        placeholder="Department"
-                        value={employee.departmentId === null ? "" : employee.departmentId}
-                        required /> */}
                 </Form.Group>
                 <Form.Group as={Col} controlId="formGridFirstName">
-                    <Form.Label>Country</Form.Label>
+                    <Form.Label>Total Leave</Form.Label>
                     <Form.Control onChange={onChange}
-                        name="country"
-                        type="text"
-                        placeholder="Country"
-                        value={employee.country === null ? "" : employee.country}
+                        name="totalLeave"
+                        type="number"
+                        placeholder="total Leave"
+                        value={employee.totalLeave === null ? "" : employee.totalLeave}
                         required />
                 </Form.Group>
             </Row>
@@ -209,6 +204,18 @@ function AddEditForm(props) {
                         required />
                 </Form.Group>
                 <Form.Group as={Col} controlId="formGridFirstName">
+                    <Form.Label>Country</Form.Label>
+                     <Form.Control onChange={onChange}
+                        name="country"
+                        type="text"
+                        placeholder="Country"
+                        value={employee.country === null ? "" : employee.country}
+                        required />
+                </Form.Group>
+            </Row>
+
+            <Row className="mb-3">
+            <Form.Group as={Col} controlId="formGridFirstName">
                     <Form.Label>Address</Form.Label>
                     <Form.Control onChange={onChange}
                         name="address"

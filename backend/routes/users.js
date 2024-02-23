@@ -103,6 +103,7 @@ userRoutes.get("/:userId", authMiddleware, async (req, res) => {
 userRoutes.post("/", async (req, res) => {
   const user = req.body || {};
   // console.log("🚀 ~ userRoutes.post ~ user:", user)
+  user.totalLeave = parseInt(user.totalLeave);
   user.departmentId = 1;
   user.role = "employee";
   user.isActive = true;
@@ -154,6 +155,7 @@ userRoutes.put("/", async (req, res) => {
   const id = req.body.id;
   const user = req.body;
   user.departmentId = parseInt(user.departmentId);
+  user.totalLeave = parseInt(user.totalLeave);
   delete user.id;
   delete user.created;
   delete user.updated;

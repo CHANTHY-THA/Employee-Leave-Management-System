@@ -6,6 +6,7 @@ import axios from "axios";
 
 function Profile() {
   const [user, setItems] = useState({});
+  const [countLeave, setCountLeave] = useState({});
   // const [showAlert, setShowAlert] = useState(false);
   // const [background, setBackground] = useState("");
   // const [message, setMessage] = useState("");
@@ -20,6 +21,13 @@ function Profile() {
         // console.log(res.data.result);
         setItems(res.data.result)
       })
+
+      // console.log(user.id);
+    // axios.get(process.env.REACT_APP_URL + '/leave/count/' + user.id, {}, { headers: headers }, { validateStatus: () => true })
+    //   .then(res => {
+    //     console.log(res.data.result);
+    //     setCountLeave(res.data.result)
+    //   })
 
   };
 
@@ -81,7 +89,7 @@ function Profile() {
                     </tr>
                     <tr>
                       <th scope="row">Total leave</th>
-                      <td >22</td>
+                      <td >{user.totalLeave}</td>
                     </tr>
                     <tr>
                       <th scope="row">Total Taken leave</th>
