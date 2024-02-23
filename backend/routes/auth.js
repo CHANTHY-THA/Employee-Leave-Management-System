@@ -34,6 +34,14 @@ authRoutes.post("/login", async (req, res) => {
     return res.status(200).send({ statusCode: 200, result: result, message: "Login successful" });
 })
 
+function getProfile(profile) {
+
+    if (profile === null) {
+        return "profile.png";
+    } else {
+        return profile;
+    }
+}
 authRoutes.post("/profile", authMiddleware, async (req, res) => {
     loginId = req.userId;
     const foundUser = await prisma.user.findUnique({
@@ -44,6 +52,7 @@ authRoutes.post("/profile", authMiddleware, async (req, res) => {
     });
     const dateFormat = dayjs(foundUser.created);
     foundUser.created = dateFormat.format("DD-MMM-YYYY")
+    foundUser.profile = `http://localhost:8080/api/image/${getProfile(foundUser.profile)}`
     const { password: _, ...noPassUserData } = foundUser;
 
     return res.status(200).send({ result: noPassUserData, message: "found user" });

@@ -8,6 +8,7 @@ const authRoutes = require("./routes/auth");
 const leaveTypeRoutes = require('./routes/leave-type');
 const preDataRoutes = require('./routes/pre-data');
 const authMiddleware = require('./middlewares/authMiddleware');
+const imageRoute = require('./routes/image');
 app.set("view engine", "ejs");
 
 app.use(express.json());
@@ -24,6 +25,7 @@ app.use("/api/leavetype", authMiddleware, leaveTypeRoutes);
 app.use("/api/predata", authMiddleware, preDataRoutes);
 app.use("/api/user", authMiddleware, userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/image", imageRoute);
 // app.use("/api", require("./routes/auth"));
 
 const PORT = process.env.PORT || 8080;

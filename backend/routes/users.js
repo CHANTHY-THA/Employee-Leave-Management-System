@@ -6,6 +6,9 @@ const salf = 10;
 const authMiddleware = require("../middlewares/authMiddleware");
 const { PrismaClient } = require('@prisma/client');
 const dayjs = require('dayjs');
+const multer = require('multer');
+const { v4: uuidv4 } = require('uuid');
+
 
 const prisma = new PrismaClient()
 
@@ -48,6 +51,7 @@ userRoutes.get("/all", async (req, res) => {
       console.log("🚀 ~ userRoutes.get ~ element:", element)
       const dateFormat = dayjs(element.created);
       element.created = dateFormat.format("DD-MMM-YYYY h:mm A");
+      element.profile = `http://localhost:8080/api/image/${getProfile(element.profile)}`
       result.push(element);
     });
     res.status(200).send({ id: 1, message: "Transaction completed.", data: result });
@@ -57,6 +61,15 @@ userRoutes.get("/all", async (req, res) => {
   }
 
 });
+
+function getProfile(profile) {
+
+  if (profile === null) {
+    return "profile.png";
+  } else {
+    return profile;
+  }
+}
 
 
 
@@ -271,7 +284,67 @@ userRoutes.put("/changePassword", authMiddleware, async (req, res) => {
     return res.status(500).send({ statusCode: 400, message: "Something went wrong." });
   }
 });
+const imagePath = "C:/Users/prosn/Desktop/Employee-Leave-Management-System/backend/images/"
 
+
+const storage = multer.diskStorage({
+
+  destination: (req, file, cb) => {
+    console.log("🚀 ~ file:", file)
+    cb(null, 'images/')
+  },
+  filename: (req, file, cb) => {
+
+    let filename = uuidv4().slice(-12);
+    filename = `${filename}_${file.originalname}`
+    // `${file.fieldname}_dateVal_${Date.now()}_${file.originalname}`)
+    cb(null, filename)
+  },
+})
+
+const upload = multer({ storage: storage })
+
+
+userRoutes.post("/proileImage", upload.single('file'), async (req, res) => {
+  console.log("🚀 ~ userRoutes.post ~ req1234:", req.file.filename)
+  const id = req.userId;
+  const filename = req.file.filename;
+
+  // const user = req.body || {};
+
+  // user.remove(created)
+  // user.remove(id)
+
+  try {
+
+
+
+
+
+    // const userFound = await prisma.user.findUnique({ where: { id: id } });
+    // console.log("🚀 ~ userRoutes.put ~ userFound:", userFound)
+
+    // if (!userFound) {
+    //   return res.status(400).send({ statusCode: 400, message: "No data found!" });
+    // }
+
+    // if (!bcrypt.compareSync(passwordDto.currentPassword, userFound.password)) {
+    //   return res.status(400).send({ statusCode: 400, message: "Current password incorrect" });
+    // }
+    // // user.password = bcrypt.hashSync(user.password, salf)
+    await prisma.user.update({
+      where: { id: id },
+      data: { profile: filename }
+    });
+    return res.status(201).send({ statusCode: 201, message: "Profile updated successfully." })
+
+
+    // console.log("department : " + foundDepartment);
+  } catch (err) {
+    console.log("Error Message : " + err.message);
+    return res.status(500).send({ statusCode: 400, message: "Profile update failed." });
+  }
+});
 
 
 
