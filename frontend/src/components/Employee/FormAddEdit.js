@@ -10,7 +10,7 @@ function AddEditForm(props) {
         firstname: "",
         lastname: "",
         username: "",
-        gender: "Femmale",
+        gender: "Female",
         email: "",
         password: "",
         phonenumber: "",

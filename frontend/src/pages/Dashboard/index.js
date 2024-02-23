@@ -2,11 +2,11 @@ import { React, useEffect, useState } from "react";
 import "./dashboard.css";
 import Header from "../../components/HeaderComponent";
 //import Menu from "../../components/MenuComponent";
-import jsonData from "../../data.json";
+// import jsonData from "../../data.json";
 import { Button } from "react-bootstrap";
-import { MdOutlineVisibility } from "react-icons/md";
+// import { MdOutlineVisibility } from "react-icons/md";
 import axios from "axios";
-
+import { Link } from 'react-router-dom';
 
 
 function Dashboard() {
@@ -130,7 +130,10 @@ function Dashboard() {
                           </span>
                         </td>
                         <td>
-                          <MdOutlineVisibility />
+                          {/* <MdOutlineVisibility /> */}
+                          <Link to={{ pathname: `/leave-detail/${ele.id}` }}>
+                            <Button>Details</Button>
+                          </Link>
                           {/* <div type="button" className="btn btn-primary btn-sm">View Detail</div> */}
                           {/* <Button href="/leave-detail">View Detail</Button> */}
                         </td>
