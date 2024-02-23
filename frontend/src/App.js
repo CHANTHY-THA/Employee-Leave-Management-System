@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
-import LeaveDetail from "./pages/LeaveDetail";
+import LeaveDetail from "./pages/LeaveDetail/leaveDetail";
 import LeaveManagement from "./pages/LeaveManagement/leaveManagement";
 import MyLeave from "./pages/MyLeave/myleave";
 import Menu from "./components/MenuComponent";
@@ -167,7 +167,7 @@ function App() {
               element={<ProtectedLeaveManagement />}
             ></Route>
             <Route
-              path="/leave-detail"
+              path="/leave-detail/:id"
               element={<ProtectedLeaveDetail />}
             ></Route>
             <Route

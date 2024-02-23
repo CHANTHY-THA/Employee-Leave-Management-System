@@ -18,19 +18,25 @@ function DataTable(props) {
           <td>
             {(() => {
               if (item.leaveStatus == "Pending") {
-                return <div style={{
-                  color: '#FFA07A'
-                }} >{item.leaveStatus}</div>;
+                return <div>
+                  <span className="label label-pending">
+                    {item.leaveStatus}
+                  </span>
+                </div>;
 
               } else if (item.leaveStatus == "Approved") {
-                return <div style={{
-                  color: '#20B2AA'
-                }}>{item.leaveStatus}</div>;
+                return <div>
+                  <span className="label label-approved">
+                    {item.leaveStatus}
+                  </span>
+                </div>;
 
               } else if (item.leaveStatus == "Not Approve") {
-                return <div style={{
-                  color: '#FF4500'
-                }}>{item.leaveStatus}</div>;
+                return <div>
+                  <span className="label label-not-approved">
+                    {item.leaveStatus}
+                  </span>
+                </div>;
               }
             })()}
           </td>

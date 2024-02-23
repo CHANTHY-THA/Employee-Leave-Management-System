@@ -45,12 +45,15 @@ model Leave {
   id Int @id @default(autoincrement())
   employeeid Int
   leaveStatus String
-  leaveTypeid Int @unique
+  leaveTypeid Int
   totalLeave Int
-  fromDate DateTime @db.Timestamptz
-  toDate DateTime @db.Timestamptz
+  fromDate DateTime? @updatedAt
+  toDate DateTime? @updatedAt
   reason String
-  created DateTime @default(now()) @db.Date
+  remark String @default("")
+  approveBy String @default("")
+  approveDate DateTime? @updatedAt
+  created DateTime @default(now())
   isActive Boolean @default(true)
   employee User @relation(fields: [employeeid], references: [id])
   leavetype LeaveType @relation(fields: [leaveTypeid], references: [id])
@@ -62,7 +65,7 @@ model LeaveType {
   amount Int
   created DateTime @default(now())
   isActive Boolean @default(true)
-  leave Leave?
+  leave Leave[]
 }
 
 model PreData {

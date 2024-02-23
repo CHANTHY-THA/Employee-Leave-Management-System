@@ -1,31 +1,34 @@
-
-body{
+body {
     display: flex;
     width: 100%;
     height: 100vh;
 }
 
-.leave-history-page{
+.leave-history-page {
     width: 100%;
 }
-.leave-histroy-page-main{
+
+.leave-histroy-page-main {
     width: 100%;
     display: flex;
 }
-.leave-history-container{
+
+.leave-history-container {
     width: 100%;
     margin: 20px;
 }
-.leave-history-content{
+
+.leave-history-content {
     background: white;
-    width: 100%; 
+    width: 100%;
     font-size: 15px;
     border-radius: 5px;
     padding: 0px 10px;
     display: flex;
     flex-direction: column;
 }
-.leave-history-page-main h3{
+
+.leave-history-page-main h3 {
     margin-bottom: 20px;
 }
 
@@ -34,8 +37,9 @@ body{
 }
 
 .label {
-    border-radius: 4px;
-    padding: 1px 5px;
+    border-radius: 15px;
+    padding: 2px 10px;
+    padding-bottom: 4px;
     color: white;
     text-align: center;
     font-size: 13px;
@@ -44,13 +48,15 @@ body{
 .label-approve {
     background-color: green;
 }
-.label-draft {
-    background-color: gray;
-}
 
-.label-notapprove {
+/* .label-draft {
+    background-color: gray;
+} */
+
+.label-not-approve {
     background-color: red;
 }
+
 .label-pending {
     background-color: rgb(210, 157, 11);
 }

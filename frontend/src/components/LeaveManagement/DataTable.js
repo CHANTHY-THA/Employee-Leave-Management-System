@@ -1,7 +1,9 @@
 import React from 'react'
-import FormDeleteItem from './FormDelete';
-import ApplyLeaveFormModal from './FormApplyLeav';
+// import FormDeleteItem from './FormDelete';
+// import ApplyLeaveFormModal from './FormApplyLeav';
 import { Button } from "react-bootstrap";
+import "../../pages/LeaveManagement/leaveManagement.css"
+import { Link } from 'react-router-dom';
 
 function DataTable(props) {
   if (props.items !== undefined) {
@@ -19,20 +21,26 @@ function DataTable(props) {
           <td>{item.totalLeave}</td>
           <td>
             {(() => {
-              if (item.leaveStatus == "Pending") {
-                return <div style={{
-                  color: '#FFA07A'
-                }} >{item.leaveStatus}</div>;
+               if (item.leaveStatus == "Pending") {
+                return <div>
+                  <span className="label label-pending">
+                    {item.leaveStatus}
+                  </span>
+                </div>;
 
               } else if (item.leaveStatus == "Approved") {
-                return <div style={{
-                  color: '#20B2AA'
-                }}>{item.leaveStatus}</div>;
+                return <div>
+                  <span className="label label-approved">
+                    {item.leaveStatus}
+                  </span>
+                </div>;
 
               } else if (item.leaveStatus == "Not Approve") {
-                return <div style={{
-                  color: '#FF4500'
-                }}>{item.leaveStatus}</div>;
+                return <div>
+                  <span className="label label-not-approved">
+                    {item.leaveStatus}
+                  </span>
+                </div>;
               }
             })()}
           </td>
@@ -41,8 +49,12 @@ function DataTable(props) {
           <td>
             <div className='d-flex'>
               {/* <ApplyLeaveFormModal buttonLabel="Edit" item={item} updateState={props.updateState} ></ApplyLeaveFormModal> */}
-              <Button href="/leave-detail">View Detail</Button>
-              <FormDeleteItem item={item} deleteItemFromState={props.deleteItemFromState}></FormDeleteItem>
+              {/* <Button className='btnDetail' href="/leave-detail">View Detail</Button> */}
+              {/* <FormDeleteItem item={item} deleteItemFromState={props.deleteItemFromState}></FormDeleteItem> */}
+              <Link to={{pathname: `/leave-detail/${item.id}`}}>
+                <Button>Details</Button>
+              </Link>
+
             </div>
           </td>
         </tr>
